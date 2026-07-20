@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markus — Engineering for European Defence</title>
+<meta name="description" content="Portfolio of Markus — mechanical engineering student at TU Eindhoven building broad engineering capability aimed at the European defence and dual-use industry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,640&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBFBF9;
+  --panel:#FFFFFF;
+  --ink:#14181C;
+  --ink2:#4E565E;
+  --line:#DEE1DD;
+  /* viridis-derived accents — CFD contour vernacular */
+  --v-lo:#3B528B;   /* deep blue */
+  --v-mid:#21908C;  /* teal */
+  --v-hi:#8FD744;   /* lime */
+  --grad:linear-gradient(90deg,#440D54,#3B528B,#21908C,#5DC963,#FDE725);
+  --radius:8px;
+  --max:1060px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px}
+::selection{background:#D9EFD2}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+a:focus-visible{outline:2px solid var(--v-mid);outline-offset:3px;border-radius:2px}
+
+/* top hairline = contour colorbar */
+.colorbar{height:4px;background:var(--grad)}
+
+header{position:sticky;top:0;z-index:10;background:rgba(251,251,249,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;justify-content:space-between;align-items:center;height:56px}
+.logo{font-family:'JetBrains Mono',monospace;font-size:.85rem;text-decoration:none;letter-spacing:.04em}
+.logo span{color:var(--v-mid)}
+nav ul{display:flex;gap:1.5rem;list-style:none}
+nav ul a{font-size:.85rem;color:var(--ink2);text-decoration:none}
+nav ul a:hover{color:var(--ink)}
+.lang{font-family:'JetBrains Mono',monospace;font-size:.78rem;background:none;border:1px solid var(--line);border-radius:99px;padding:.15rem .6rem;cursor:pointer;color:var(--ink2)}
+.lang:hover{border-color:var(--v-mid);color:var(--ink)}
+.lang b{color:var(--v-mid)}
+
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+
+/* ---- hero ---- */
+.hero{padding:70px 0 54px}
+h1{font-family:Fraunces,serif;font-weight:640;font-size:clamp(2.1rem,5vw,3.3rem);line-height:1.1;margin:.7rem 0 1rem;max-width:20ch}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{max-width:58ch;color:var(--ink2);font-size:1.05rem}
+.cta{margin-top:1.5rem;display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-size:.9rem;font-weight:500;padding:.6rem 1.1rem;border-radius:var(--radius);border:1px solid var(--ink);transition:.15s}
+.btn.primary{background:var(--ink);color:#fff}
+.btn.primary:hover{background:var(--v-mid);border-color:var(--v-mid)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+
+/* pipeline figure */
+.pipe{margin-top:2.6rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.pipe svg{display:block;width:100%;height:auto}
+.pipe .cap{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ink2);padding:.55rem .9rem;border-top:1px dashed var(--line)}
+@media(prefers-reduced-motion:no-preference){
+  .flow{stroke-dasharray:8 6;animation:flow 1.2s linear infinite}
+  @keyframes flow{to{stroke-dashoffset:-14}}
+}
+
+section{padding:54px 0}
+.shead{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem;border-bottom:1px solid var(--line);padding-bottom:.6rem}
+.shead h2{font-family:Fraunces,serif;font-weight:640;font-size:1.6rem}
+
+/* ---- projects ---- */
+.cards{display:grid;gap:1.1rem}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.4rem;transition:border-color .15s}
+.card:hover{border-color:var(--v-mid)}
+.card .meta{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ink2);display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.45rem}
+.card .meta .k{color:var(--v-lo);font-weight:500}
+.card h3{font-family:Fraunces,serif;font-size:1.18rem;font-weight:640;margin-bottom:.4rem}
+.card p{color:var(--ink2);font-size:.95rem;max-width:72ch}
+.card ul{margin:.6rem 0 0 1.1rem;color:var(--ink2);font-size:.9rem}
+.card li{margin:.2rem 0}
+.badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;border:1px solid var(--line);border-radius:99px;padding:.12rem .55rem;margin:.55rem .3rem 0 0;color:var(--ink2)}
+
+/* ---- skills ---- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem}
+.cell{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.2rem}
+.cell h3{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:.55rem}
+.cell h3::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:.5rem;background:var(--v-mid)}
+.cell:nth-child(2) h3::before{background:var(--v-lo)}
+.cell:nth-child(3) h3::before{background:#5DC963}
+.cell:nth-child(4) h3::before{background:#440D54}
+.cell:nth-child(5) h3::before{background:#FDB32F}
+.cell:nth-child(6) h3::before{background:var(--v-mid)}
+.cell p{font-size:.92rem}
+
+/* ---- about / direction ---- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.two p{color:var(--ink2);font-size:.97rem;margin-bottom:.8rem}
+.two strong{color:var(--ink)}
+
+/* ---- contact ---- */
+.contact{background:var(--ink);color:#EDEFEC;border-radius:var(--radius);padding:2.2rem 2rem;display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:center}
+.contact h2{font-family:Fraunces,serif;font-weight:640;font-size:1.55rem;max-width:24ch}
+.contact p{color:#AEB6B0;font-size:.95rem;max-width:50ch;margin-top:.5rem}
+.clinks{display:flex;flex-direction:column;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.88rem}
+.clinks a{color:#fff;text-decoration:none;border-bottom:1px solid var(--v-hi)}
+.clinks a:hover{color:var(--v-hi)}
+
+footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body>
+<div class="colorbar" aria-hidden="true"></div>
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="#top">markus<span>.eng</span></a>
+      <ul>
+        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Toolbox</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        <li><button id="langToggle" class="lang" aria-label="Switch language">EN&nbsp;·&nbsp;<b>ET</b></button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="hero.eyebrow">Mechanical engineering · TU Eindhoven · European defence &amp; dual-use</p>
+    <h1 data-i18n-html="hero.h1">A broad engineer, aimed at <span class="g">one target: European defence</span>.</h1>
+    <p class="lede" data-i18n="hero.lede">
+      Defence systems don't respect disciplinary boundaries — so neither do I. I'm a mechanical
+      engineering student building deliberately wide capability across simulation, optimization,
+      mechatronics, and systems engineering, all pointed at one goal: contributing to Europe's
+      defence and dual-use industry. Estonian citizen, based in the Eindhoven Brainport ecosystem.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#projects" data-i18n="hero.cta1">See projects</a>
+      <a class="btn ghost" href="#contact" data-i18n="hero.cta2">Get in touch</a>
+    </div>
+
+    <figure class="pipe" aria-label="Multi-fidelity optimization pipeline diagram">
+      <svg viewBox="0 0 920 190" aria-hidden="true">
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6" fill="none" stroke="#4E565E" stroke-width="1.4"/>
+          </marker>
+        </defs>
+        <!-- stage boxes -->
+        <g font-family="JetBrains Mono" font-size="11" text-anchor="middle">
+          <rect x="40"  y="60" width="150" height="54" rx="6" fill="none" stroke="#3B528B" stroke-width="1.6"/>
+          <text x="115" y="82" fill="#14181C">BEMT</text>
+          <text x="115" y="99" fill="#4E565E" font-size="9.5">blade element · seconds</text>
+
+          <rect x="260" y="60" width="150" height="54" rx="6" fill="none" stroke="#21908C" stroke-width="1.6"/>
+          <text x="335" y="82" fill="#14181C">OpenFOAM CFD</text>
+          <text x="335" y="99" fill="#4E565E" font-size="9.5">RANS · hours</text>
+
+          <rect x="480" y="60" width="150" height="54" rx="6" fill="none" stroke="#5DC963" stroke-width="1.6"/>
+          <text x="555" y="82" fill="#14181C">CalculiX FEA</text>
+          <text x="555" y="99" fill="#4E565E" font-size="9.5">stress · deflection</text>
+
+          <rect x="710" y="60" width="170" height="54" rx="6" fill="none" stroke="#440D54" stroke-width="1.6"/>
+          <text x="795" y="82" fill="#14181C">NSGA-II</text>
+          <text x="795" y="99" fill="#4E565E" font-size="9.5">Pareto front: η vs. σ_max</text>
+        </g>
+        <!-- forward arrows -->
+        <line class="flow" x1="192" y1="87" x2="256" y2="87" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
+        <line class="flow" x1="412" y1="87" x2="476" y2="87" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
+        <line class="flow" x1="632" y1="87" x2="706" y2="87" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
+        <!-- feedback loop -->
+        <path class="flow" d="M795 118 L795 155 L115 155 L115 118" fill="none" stroke="#4E565E" stroke-width="1.4" stroke-dasharray="5 5" marker-end="url(#arr)"/>
+        <text x="455" y="172" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#4E565E">next generation → new candidate geometries</text>
+        <text x="455" y="40" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#4E565E">fidelity →</text>
+      </svg>
+      <figcaption class="cap" data-i18n="fig1">FIG. 1 — Self-initiated propeller optimization pipeline: cheap models filter, expensive models verify, the optimizer closes the loop.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="shead"><span class="eyebrow">01</span><h2 data-i18n="proj.head">Selected work</h2></div>
+    <div class="cards">
+
+      <article class="card">
+        <div class="meta"><span class="k">MULTI-FIDELITY OPTIMIZATION</span><span data-i18n="proj.self">self-initiated</span><span>Python · OpenFOAM · CalculiX</span></div>
+        <h3 data-i18n="p1.title">Propeller design &amp; optimization pipeline</h3>
+        <p data-i18n="p1.body">End-to-end pipeline coupling blade-element momentum theory for rapid design-space
+           exploration, RANS CFD for aerodynamic verification, FEA for structural constraints,
+           and NSGA-II for multi-objective search over efficiency vs. structural margin.</p>
+        <ul>
+          <li data-i18n="p1.l1">Automated geometry generation → meshing → solve → post-processing loop</li>
+          <li data-i18n="p1.l2">Multi-objective Pareto fronts; constraint handling for tip stress and deflection</li>
+          <li data-i18n="p1.l3">Surrogate models to cut high-fidelity evaluations in the optimization loop</li>
+        </ul>
+        <span class="badge">BEMT</span><span class="badge">RANS</span><span class="badge">NSGA-II</span><span class="badge">surrogate modeling</span>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="k">MECHATRONICS</span><span data-i18n="p2.meta">4CC10 group project · TU/e</span><span>Simulink · System Composer</span></div>
+        <h3 data-i18n="p2.title">Autonomous shuffleboard robot</h3>
+        <p data-i18n="p2.body">Full V-model design cycle in a team of students: system architecture, sensor selection
+           and characterization, FMEA, and iterative verification planning for a robot that
+           perceives the board and executes controlled puck shots.</p>
+        <ul>
+          <li data-i18n="p2.l1">Trade study and noise analysis of ToF (VL53L1X) vs. photoelectric (Baumer OM30) ranging</li>
+          <li data-i18n="p2.l2">Model-based design in Simulink; architecture in System Composer</li>
+          <li data-i18n="p2.l3">FMEA-driven verification plan and design reviews</li>
+        </ul>
+        <span class="badge">model-based design</span><span class="badge">FMEA</span><span class="badge">sensor characterization</span>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="k">STRUCTURAL OPTIMIZATION</span><span data-i18n="p3.meta">coursework + independent</span><span>topology optimization</span></div>
+        <h3 data-i18n="p3.title">Topology &amp; generative design studies</h3>
+        <p data-i18n="p3.body">Density-based topology optimization applied to bracket-class problems: compliance
+           minimization under volume constraints, and translating raw optimizer output into
+           manufacturable geometry.</p>
+        <span class="badge">SIMP</span><span class="badge">FEA</span><span class="badge">DfAM</span>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="k">DEFENCE &amp; DUAL-USE</span><span data-i18n="p4.meta">ongoing groundwork</span></div>
+        <h3 data-i18n="p4.title">Building toward the European defence ecosystem</h3>
+        <p data-i18n="p4.body">Alongside coursework: mapping the clearance-free European dual-use landscape
+           (NATO DIANA, EUDIS, Estonia's defence-innovation programs), studying counter-UAS
+           geometry problems, and porting my optimization pipeline toward small turbomachinery —
+           a supply-constrained niche in unmanned systems propulsion.</p>
+        <span class="badge">counter-UAS</span><span class="badge">surrogate SaaS</span><span class="badge">EU dual-use</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="shead"><span class="eyebrow">02</span><h2 data-i18n="nav.skills">Toolbox</h2></div>
+    <div class="grid">
+      <div class="cell"><h3>CFD</h3><p data-i18n="s.cfd">OpenFOAM (RANS), meshing workflows, verification &amp; validation habits, post-processing in Python/ParaView.</p></div>
+      <div class="cell"><h3 data-i18n="s.fea.h">FEA &amp; structures</h3><p data-i18n="s.fea">CalculiX, linear static &amp; modal analysis, topology optimization (SIMP), stress-constrained design.</p></div>
+      <div class="cell"><h3 data-i18n="s.opt.h">Optimization</h3><p data-i18n="s.opt">NSGA-II and evolutionary methods, multi-objective trade-offs, surrogate modeling (GP/RBF) for expensive objectives.</p></div>
+      <div class="cell"><h3 data-i18n="s.prog.h">Programming</h3><p data-i18n="s.prog">Python (NumPy/SciPy scientific stack), automation of solver pipelines, MATLAB/Simulink.</p></div>
+      <div class="cell"><h3 data-i18n="s.se.h">Systems engineering</h3><p data-i18n="s.se">V-model, requirements &amp; verification planning, FMEA, design reviews, System Composer.</p></div>
+      <div class="cell"><h3 data-i18n="s.dom.h">Domains</h3><p data-i18n="s.dom">Aerodynamics &amp; propellers, turbomachinery fundamentals, mechatronics, thermal management.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="shead"><span class="eyebrow">03</span><h2 data-i18n="nav.about">About</h2></div>
+    <div class="two">
+      <div>
+        <p data-i18n-html="a.now"><strong>Now:</strong> second-year BSc Mechanical Engineering at Eindhoven University of
+           Technology. Coursework and projects across the breadth of the discipline: fluids,
+           structures, dynamics, control, and design.</p>
+        <p data-i18n-html="a.how"><strong>How I work:</strong> I like problems where one engineer can own the whole
+           loop — model it, verify it, build it, iterate. Most of my project work is self-initiated,
+           which is also how I've picked up tools well beyond the curriculum.</p>
+      </div>
+      <div>
+        <p data-i18n-html="a.head"><strong>Where I'm headed:</strong> the European defence and dual-use industry — that
+           part is decided. The breadth is deliberate: defence systems are integration problems, and
+           I want to be the engineer who understands the aerodynamics, the structures, and the
+           control loop. Estonian citizen with a foot in both the Brainport (Eindhoven) and Estonian
+           defence-innovation communities.</p>
+        <p data-i18n-html="a.look"><strong>Looking for:</strong> internships and student engineering roles at defence and
+           dual-use companies — simulation, design, mechatronics, or test — anywhere in the
+           European ecosystem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <h2 data-i18n="c.head">Open to internships and student roles in defence &amp; dual-use engineering.</h2>
+        <p data-i18n="c.body">Based in Eindhoven, connected to Tallinn. If you're building for European defence —
+           hardware, simulation, or anywhere in between — let's talk.</p>
+      </div>
+      <div class="clinks">
+        <!-- EDIT: real links -->
+        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">linkedin.com/in/yourprofile</a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><span data-i18n="footer">© 2026 Markus · cheap models filter, expensive models verify</span></div>
+</footer>
+
+<script>
+const ET = {
+  "nav.projects":"Projektid","nav.skills":"Oskused","nav.about":"Minust","nav.contact":"Kontakt",
+  "hero.eyebrow":"Masinaehitus · TU Eindhoven · Euroopa kaitse ja kahesugune kasutus",
+  "hero.h1":"Laia haardega insener, sihitud <span class=\"g\">ühele eesmärgile: Euroopa kaitse</span>.",
+  "hero.lede":"Kaitsesüsteemid ei austa erialapiire — seega ei tee seda ka mina. Olen masinaehituse tudeng, kes ehitab teadlikult laia võimekust simulatsiooni, optimeerimise, mehhatroonika ja süsteemiinseneeria vallas, kõik suunatud ühele eesmärgile: panustada Euroopa kaitse- ja kahesuguse kasutusega tööstusesse. Eesti kodanik, baasiga Eindhoveni Brainporti ökosüsteemis.",
+  "hero.cta1":"Vaata projekte","hero.cta2":"Võta ühendust",
+  "fig1":"JOONIS 1 — Omaalgatuslik propelleri optimeerimispipeline: odavad mudelid filtreerivad, kallid mudelid verifitseerivad, optimeerija sulgeb tsükli.",
+  "proj.head":"Valik töid","proj.self":"omaalgatuslik",
+  "p1.title":"Propelleri disaini- ja optimeerimispipeline",
+  "p1.body":"Otsast lõpuni pipeline, mis ühendab labaelemendi impulssiteooria kiireks disainiruumi uurimiseks, RANS CFD aerodünaamiliseks verifitseerimiseks, FEA struktuursete piirangute jaoks ja NSGA-II mitme-eesmärgilise otsingu jaoks kasuteguri ja struktuurse varu vahel.",
+  "p1.l1":"Automatiseeritud geomeetria genereerimine → võrgustamine → lahendamine → järeltöötlus",
+  "p1.l2":"Mitme-eesmärgilised Pareto rindejooned; tipupinge ja läbipainde piirangute käsitlemine",
+  "p1.l3":"Surrogaatmudelid kõrge täpsusega arvutuste vähendamiseks optimeerimistsüklis",
+  "p2.meta":"4CC10 rühmaprojekt · TU/e",
+  "p2.title":"Autonoomne kurlingurobot",
+  "p2.body":"Täielik V-mudeli disainitsükkel tudengite meeskonnas: süsteemiarhitektuur, andurite valik ja karakteriseerimine, FMEA ning iteratiivne verifitseerimise planeerimine robotile, mis tajub mängulauda ja sooritab kontrollitud lööke.",
+  "p2.l1":"ToF (VL53L1X) vs. fotoelektriliste (Baumer OM30) kaugusandurite võrdlus- ja müraanalüüs",
+  "p2.l2":"Mudelipõhine disain Simulinkis; arhitektuur System Composeris",
+  "p2.l3":"FMEA-põhine verifitseerimisplaan ja disainiülevaatused",
+  "p3.meta":"õppetöö + iseseisev",
+  "p3.title":"Topoloogia- ja generatiivdisaini uuringud",
+  "p3.body":"Tiheduspõhine topoloogiaoptimeerimine kronsteini-tüüpi ülesannetel: painduvuse minimeerimine mahupiirangute all ning optimeerija toorväljundi teisendamine toodetavaks geomeetriaks.",
+  "p4.meta":"jätkuv ettevalmistus",
+  "p4.title":"Teel Euroopa kaitseökosüsteemi",
+  "p4.body":"Õppetöö kõrval: julgeolekukontrolli-vaba Euroopa kahesuguse kasutusega maastiku kaardistamine (NATO DIANA, EUDIS, Eesti kaitseinnovatsiooni programmid), droonivastaste geomeetriaülesannete uurimine ja oma optimeerimispipeline'i suunamine väikeste turbomasinate poole — tarnepiiranguga nišš mehitamata süsteemide jõuallikates.",
+  "s.cfd":"OpenFOAM (RANS), võrgustamise töövood, verifitseerimise ja valideerimise harjumused, järeltöötlus Pythonis/ParaView'is.",
+  "s.fea.h":"FEA ja struktuurid","s.fea":"CalculiX, lineaarne staatiline ja modaalanalüüs, topoloogiaoptimeerimine (SIMP), pingepiiranguga disain.",
+  "s.opt.h":"Optimeerimine","s.opt":"NSGA-II ja evolutsioonilised meetodid, mitme-eesmärgilised kompromissid, surrogaatmodelleerimine (GP/RBF) kulukate eesmärkide jaoks.",
+  "s.prog.h":"Programmeerimine","s.prog":"Python (NumPy/SciPy teaduslik pakett), lahendaja-pipeline'ide automatiseerimine, MATLAB/Simulink.",
+  "s.se.h":"Süsteemiinseneeria","s.se":"V-mudel, nõuete ja verifitseerimise planeerimine, FMEA, disainiülevaatused, System Composer.",
+  "s.dom.h":"Valdkonnad","s.dom":"Aerodünaamika ja propellerid, turbomasinate alused, mehhatroonika, termohaldus.",
+  "a.now":"<strong>Praegu:</strong> teise aasta masinaehituse bakalaureuseõpe Eindhoveni Tehnikaülikoolis. Õppetöö ja projektid üle kogu eriala laiuse: vedelikud, struktuurid, dünaamika, juhtimine ja disain.",
+  "a.how":"<strong>Kuidas ma töötan:</strong> mulle meeldivad ülesanded, kus üks insener saab omada tervet tsüklit — modelleerida, verifitseerida, ehitada, itereerida. Enamik mu projektitööst on omaalgatuslik, mistõttu olen omandanud tööriistu ka kaugelt väljaspool õppekava.",
+  "a.head":"<strong>Kuhu ma liigun:</strong> Euroopa kaitse- ja kahesuguse kasutusega tööstusesse — see osa on otsustatud. Laius on teadlik: kaitsesüsteemid on integratsiooniprobleemid ja tahan olla insener, kes mõistab nii aerodünaamikat, struktuure kui ka juhtimisahelat. Eesti kodanik, jalg nii Brainporti (Eindhoven) kui ka Eesti kaitseinnovatsiooni kogukonnas.",
+  "a.look":"<strong>Otsin:</strong> praktikakohti ja tudengi-inseneri rolle kaitse- ja kahesuguse kasutusega ettevõtetes — simulatsioon, disain, mehhatroonika või testimine — kõikjal Euroopa ökosüsteemis.",
+  "c.head":"Avatud praktikatele ja tudengirollidele kaitse- ja kahesuguse kasutusega inseneerias.",
+  "c.body":"Baasiga Eindhovenis, seotud Tallinnaga. Kui ehitad Euroopa kaitse jaoks — riistvara, simulatsioon või midagi vahepealset — räägime.",
+  "footer":"© 2026 Markus · odavad mudelid filtreerivad, kallid mudelid verifitseerivad"
+};
+
+const nodes = [...document.querySelectorAll('[data-i18n],[data-i18n-html]')];
+const EN = {};
+for (const n of nodes){
+  const key = n.dataset.i18n || n.dataset.i18nHtml;
+  EN[key] = n.dataset.i18nHtml ? n.innerHTML.trim() : n.textContent.trim();
+}
+function apply(lang){
+  const dict = lang==='et' ? ET : EN;
+  for (const n of nodes){
+    const key = n.dataset.i18n || n.dataset.i18nHtml;
+    if (!(key in dict)) continue;
+    if (n.dataset.i18nHtml) n.innerHTML = dict[key]; else n.textContent = dict[key];
+  }
+  document.documentElement.lang = lang;
+  const b = document.getElementById('langToggle');
+  b.innerHTML = lang==='et' ? '<b>ET</b>&nbsp;·&nbsp;EN' : 'EN&nbsp;·&nbsp;<b>ET</b>';
+}
+let cur='en';
+document.getElementById('langToggle').addEventListener('click',()=>{cur=cur==='en'?'et':'en';apply(cur);});
+</script>
+</body>
+</html>
