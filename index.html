@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Markus — Engineering for European Defence</title>
 <meta name="description" content="Portfolio of Markus — mechanical engineering student at TU Eindhoven building broad engineering capability aimed at the European defence and dual-use industry.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://markusotsmaa.com/">
+<meta property="og:title" content="Markus Andreas Otsmaa — Engineering for European Defence">
+<meta property="og:description" content="Mechanical engineering student at TU Eindhoven. Multi-fidelity simulation, optimization, mechatronics and systems engineering, aimed at the European defence and dual-use industry.">
+<meta property="og:image" content="https://markusotsmaa.com/media/hvo-rohr.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Markus Andreas Otsmaa — Engineering for European Defence">
+<meta name="twitter:description" content="Mechanical engineering student at TU Eindhoven. Simulation, optimization and systems engineering for European defence and dual-use.">
+<meta name="twitter:image" content="https://markusotsmaa.com/media/hvo-rohr.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#14181C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,640&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -71,7 +82,7 @@ section{padding:54px 0}
 .shead h2{font-family:Fraunces,serif;font-weight:640;font-size:1.6rem}
 
 /* ---- projects ---- */
-.cards{display:grid;gap:1.1rem}
+.cards{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.4rem;transition:border-color .15s}
 .card:hover{border-color:var(--v-mid)}
 .card .meta{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ink2);display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.45rem}
@@ -81,6 +92,52 @@ section{padding:54px 0}
 .card ul{margin:.6rem 0 0 1.1rem;color:var(--ink2);font-size:.9rem}
 .card li{margin:.2rem 0}
 .badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;border:1px solid var(--line);border-radius:99px;padding:.12rem .55rem;margin:.55rem .3rem 0 0;color:var(--ink2)}
+.card{cursor:pointer}
+.card .badges{margin-top:.2rem}
+.card .more{display:inline-block;margin-top:.9rem;font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--v-lo);font-weight:500}
+.card:hover .more{color:var(--v-mid)}
+/* classification marker (course project / self-initiated / research thesis) */
+.kind{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--v-mid);border:1px solid var(--v-mid);background:rgba(33,144,140,.07);border-radius:99px;padding:.13rem .55rem;margin-bottom:.7rem}
+.kind[data-kind="course"]{color:var(--v-lo);border-color:var(--v-lo);background:rgba(59,82,139,.07)}
+.kind[data-kind="thesis"]{color:#7A3E9D;border-color:#7A3E9D;background:rgba(122,62,157,.07)}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.chip{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.04em;background:none;border:1px solid var(--line);border-radius:99px;padding:.3rem .8rem;cursor:pointer;color:var(--ink2);transition:.15s}
+.chip:hover{border-color:var(--v-mid);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* ---- project detail overlay ---- */
+.pd-overlay{position:fixed;inset:0;z-index:50;display:flex;justify-content:center;align-items:flex-start;
+  background:rgba(20,24,28,.55);backdrop-filter:blur(4px);overflow-y:auto;padding:5vh 20px}
+.pd-overlay[hidden]{display:none}
+.pd-panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  max-width:760px;width:100%;padding:2.4rem 2.4rem 2.8rem;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+.pd-close{position:absolute;top:1rem;right:1.1rem;background:none;border:none;font-size:1.6rem;line-height:1;
+  cursor:pointer;color:var(--ink2)}
+.pd-close:hover{color:var(--ink)}
+.pd-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--v-lo)}
+.pd-context{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--ink2);margin-top:.35rem}
+.pd-materials{margin-top:1.4rem;border-top:1px dashed var(--line);padding-top:1rem}
+.pd-mat-h{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:.6rem}
+.pd-title{font-family:Fraunces,serif;font-weight:640;font-size:1.7rem;margin:.4rem 0 .9rem}
+.pd-lede{color:var(--ink2);font-size:1.02rem;margin-bottom:1.4rem}
+.pd-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.8rem;margin-bottom:1.6rem}
+.pd-metric{border:1px solid var(--line);border-radius:var(--radius);padding:.8rem .9rem;text-align:center}
+.pd-metric .v{display:block;font-family:'JetBrains Mono',monospace;font-size:1.15rem;font-weight:500;color:var(--ink)}
+.pd-metric .l{display:block;font-size:.72rem;color:var(--ink2);margin-top:.25rem}
+.pd-media{margin:1.6rem 0;display:grid;gap:1rem}
+.pd-media figure{margin:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel)}
+.pd-media img,.pd-media video{display:block;width:100%;height:auto}
+.pd-media figcaption{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ink2);padding:.55rem .9rem;border-top:1px dashed var(--line)}
+.about-figure{margin:1.4rem 0 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.about-figure img{display:block;width:100%;height:auto}
+.pd-section{margin-bottom:1.3rem}
+.pd-section h3{font-family:Fraunces,serif;font-size:1.08rem;font-weight:640;margin-bottom:.35rem}
+.pd-section p{color:var(--ink2);font-size:.96rem}
+.pd-stack{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--ink2);border-top:1px dashed var(--line);padding-top:1rem;margin-top:.4rem}
+.pd-stack .lbl{color:var(--ink)}
+.pd-status{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#B9791F;margin-top:.6rem}
+.pd-links{margin-top:1rem;display:flex;gap:1.2rem;flex-wrap:wrap}
+.pd-links a{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--v-mid);text-decoration:none;border-bottom:1px solid var(--v-hi)}
 
 /* ---- skills ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem}
@@ -99,6 +156,10 @@ section{padding:54px 0}
 @media(max-width:760px){.two{grid-template-columns:1fr}}
 .two p{color:var(--ink2);font-size:.97rem;margin-bottom:.8rem}
 .two strong{color:var(--ink)}
+.aside-note{margin-top:2.2rem;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--v-mid);border-radius:var(--radius);padding:1.4rem 1.6rem}
+.aside-note h3{font-family:Fraunces,serif;font-size:1.12rem;font-weight:640;margin-bottom:.6rem}
+.aside-note p{color:var(--ink2);font-size:.95rem;margin-bottom:.7rem}
+.aside-note p:last-child{margin-bottom:0}
 
 /* ---- contact ---- */
 .contact{background:var(--ink);color:#EDEFEC;border-radius:var(--radius);padding:2.2rem 2rem;display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:center}
@@ -139,7 +200,7 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
       Defence systems don't respect disciplinary boundaries — so neither do I. I'm a mechanical
       engineering student building deliberately wide capability across simulation, optimization,
       mechatronics, and systems engineering, all pointed at one goal: contributing to Europe's
-      defence and dual-use industry. Estonian citizen, based in the Eindhoven Brainport ecosystem.
+      defence and dual-use industry.
     </p>
     <div class="cta">
       <a class="btn primary" href="#projects" data-i18n="hero.cta1">See projects</a>
@@ -189,70 +250,30 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
 <section id="projects">
   <div class="wrap">
     <div class="shead"><span class="eyebrow">01</span><h2 data-i18n="proj.head">Selected work</h2></div>
-    <div class="cards">
-
-      <article class="card">
-        <div class="meta"><span class="k">MULTI-FIDELITY OPTIMIZATION</span><span data-i18n="proj.self">self-initiated</span><span>Python · OpenFOAM · CalculiX</span></div>
-        <h3 data-i18n="p1.title">Propeller design &amp; optimization pipeline</h3>
-        <p data-i18n="p1.body">End-to-end pipeline coupling blade-element momentum theory for rapid design-space
-           exploration, RANS CFD for aerodynamic verification, FEA for structural constraints,
-           and NSGA-II for multi-objective search over efficiency vs. structural margin.</p>
-        <ul>
-          <li data-i18n="p1.l1">Automated geometry generation → meshing → solve → post-processing loop</li>
-          <li data-i18n="p1.l2">Multi-objective Pareto fronts; constraint handling for tip stress and deflection</li>
-          <li data-i18n="p1.l3">Surrogate models to cut high-fidelity evaluations in the optimization loop</li>
-        </ul>
-        <span class="badge">BEMT</span><span class="badge">RANS</span><span class="badge">NSGA-II</span><span class="badge">surrogate modeling</span>
-      </article>
-
-      <article class="card">
-        <div class="meta"><span class="k">MECHATRONICS</span><span data-i18n="p2.meta">4CC10 group project · TU/e</span><span>Simulink · System Composer</span></div>
-        <h3 data-i18n="p2.title">Autonomous shuffleboard robot</h3>
-        <p data-i18n="p2.body">Full V-model design cycle in a team of students: system architecture, sensor selection
-           and characterization, FMEA, and iterative verification planning for a robot that
-           perceives the board and executes controlled puck shots.</p>
-        <ul>
-          <li data-i18n="p2.l1">Trade study and noise analysis of ToF (VL53L1X) vs. photoelectric (Baumer OM30) ranging</li>
-          <li data-i18n="p2.l2">Model-based design in Simulink; architecture in System Composer</li>
-          <li data-i18n="p2.l3">FMEA-driven verification plan and design reviews</li>
-        </ul>
-        <span class="badge">model-based design</span><span class="badge">FMEA</span><span class="badge">sensor characterization</span>
-      </article>
-
-      <article class="card">
-        <div class="meta"><span class="k">STRUCTURAL OPTIMIZATION</span><span data-i18n="p3.meta">coursework + independent</span><span>topology optimization</span></div>
-        <h3 data-i18n="p3.title">Topology &amp; generative design studies</h3>
-        <p data-i18n="p3.body">Density-based topology optimization applied to bracket-class problems: compliance
-           minimization under volume constraints, and translating raw optimizer output into
-           manufacturable geometry.</p>
-        <span class="badge">SIMP</span><span class="badge">FEA</span><span class="badge">DfAM</span>
-      </article>
-
-      <article class="card">
-        <div class="meta"><span class="k">DEFENCE &amp; DUAL-USE</span><span data-i18n="p4.meta">ongoing groundwork</span></div>
-        <h3 data-i18n="p4.title">Building toward the European defence ecosystem</h3>
-        <p data-i18n="p4.body">Alongside coursework: mapping the clearance-free European dual-use landscape
-           (NATO DIANA, EUDIS, Estonia's defence-innovation programs), studying counter-UAS
-           geometry problems, and porting my optimization pipeline toward small turbomachinery —
-           a supply-constrained niche in unmanned systems propulsion.</p>
-        <span class="badge">counter-UAS</span><span class="badge">surrogate SaaS</span><span class="badge">EU dual-use</span>
-      </article>
-
-    </div>
+    <p class="eyebrow" data-i18n="proj.hint" style="margin-bottom:1rem">Click any project to read the full breakdown ↓</p>
+    <div class="filters" id="projFilters" role="group" aria-label="Filter projects"></div>
+    <div class="cards" id="projGrid"></div>
   </div>
 </section>
+
+<!-- project detail overlay (rendered by JS) -->
+<div class="pd-overlay" id="pdOverlay" hidden role="dialog" aria-modal="true">
+  <div class="pd-panel" id="pdPanel"></div>
+</div>
 
 <!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
     <div class="shead"><span class="eyebrow">02</span><h2 data-i18n="nav.skills">Toolbox</h2></div>
     <div class="grid">
-      <div class="cell"><h3>CFD</h3><p data-i18n="s.cfd">OpenFOAM (RANS), meshing workflows, verification &amp; validation habits, post-processing in Python/ParaView.</p></div>
-      <div class="cell"><h3 data-i18n="s.fea.h">FEA &amp; structures</h3><p data-i18n="s.fea">CalculiX, linear static &amp; modal analysis, topology optimization (SIMP), stress-constrained design.</p></div>
-      <div class="cell"><h3 data-i18n="s.opt.h">Optimization</h3><p data-i18n="s.opt">NSGA-II and evolutionary methods, multi-objective trade-offs, surrogate modeling (GP/RBF) for expensive objectives.</p></div>
-      <div class="cell"><h3 data-i18n="s.prog.h">Programming</h3><p data-i18n="s.prog">Python (NumPy/SciPy scientific stack), automation of solver pipelines, MATLAB/Simulink.</p></div>
-      <div class="cell"><h3 data-i18n="s.se.h">Systems engineering</h3><p data-i18n="s.se">V-model, requirements &amp; verification planning, FMEA, design reviews, System Composer.</p></div>
-      <div class="cell"><h3 data-i18n="s.dom.h">Domains</h3><p data-i18n="s.dom">Aerodynamics &amp; propellers, turbomachinery fundamentals, mechatronics, thermal management.</p></div>
+      <div class="cell"><h3 data-i18n="s.g1">Applied in projects</h3>
+        <p data-i18n="s.g1b">OpenFOAM (RANS) and CalculiX in a working multi-fidelity pipeline; NSGA-II multi-objective optimization; MATLAB/Simulink; Python automation of solver workflows; Siemens NX and FreeCAD.</p></div>
+      <div class="cell"><h3 data-i18n="s.g2">Systems &amp; method</h3>
+        <p data-i18n="s.g2b">Requirements definition and flow-down, V-model verification planning, FMEA, trade studies and concept selection, mass/power/energy budget closure.</p></div>
+      <div class="cell"><h3 data-i18n="s.g3">Experimental</h3>
+        <p data-i18n="s.g3b">Engine test-bench measurement chains, signal conditioning and filter selection, uncertainty propagation, design of controlled comparisons.</p></div>
+      <div class="cell"><h3 data-i18n="s.g4">Working knowledge</h3>
+        <p data-i18n="s.g4b">Topology optimization (SIMP), surrogate modelling (GP/RBF), turbomachinery fundamentals, thermal management, embedded control on STM32/Arduino.</p></div>
     </div>
   </div>
 </section>
@@ -263,12 +284,13 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
     <div class="shead"><span class="eyebrow">03</span><h2 data-i18n="nav.about">About</h2></div>
     <div class="two">
       <div>
-        <p data-i18n-html="a.now"><strong>Now:</strong> second-year BSc Mechanical Engineering at Eindhoven University of
+        <p data-i18n-html="a.now"><strong>Now:</strong> final-year BSc Mechanical Engineering at Eindhoven University of
            Technology. Coursework and projects across the breadth of the discipline: fluids,
            structures, dynamics, control, and design.</p>
         <p data-i18n-html="a.how"><strong>How I work:</strong> I like problems where one engineer can own the whole
-           loop — model it, verify it, build it, iterate. Most of my project work is self-initiated,
-           which is also how I've picked up tools well beyond the curriculum.</p>
+           loop — model it, verify it, build it, iterate. My propeller optimization pipeline
+           is entirely self-initiated, and it's where most of my CFD, FEA and optimization
+           tooling came from — well beyond the curriculum.</p>
       </div>
       <div>
         <p data-i18n-html="a.head"><strong>Where I'm headed:</strong> the European defence and dual-use industry — that
@@ -280,6 +302,23 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
            dual-use companies — simulation, design, mechatronics, or test — anywhere in the
            European ecosystem.</p>
       </div>
+    </div>
+    <div class="aside-note">
+      <h3 data-i18n="d.head">Before this: fifteen years in competitive ballroom</h3>
+      <p data-i18n="d.p1">I competed in Ten Dance for close to fifteen years — the discipline that
+         asks for all five Standard dances and all five Latin, two techniques with almost nothing
+         in common, scored as one. I was Estonian champion at under-21 and finished twelfth at the
+         WDSF Under-21 World Championship in Ten Dance.</p>
+      <p data-i18n="d.p2">I stopped competing at the start of 2026. That was a decision rather than
+         a drift: the hours it takes to stay at that level are the hours I now want in engineering.</p>
+      <p data-i18n="d.p3">What it actually built is less romantic than people expect — being
+         corrected daily on details no audience would notice, delivering at full commitment in the
+         fourth hour of a competition day, and working in a partnership whose only channel is
+         physical and unforgiving of hesitation. I'd rather point at those habits than claim the
+         sport taught me engineering.</p>
+        <figure class="about-figure">
+          <img src="media/dance-wdsf.jpeg" alt="Competing at the WDSF World Championship" loading="lazy" decoding="async">
+        </figure>
     </div>
   </div>
 </section>
@@ -294,10 +333,10 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
            hardware, simulation, or anywhere in between — let's talk.</p>
       </div>
       <div class="clinks">
-        <!-- EDIT: real links -->
-        <a href="mailto:you@example.com">you@example.com</a>
-        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">linkedin.com/in/yourprofile</a>
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a>
+        <a href="cv.pdf" data-i18n="c.cv">Download CV (PDF)</a>
+        <a href="mailto:markus.otsmaa@gmail.com">markus.otsmaa@gmail.com</a>
+        <a href="https://www.linkedin.com/in/markus-otsmaa/" target="_blank" rel="noopener">linkedin.com/in/markus-otsmaa/</a>
+        <a href="https://github.com/motsmaa" target="_blank" rel="noopener">github.com/motsmaa</a>
       </div>
     </div>
   </div>
@@ -306,7 +345,7 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
 </main>
 
 <footer>
-  <div class="wrap"><span data-i18n="footer">© 2026 Markus · cheap models filter, expensive models verify</span></div>
+  <div class="wrap"><span data-i18n="footer">© 2026 Markus Andreas Otsmaa · cheap models filter, expensive models verify</span></div>
 </footer>
 
 <script>
@@ -314,48 +353,643 @@ const ET = {
   "nav.projects":"Projektid","nav.skills":"Oskused","nav.about":"Minust","nav.contact":"Kontakt",
   "hero.eyebrow":"Masinaehitus · TU Eindhoven · Euroopa kaitse ja kahesugune kasutus",
   "hero.h1":"Laia haardega insener, sihitud <span class=\"g\">ühele eesmärgile: Euroopa kaitse</span>.",
-  "hero.lede":"Kaitsesüsteemid ei austa erialapiire — seega ei tee seda ka mina. Olen masinaehituse tudeng, kes ehitab teadlikult laia võimekust simulatsiooni, optimeerimise, mehhatroonika ja süsteemiinseneeria vallas, kõik suunatud ühele eesmärgile: panustada Euroopa kaitse- ja kahesuguse kasutusega tööstusesse. Eesti kodanik, baasiga Eindhoveni Brainporti ökosüsteemis.",
+  "hero.lede":"Kaitsesüsteemid ei austa erialapiire — seega ei tee seda ka mina. Olen masinaehituse tudeng, kes ehitab teadlikult laia võimekust simulatsiooni, optimeerimise, mehhatroonika ja süsteemiinseneeria vallas, kõik suunatud ühele eesmärgile: panustada Euroopa kaitse- ja kahesuguse kasutusega tööstusesse.",
   "hero.cta1":"Vaata projekte","hero.cta2":"Võta ühendust",
   "fig1":"JOONIS 1 — Omaalgatuslik propelleri optimeerimispipeline: odavad mudelid filtreerivad, kallid mudelid verifitseerivad, optimeerija sulgeb tsükli.",
-  "proj.head":"Valik töid","proj.self":"omaalgatuslik",
-  "p1.title":"Propelleri disaini- ja optimeerimispipeline",
-  "p1.body":"Otsast lõpuni pipeline, mis ühendab labaelemendi impulssiteooria kiireks disainiruumi uurimiseks, RANS CFD aerodünaamiliseks verifitseerimiseks, FEA struktuursete piirangute jaoks ja NSGA-II mitme-eesmärgilise otsingu jaoks kasuteguri ja struktuurse varu vahel.",
-  "p1.l1":"Automatiseeritud geomeetria genereerimine → võrgustamine → lahendamine → järeltöötlus",
-  "p1.l2":"Mitme-eesmärgilised Pareto rindejooned; tipupinge ja läbipainde piirangute käsitlemine",
-  "p1.l3":"Surrogaatmudelid kõrge täpsusega arvutuste vähendamiseks optimeerimistsüklis",
-  "p2.meta":"4CC10 rühmaprojekt · TU/e",
-  "p2.title":"Autonoomne kurlingurobot",
-  "p2.body":"Täielik V-mudeli disainitsükkel tudengite meeskonnas: süsteemiarhitektuur, andurite valik ja karakteriseerimine, FMEA ning iteratiivne verifitseerimise planeerimine robotile, mis tajub mängulauda ja sooritab kontrollitud lööke.",
-  "p2.l1":"ToF (VL53L1X) vs. fotoelektriliste (Baumer OM30) kaugusandurite võrdlus- ja müraanalüüs",
-  "p2.l2":"Mudelipõhine disain Simulinkis; arhitektuur System Composeris",
-  "p2.l3":"FMEA-põhine verifitseerimisplaan ja disainiülevaatused",
-  "p3.meta":"õppetöö + iseseisev",
-  "p3.title":"Topoloogia- ja generatiivdisaini uuringud",
-  "p3.body":"Tiheduspõhine topoloogiaoptimeerimine kronsteini-tüüpi ülesannetel: painduvuse minimeerimine mahupiirangute all ning optimeerija toorväljundi teisendamine toodetavaks geomeetriaks.",
-  "p4.meta":"jätkuv ettevalmistus",
-  "p4.title":"Teel Euroopa kaitseökosüsteemi",
-  "p4.body":"Õppetöö kõrval: julgeolekukontrolli-vaba Euroopa kahesuguse kasutusega maastiku kaardistamine (NATO DIANA, EUDIS, Eesti kaitseinnovatsiooni programmid), droonivastaste geomeetriaülesannete uurimine ja oma optimeerimispipeline'i suunamine väikeste turbomasinate poole — tarnepiiranguga nišš mehitamata süsteemide jõuallikates.",
-  "s.cfd":"OpenFOAM (RANS), võrgustamise töövood, verifitseerimise ja valideerimise harjumused, järeltöötlus Pythonis/ParaView'is.",
-  "s.fea.h":"FEA ja struktuurid","s.fea":"CalculiX, lineaarne staatiline ja modaalanalüüs, topoloogiaoptimeerimine (SIMP), pingepiiranguga disain.",
-  "s.opt.h":"Optimeerimine","s.opt":"NSGA-II ja evolutsioonilised meetodid, mitme-eesmärgilised kompromissid, surrogaatmodelleerimine (GP/RBF) kulukate eesmärkide jaoks.",
-  "s.prog.h":"Programmeerimine","s.prog":"Python (NumPy/SciPy teaduslik pakett), lahendaja-pipeline'ide automatiseerimine, MATLAB/Simulink.",
-  "s.se.h":"Süsteemiinseneeria","s.se":"V-mudel, nõuete ja verifitseerimise planeerimine, FMEA, disainiülevaatused, System Composer.",
-  "s.dom.h":"Valdkonnad","s.dom":"Aerodünaamika ja propellerid, turbomasinate alused, mehhatroonika, termohaldus.",
-  "a.now":"<strong>Praegu:</strong> teise aasta masinaehituse bakalaureuseõpe Eindhoveni Tehnikaülikoolis. Õppetöö ja projektid üle kogu eriala laiuse: vedelikud, struktuurid, dünaamika, juhtimine ja disain.",
-  "a.how":"<strong>Kuidas ma töötan:</strong> mulle meeldivad ülesanded, kus üks insener saab omada tervet tsüklit — modelleerida, verifitseerida, ehitada, itereerida. Enamik mu projektitööst on omaalgatuslik, mistõttu olen omandanud tööriistu ka kaugelt väljaspool õppekava.",
+  "proj.head":"Valik töid","proj.hint":"Klõpsa projektil, et lugeda täielikku ülevaadet ↓",
+  "f.all":"Kõik","f.self":"Omaalgatuslik","f.thesis":"Uurimistöö","f.course":"Kursuseprojekt",
+  "s.g1":"Projektides rakendatud","s.g1b":"OpenFOAM (RANS) ja CalculiX töötavas mitmetasandilises pipeline'is; NSGA-II mitme-eesmärgiline optimeerimine; MATLAB/Simulink; Pythoniga lahendaja-töövoogude automatiseerimine; Siemens NX ja FreeCAD.",
+  "s.g2":"Süsteemid ja metoodika","s.g2b":"Nõuete määratlemine ja viimine alamsüsteemidesse, V-mudeli verifitseerimisplaan, FMEA, võrdlusuuringud ja kontseptsioonivalik, massi-, võimsus- ja energiaeelarvete sulgemine.",
+  "s.g3":"Eksperimentaalne","s.g3b":"Mootori katsestendi mõõteahelad, signaalitöötlus ja filtrite valik, määramatuse levik, kontrollitud võrdluskatsete kavandamine.",
+  "s.g4":"Töötav teadmine","s.g4b":"Topoloogiaoptimeerimine (SIMP), surrogaatmodelleerimine (GP/RBF), turbomasinate alused, termohaldus, sardjuhtimine STM32/Arduino platvormil.",
+  "a.now":"<strong>Praegu:</strong> viimase aasta masinaehituse bakalaureuseõpe Eindhoveni Tehnikaülikoolis. Õppetöö ja projektid üle kogu eriala laiuse: vedelikud, struktuurid, dünaamika, juhtimine ja disain.",
+  "a.how":"<strong>Kuidas ma töötan:</strong> mulle meeldivad ülesanded, kus üks insener saab omada tervet tsüklit — modelleerida, verifitseerida, ehitada, itereerida. Minu propelleri optimeerimispipeline on täielikult omaalgatuslik ja just sealt tuleb enamik mu CFD-, FEA- ja optimeerimistööriistadest — kaugelt väljaspool õppekava.",
   "a.head":"<strong>Kuhu ma liigun:</strong> Euroopa kaitse- ja kahesuguse kasutusega tööstusesse — see osa on otsustatud. Laius on teadlik: kaitsesüsteemid on integratsiooniprobleemid ja tahan olla insener, kes mõistab nii aerodünaamikat, struktuure kui ka juhtimisahelat. Eesti kodanik, jalg nii Brainporti (Eindhoven) kui ka Eesti kaitseinnovatsiooni kogukonnas.",
   "a.look":"<strong>Otsin:</strong> praktikakohti ja tudengi-inseneri rolle kaitse- ja kahesuguse kasutusega ettevõtetes — simulatsioon, disain, mehhatroonika või testimine — kõikjal Euroopa ökosüsteemis.",
+  "d.head":"Enne seda: viisteist aastat võistlustantsu",
+  "d.p1":"Võistlesin 10 tantsu alal ligi viisteist aastat — distsipliin, mis nõuab kõiki viit standardtantsu ja kõiki viit ladina-ameerika tantsu, kahte tehnikat, millel pole peaaegu midagi ühist, ning mida hinnatakse ühe tervikuna. Olin U21 Eesti meister ja saavutasin WDSF U21 maailmameistrivõistlustel 10 tantsus kaheteistkümnenda koha.",
+  "d.p2":"Lõpetasin võistlemise 2026. aasta alguses. See oli otsus, mitte hääbumine: tunnid, mida sellel tasemel püsimine nõuab, on need tunnid, mida tahan nüüd panna inseneeriasse.",
+  "d.p3":"Mida see tegelikult üles ehitas, on vähem romantiline, kui arvatakse — igapäevane korrigeerimine detailides, mida ükski publik ei märkaks, täie pühendumusega esinemine võistluspäeva neljandal tunnil ja töö partnerluses, mille ainus kanal on füüsiline ega andesta kõhklust. Osutaksin pigem nendele harjumustele, kui väidaksin, et sport õpetas mulle inseneeriat.",
+  "c.cv":"Laadi alla CV (PDF)",
   "c.head":"Avatud praktikatele ja tudengirollidele kaitse- ja kahesuguse kasutusega inseneerias.",
   "c.body":"Baasiga Eindhovenis, seotud Tallinnaga. Kui ehitad Euroopa kaitse jaoks — riistvara, simulatsioon või midagi vahepealset — räägime.",
-  "footer":"© 2026 Markus · odavad mudelid filtreerivad, kallid mudelid verifitseerivad"
+  "footer":"© 2026 Markus Andreas Otsmaa · odavad mudelid filtreerivad, kallid mudelid verifitseerivad"
 };
 
+/* =====================================================================
+   PROJECTS — single source of truth for cards AND deep-dive overlays.
+
+   HOW TO ADD A PROJECT: copy the template at the bottom of this array,
+   fill it in, done. A card + its detail view are generated automatically.
+   - Any text field can be a plain string (shows in both languages) OR
+     an {en:"...", et:"..."} object. If `et` is missing it falls back to en,
+     so you can add English-only projects and translate later.
+   - `id` must be unique and URL-safe (letters/numbers/hyphens) — it becomes
+     the shareable link, e.g. markusotsmaa.com/#p/your-id
+   - `kind` is the classification marker shown as a coloured pill on the card
+     and in the detail view. Use "Course project", "Self-initiated", or
+     "Research thesis" (drives the colour). `context` carries the course code,
+     team size and whether it's a group project.
+
+   ATTACHING FILES / DOCUMENTS: every project can take a `links` array — it
+   renders as a "Materials & documents" section at the bottom of the detail
+   view. Put the file in the repo (e.g. a /docs folder) and reference it, or
+   link out to a report/repo/video. There's a ready-to-uncomment example on the
+   "generative-rims" project below.
+     links:[{label:{en:"Report (PDF)", et:"Aruanne (PDF)"}, url:"docs/report.pdf"}]
+   PRIVACY: for group / university course projects, only publish shared reports
+   with your teammates' consent and within your programme's academic-integrity
+   rules. Solo work (e.g. the propeller pipeline) is yours to post freely.
+   ===================================================================== */
+const PROJECTS = [
+  {
+    id:"propeller",
+    tag:{en:"MULTI-FIDELITY OPTIMIZATION", et:"MITMETASANDILINE OPTIMEERIMINE"},
+    context:{en:"Self-initiated · individual project", et:"Omaalgatuslik · individuaalne projekt"},
+    kind:{en:"Self-initiated", et:"Omaalgatuslik"},
+    year:"Ongoing",
+    stack:"Python · OpenFOAM · CalculiX · pymoo",
+    title:{en:"Propeller design & optimization pipeline", et:"Propelleri disaini- ja optimeerimispipeline"},
+    summary:{en:"End-to-end pipeline: fast physics models search the design space, CFD and FEA verify the survivors, NSGA-II closes the loop over efficiency vs. structural margin.",
+             et:"Otsast lõpuni pipeline: kiired füüsikamudelid uurivad disainiruumi, CFD ja FEA verifitseerivad, NSGA-II sulgeb tsükli kasuteguri ja struktuurse varu vahel."},
+    badges:["BEMT","RANS CFD","CalculiX FEA","NSGA-II","surrogate modeling","Python"],
+    detail:{
+      overview:{en:"A self-built loop that makes multi-objective propeller design tractable: cheap models explore thousands of candidates, expensive solvers verify the survivors, and an evolutionary optimizer drives the next generation.",
+                et:"Omaalgatuslik tsükkel, mis muudab mitme-eesmärgilise propelleridisaini käsitletavaks: odavad mudelid uurivad tuhandeid kandidaate, kallid lahendajad verifitseerivad, evolutsiooniline optimeerija juhib järgmist põlvkonda."},
+      metrics:[
+        {value:"3", label:{en:"fidelity levels", et:"täpsustaset"}},
+        {value:"η vs σ", label:{en:"competing objectives", et:"konkureerivat eesmärki"}},
+        {value:"NSGA-II", label:{en:"optimizer", et:"optimeerija"}}
+      ],
+      sections:[
+        {h:{en:"The problem", et:"Probleem"},
+         body:"Propeller design trades aerodynamic efficiency against structural margin. High-fidelity CFD is far too slow to search directly — a single RANS case is hours, and the design space is large."},
+        {h:{en:"Pipeline architecture", et:"Pipeline'i arhitektuur"},
+         body:"Blade-element momentum theory sweeps the design space in seconds to shortlist candidates. OpenFOAM RANS verifies aerodynamics on survivors. CalculiX FEA checks tip stress and deflection. NSGA-II uses these objectives to breed the next generation. Geometry → mesh → solve → post-process is fully automated so the loop runs unattended."},
+        {h:{en:"Surrogate acceleration", et:"Surrogaatkiirendus"},
+         body:"Gaussian-process / RBF surrogates trained on high-fidelity samples stand in for expensive CFD inside the inner loop, cutting the number of full solves needed to advance the Pareto front."},
+        {h:{en:"Where it's headed", et:"Kuhu see liigub"},
+         body:"Porting the same pipeline to small turbomachinery — compact gas-turbine stages for unmanned-systems propulsion, a documented European supply gap. [planned]"}
+      ],
+      status:{en:"Active — core loop working; turbomachinery port planned", et:"Aktiivne — põhitsükkel töötab; turbomasinate laiendus planeeritud"}
+    }
+  },
+  {
+    id:"shuffleboard",
+    tag:{en:"SYSTEMS ENGINEERING", et:"SÜSTEEMIINSENEERIA"},
+    context:{en:"Course 4CC10 · TU Eindhoven · group project · team of 6", et:"Kursus 4CC10 · TU Eindhoven · rühmaprojekt · 6-liikmeline meeskond"},
+    kind:{en:"Course project", et:"Kursuseprojekt"},
+    year:"2026",
+    stack:"requirements · trade studies · design integration",
+    title:{en:"Shuffleboard robot: tracked puck launcher", et:"Kurlingurobot: lintkiirendiga ketaseheitja"},
+    summary:{en:"A battery-powered robot that launches shuffleboard pucks at a commanded speed and spin. I held the systems engineering and design direction: what the machine had to do, which launch principle it would use, and whether the subsystem budgets closed.",
+             et:"Akutoitel robot, mis heidab kurlingukettaid etteantud kiiruse ja pöörlemisega. Minu kanda oli süsteemiinseneeria ja disainisuund: mida masin pidi tegema, millist heitepõhimõtet kasutama ja kas alamsüsteemide eelarved sulguvad."},
+    badges:["requirements definition","concept selection","design integration","FMEA","budget closure"],
+    detail:{
+      overview:{en:"The robot is a shot-execution system, not a game player. Drawing that boundary was the first decision: shot planning sits outside the machine, which receives a target speed, spin and fire command from a separate bought-in vision system, checks its safety conditions, and launches. Two driven belts accelerate the puck, and a speed difference between them imparts spin.",
+                et:"Robot on löögi teostamise süsteem, mitte mängija. Selle piiri tõmbamine oli esimene otsus: löögi planeerimine jääb masinast välja, mis saab eraldi ostetud nägemissüsteemilt sihtkiiruse, pöörlemise ja laskekäsu, kontrollib oma ohutustingimusi ja sooritab heite. Ketast kiirendavad kaks veetavat linti ning nendevaheline kiiruste erinevus annab kettale pöörlemise."},
+      metrics:[
+        {value:"2.5 m/s", label:{en:"target exit speed", et:"siht-väljumiskiirus"}},
+        {value:"62.8%", label:{en:"of 5 kg mass budget", et:"5 kg massieelarvest"}},
+        {value:"6→1", label:{en:"concepts screened", et:"kontseptsiooni sõelutud"}},
+        {value:"99%", label:{en:"battery energy margin", et:"aku energiavaru"}}
+      ],
+      media:[
+        {type:"image", src:"media/shuffleboard-architecture.png",
+         caption:{en:"System architecture: robot boundary, external interfaces, functional modules and the safety chain.",
+                  et:"Süsteemi arhitektuur: roboti piir, välised liidesed, funktsionaalsed moodulid ja ohutusahel."}}
+      ],
+      sections:[
+        {h:{en:"My contribution", et:"Minu panus"},
+         body:{en:"I worked the systems engineering and design direction: defining the system boundary and requirements, running the concept selection, flowing the performance targets down into subsystem requirements, and checking that the mass, power and energy budgets closed against them. The detailed subsystem design — the custom motor and its finite-element magnetic validation, the electronics, the feedback controller — was carried out by other members of the six-person team.",
+               et:"Minu kanda oli süsteemiinseneeria ja disainisuund: süsteemi piiri ja nõuete määratlemine, kontseptsioonide valiku läbiviimine, jõudlussihtide viimine alamsüsteemide nõueteks ning kontroll, kas massi-, võimsus- ja energiaeelarved nende vastu sulguvad. Alamsüsteemide detailne projekteerimine — omadisainiga mootor ja selle lõplike elementide magnetvalideerimine, elektroonika, tagasisidekontroller — oli teiste kuueliikmelise meeskonna liikmete teha."}},
+        {h:{en:"Choosing the launch principle", et:"Heitepõhimõtte valik"},
+         body:{en:"Six concepts were generated and put through a must-have filter followed by a weighted Pugh comparison: push-with-stick, hit-with-stick, gantry, baseball launcher, touchdown wheel, and tracked launcher. Only two cleared the must-haves on compactness, accuracy, repeatability and safety. The tracked launcher won because it takes the precision criteria outright and is the only survivor that can produce controlled spin — accepting worse packaging margin and higher wear as the price. Committing to it early is what let the rest of the team start detailed design instead of hedging across options.",
+               et:"Genereeriti kuus kontseptsiooni, mis läbisid kohustuslike nõuete filtri ja seejärel kaalutud Pugh' võrdluse: tõuge-kepiga, löök-kepiga, portaal, pesapallikiirendi, surverullik ja lintkiirendi. Vaid kaks läbisid kompaktsuse, täpsuse, korratavuse ja ohutuse kohustuslikud nõuded. Lintkiirendi võitis, kuna võtab täpsuskriteeriumid selgelt ja on ainus, mis suudab tekitada kontrollitud pöörlemist — hinnaks halvem pakendamisvaru ja suurem kulumine. Varane sellele pühendumine lubas ülejäänud meeskonnal alustada detailset projekteerimist, selle asemel et variantide vahel kõhelda."}},
+        {h:{en:"Flowing requirements down to the actuator", et:"Nõuete viimine ajamini"},
+         body:{en:"The chain runs from the puck outward. A 0.35 kg puck reaching 2.5 m/s over a 0.25 m acceleration distance needs 12.5 m/s², which at a 0.03 m pulley radius sets 800 rpm, 0.131 Nm and 10.95 W at the drive. That last figure is the requirement handed to whoever builds the motor. Board friction is low — a puck-board coefficient of 0.025 — so stopping position is highly sensitive to exit speed, and that sensitivity is what forces the tight repeatability specification of σv ≤ 0.0067 m/s and σd ≤ 6.5 cm rather than a looser one.",
+               et:"Ahel kulgeb kettast väljapoole. 0,35 kg ketas, mis saavutab 2,5 m/s 0,25 m kiirendusteel, vajab 12,5 m/s², mis 0,03 m rihmaratta raadiusel annab 800 p/min, 0,131 Nm ja 10,95 W ajamil. Viimane arv ongi nõue, mis antakse mootori ehitajale. Laua hõõre on väike — ketta-laua tegur 0,025 — seega peatumiskoht sõltub tugevalt väljumiskiirusest ja just see tundlikkus tingib range korratavusnõude σv ≤ 0,0067 m/s ja σd ≤ 6,5 cm, mitte lõdvema."}},
+        {h:{en:"Checking the budgets close", et:"Eelarvete sulgumise kontroll"},
+         body:{en:"A design only works if the subsystems fit together within their allowances, and that check is a role rather than an afterthought. Mass came in at 3.14 kg against a 5 kg allowance, leaving 37% headroom. Energy accounting per shot: 15 J to the launch motors, 25 J to the aiming stepper, 52.8 J to idle electronics across the 32 s cycle, totalling 92.8 J. Across the 300-shot requirement that is 7.73 Wh against 15.4 Wh usable from the selected battery — a margin wide enough that endurance stopped being a design driver and the peak launch current became the constraint that actually mattered.",
+               et:"Disain toimib vaid siis, kui alamsüsteemid mahuvad oma normidesse, ja see kontroll on roll, mitte järelmõte. Mass tuli 3,14 kg 5 kg lubatust, jättes 37% varu. Energiaarvestus löögi kohta: 15 J heitemootoritele, 25 J sihtimissammurile, 52,8 J elektroonika tühikäigule 32 s tsükli jooksul, kokku 92,8 J. 300 löögi nõude peale teeb see 7,73 Wh valitud akust saadava 15,4 Wh vastu — varu piisavalt lai, et vastupidavus lakkas olemast disaini määrav tegur ja tegelikuks piiranguks sai heite tippvool."}},
+        {h:{en:"Risk and scope", et:"Risk ja ulatus"},
+         body:{en:"An FMEA ranked six failure modes, with track–puck slip and component fatigue tied at the top. Both mitigations are detection-based rather than hopeful: compare puck speed against track speed to observe slip directly, and encoder the unactuated rollers to catch a velocity difference. The pinch hazard on the moving tracks is handled with an interlocked guard and an independent hardware lockout, not software alone, since a software-only interlock is precisely the cause the analysis flags. This was a design project taken to a verified design rather than a built machine — everything here is calculated, simulated or budgeted, and the verification plan defines how each specification would be tested in a build phase beyond this project.",
+               et:"FMEA järjestas kuus rikkeviisi, tipus jagasid kohta lindi-ketta libisemine ja komponentide väsimus. Mõlemad leevendused põhinevad tuvastamisel, mitte lootusel: ketta kiiruse võrdlemine lindi kiirusega libisemise otseseks nägemiseks ja ajamita rullikute varustamine enkoodritega kiiruste erinevuse püüdmiseks. Muljumisohtu liikuvatel lintidel käsitletakse blokeeringuga kaitsekattega ja sõltumatu riistvaralise lukustusega, mitte üksnes tarkvaraga, kuna just tarkvarapõhine blokeering on analüüsi märgitud põhjus. Tegu oli disainiprojektiga, mis viidi verifitseeritud disainini, mitte ehitatud masinani — kõik siinne on arvutatud, simuleeritud või eelarvestatud ning verifitseerimisplaan määratleb, kuidas iga nõuet katsetataks ehitusfaasis, mis jääb sellest projektist välja."}}
+      ],
+      status:{en:"Coursework project, completed June 2026", et:"Õppeprojekt, lõpetatud juuni 2026"}
+    }
+  },
+  {
+    id:"generative-rims",
+    tag:{en:"GENERATIVE DESIGN · EXPERIMENTAL", et:"GENERATIIVNE DISAIN · EKSPERIMENTAALNE"},
+    context:{en:"Research thesis · secondary school (Tallinna Reaalkool), 2023 · individual", et:"Uurimistöö · gümnaasium (Tallinna Reaalkool), 2023 · individuaalne"},
+    kind:{en:"Research thesis", et:"Uurimistöö"},
+    year:"2023",
+    stack:"Fusion 360 · FDM printing · LabQuest2 photogates",
+    title:{en:"Generative design in the automotive industry", et:"Generatiivne disain autotööstuses"},
+    summary:{en:"Redesigned an RC car's rims with generative design, printed them, and measured the result on a timed track. Cut rear-wheel assembly mass 25.7% and raised acceleration 1.16 m/s² against a like-for-like control.",
+             et:"Kujundasin puldiauto veljed generatiivse disainiga ümber, printisin need ja mõõtsin tulemuse ajastatud rajal. Tagaratta summaarne mass vähenes 25,7% ja kiirendus kasvas 1,16 m/s² võrreldes samast materjalist kontrollveljega."},
+    badges:["Fusion 360","generative design","design of experiments","3D printing","Pareto fronts"],
+    detail:{
+      overview:{en:"A research thesis that took generative design the whole way: theory, CAD, print, and a physical experiment with a control group. The interesting result wasn't the mass saving — it was the first design breaking, which located exactly where generative design is hard.",
+                et:"Uurimistöö, mis viis generatiivse disaini lõpuni: teooria, CAD, printimine ja füüsiline katse kontrollrühmaga. Huvitavaim tulemus polnud massisääst, vaid esimese disaini purunemine, mis näitas täpselt, kus generatiivne disain on raske."},
+      metrics:[
+        {value:"25.7%", label:{en:"rear wheel mass cut", et:"tagaratta massisääst"}},
+        {value:"+1.16 m/s²", label:{en:"acceleration gain", et:"kiirenduse kasv"}},
+        {value:"36", label:{en:"timed runs, 3 conditions", et:"ajastatud katset, 3 varianti"}},
+        {value:"2", label:{en:"design iterations", et:"disainiiteratsiooni"}}
+      ],
+      media:[
+        {type:"image", src:"media/rims-comparison.jpeg",
+         caption:{en:"Left to right: generatively designed rim, printed copy of the original, factory original. The printed copy is the control that isolates geometry from material.",
+                  et:"Vasakult paremale: generatiivselt disainitud velg, originaali prinditud koopia, tehase originaal. Prinditud koopia on kontroll, mis eristab geomeetria mõju materjali mõjust."}}
+      ],
+      sections:[
+        {h:{en:"Research question", et:"Uurimisküsimus"},
+         body:{en:"How much does generatively redesigning a car's rims actually change its acceleration? Rather than stopping at the CAD result, the study measured it on hardware.",
+               et:"Kui palju muudab velgede generatiivne ümberdisainimine tegelikult auto kiirendust? Töö ei jäänud CAD-tulemuse juurde, vaid mõõtis seda riistvaral."}},
+        {h:{en:"Setting up the optimization", et:"Optimeerimise ülesseadmine"},
+         body:{en:"In Fusion 360: hub and outer barrel as preserve geometry, surrounding envelope as obstacle geometry, and a starting shape to seed the spokes. One 60° sector was optimized and patterned six times into a complete wheel. Pin constraint at the hub, 1.2 safety factor, additive and die-cast manufacturing methods evaluated across ABS, PC, and generic plastic.",
+               et:"Fusion 360-s: rumm ja velje välisosa jäävgeomeetriana, ümbritsev ala takistava geomeetriana ning algkuju kodarate tekitamiseks. Optimeeriti üks 60° sektor, mida korrati kuus korda terviklikuks veljeks. Liigendipiirang rummul, varutegur 1,2, hinnati lisanduslikku tootmist ja survevalu materjalidel ABS, PC ja tavaplastik."}},
+        {h:{en:"Iteration 1 — and its failure", et:"Iteratsioon 1 — ja selle ebaõnnestumine"},
+         body:{en:"Structural load set at 6 N, derived from half the 1.2 kg vehicle mass. Printed in PLA resin, the rim survived five timed runs before shattering in a minor collision. The load case had captured the static case and missed the impact case entirely.",
+               et:"Struktuurne koormus 6 N, tuletatud poolest sõiduki massist (1,2 kg). PLA-resinist prinditud velg pidas vastu viis katset ja purunes kergel kokkupõrkel. Koormusjuhtum kirjeldas staatilist olukorda, kuid jättis löögikoormuse täielikult arvestamata."}},
+        {h:{en:"Iteration 2 and controlled testing", et:"Iteratsioon 2 ja kontrollitud katsetamine"},
+         body:{en:"Load raised to 9 N and material changed to standard PLA for ductility. Three wheel sets — generative, a printed copy of the original, and heavier simulated originals — were run 12 times each through photogates 1.9 m apart. Mean times: 0.611 s generative, 0.649 s copy, 0.662 s original, giving 10.18 / 9.03 / 8.68 m/s² under a constant-acceleration assumption.",
+               et:"Koormus tõsteti 9 N-ni ja materjaliks valiti plastsem tavaline PLA. Kolme veljekomplektiga — generatiivne, originaali prinditud koopia ja raskemad simuleeritud originaalid — sooritati igaühega 12 katset fotoväravate vahel 1,9 m. Keskmised ajad: 0,611 s, 0,649 s ja 0,662 s, mis annab ühtlase kiirenduse eeldusel 10,18 / 9,03 / 8,68 m/s²."}},
+        {h:{en:"Result and limitations", et:"Tulemus ja piirangud"},
+         body:{en:"Printing the control rim in the same material isolated the geometry effect from the material effect — the honest comparison. Rear wheel assembly dropped 25.7% (rim alone 56.5%) for +1.16 m/s². Caveats worth stating: photogate uncertainty reaches 25 ms against mean differences of 38–51 ms, constant acceleration is an approximation over 1.9 m, and n=12 per condition is small.",
+               et:"Kontrollvelje printimine samast materjalist eristas geomeetria mõju materjali mõjust — aus võrdlus. Tagaratta koost vähenes 25,7% (velg üksi 56,5%), kiirendus kasvas 1,16 m/s². Piirangud: fotoväravate mõõtemääramatus ulatub 25 ms-ni, keskmiste vahed on 38–51 ms, ühtlane kiirendus on lähendus 1,9 m peal ja n=12 on väike valim."}},
+        {h:{en:"Why it still matters to me", et:"Miks see mulle endiselt oluline on"},
+         body:{en:"The broken rim taught the lesson that carried forward: in optimization, defining the load case correctly is harder and more consequential than running the solver.",
+               et:"Purunenud velg õpetas seda, mis on edasi kandunud: optimeerimises on koormusjuhtumi õige määratlemine raskem ja tähtsam kui lahendaja käivitamine."}}
+      ],
+      status:{en:"Completed 2023 — supervised by Reivo Maasik and Viktor Rjabtšikov (TalTech)", et:"Lõpetatud 2023 — juhendajad Reivo Maasik ja Viktor Rjabtšikov (TalTech)"}
+      /* To link the PDF: put it in the repo (e.g. thesis.pdf) and add:
+         ,links:[{label:{en:"Read the thesis (ET)", et:"Loe uurimistööd"}, url:"thesis.pdf"}] */
+    }
+  },
+  {
+    id:"bridge-twin",
+    kind:{en:"Course project", et:"Kursuseprojekt"},
+    year:"2026",
+    tag:{en:"DIGITAL TWIN · SYSTEMS ENGINEERING", et:"DIGITAALNE KAKSIK · SÜSTEEMIINSENEERIA"},
+    context:{en:"Course 4CBLW00-26 · TU Eindhoven · group project · team of 6", et:"Kursus 4CBLW00-26 · TU Eindhoven · rühmaprojekt · 6-liikmeline meeskond"},
+    stack:"Siemens NX · NVIDIA Omniverse · Python",
+    title:{en:"Bridge digital twin for live load monitoring", et:"Silla digitaalne kaksik reaalajas koormuse jälgimiseks"},
+    summary:{en:"A scaled truss bridge instrumented to feed a live digital twin that estimates structural state and issues an allow-or-stop decision before a vehicle crosses. My scope was systems engineering, the physical test environment, and the structural-analysis architecture.",
+             et:"Mõõtkavas sõrestiksild, mis toidab reaalajas digitaalset kaksikut, hindamaks konstruktsiooni seisundit ja andmaks luba-või-peata otsuse enne sõiduki sisenemist. Minu osa oli süsteemiinseneeria, füüsiline katsekeskkond ja struktuurianalüüsi arhitektuur."},
+    badges:["digital twin","requirements definition","CAD","structural analysis","NVIDIA Omniverse"],
+    detail:{
+      overview:{en:"Industrial bridges in remote locations carry heavy machinery for years, but visual inspection is expensive, infrequent, and tells you nothing in real time. The project built a 1:50 scale instrumented truss bridge whose measured strain feeds a live model of remaining structural capacity, closing the loop into an automatic traffic decision.",
+                et:"Kaugetes asukohtades olevad tööstussillad kannavad aastaid rasketehnikat, kuid visuaalne ülevaatus on kallis, harv ja ei anna reaalajas midagi. Projektis ehitati 1:50 mõõtkavas mõõteseadmetega sõrestiksild, mille mõõdetud deformatsioon toidab reaalajas mudelit järelejäänud kandevõimest, sulgedes ahela automaatseks liiklusotsuseks."},
+      metrics:[
+        {value:"1:50", label:{en:"prototype scale", et:"prototüübi mõõtkava"}},
+        {value:"50 cm", label:{en:"bridge span", et:"silla sildeava"}},
+        {value:"€100", label:{en:"total budget", et:"kogueelarve"}},
+        {value:"6", label:{en:"person team", et:"liikmeline meeskond"}}
+      ],
+      sections:[
+        {h:{en:"My contribution", et:"Minu panus"},
+         body:{en:"I worked the front end of the V: writing the problem description, defining the technical and design requirements as a structured set, and holding the project scope together across a six-person multidisciplinary team. I then designed the physical test environment in Siemens NX, researched how the structural analysis should actually be implemented, and helped build the prototype. Sensor electronics, the Omniverse extension code, and modal analysis were owned by other team members.",
+               et:"Töötasin V-mudeli eesotsas: kirjutasin probleemikirjelduse, defineerisin tehnilised ja disaininõuded struktureeritud kogumina ning hoidsin projekti ulatust koos kuueliikmelises multidistsiplinaarses meeskonnas. Seejärel projekteerisin füüsilise katsekeskkonna Siemens NX-is, uurisin, kuidas struktuurianalüüsi tegelikult teostada, ja aitasin prototüüpi ehitada. Andurielektroonika, Omniverse'i laienduskood ja modaalanalüüs olid teiste meeskonnaliikmete vastutada."}},
+        {h:{en:"Why aluminium, why plywood", et:"Miks alumiinium, miks vineer"},
+         body:{en:"Material choice was driven by one requirement: a scaled-down vehicle must produce strain large enough to actually measure. Steel is too stiff at this scale, concrete fails by cracking rather than scaling elastically, and wood and printed plastics are too variable batch to batch. Aluminium sits where the strain gauges can see it. For the supporting environment I specified 12 mm plywood and sized it by hand — a conservative 50 N per abutment against a second moment of area of roughly 3.6e-8 m⁴ and a deliberately low 6 GPa modulus gives about 0.008 mm of deflection and around 17.4 kPa of compressive stress in the side walls. Both are far enough from anything interesting that the abutments can be treated as rigid boundary conditions rather than part of the model.",
+               et:"Materjalivalikut juhtis üks nõue: vähendatud mõõtkavas sõiduk peab tekitama deformatsiooni, mida on üldse võimalik mõõta. Teras on selles mõõtkavas liiga jäik, betoon puruneb pragunedes, mitte elastselt skaleerudes, ning puit ja prinditud plastid varieeruvad partiiti liiga palju. Alumiinium jääb sinna, kus tensoandurid seda näevad. Tugikeskkonna jaoks määrasin 12 mm vineeri ja dimensioneerisin selle käsitsi — konservatiivne 50 N tugede kohta, inertsimoment ligikaudu 3,6e-8 m⁴ ja tahtlikult madal 6 GPa moodul annavad umbes 0,008 mm läbipainde ja ligikaudu 17,4 kPa survepinget külgseintes. Mõlemad on piisavalt kaugel millestki huvitavast, et tugesid saab käsitleda jäikade ääretingimustena, mitte mudeli osana."}},
+        {h:{en:"Architecture trade: analytical model vs. commercial FEA", et:"Arhitektuuri valik: analüütiline mudel vs. kommertsiaalne FEA"},
+         body:{en:"Three options were compared for the structural core: calling an external FEA package in real time, writing a purpose-built analytical solver inside the visualisation, or replaying pre-baked FEA results. We chose a custom Direct Stiffness Method solver in Python running inside Omniverse. Real-time commercial FEA alongside the 3D scene exceeded the available laptop hardware, and pre-baked playback cannot respond to a live load that has not been simulated in advance. The cost is an explicit modelling compromise: DSM assumes frictionless pin joints, linear elastic material, and no geometric nonlinearity, so joint friction, bending moments at connections, and dynamic resonance are all outside what it can see.",
+               et:"Struktuurse tuuma jaoks võrreldi kolme varianti: väline FEA-pakett reaalajas, sihtotstarbeline analüütiline lahendaja visualiseerimise sees või eelarvutatud FEA tulemuste taasesitus. Valisime kohandatud otsese jäikusmeetodi lahendaja Pythonis, mis töötab Omniverse'i sees. Reaalajas kommertsiaalne FEA koos 3D-stseeniga ületas olemasoleva sülearvuti võimekuse ning eelarvutatud taasesitus ei suuda reageerida elusale koormusele, mida pole ette simuleeritud. Hinnaks on selgesõnaline mudeldamiskompromiss: DSM eeldab hõõrdevabu liigendeid, lineaarselt elastset materjali ja geomeetrilise mittelineaarsuse puudumist, seega liigendite hõõre, paindemomendid ühendustes ja dünaamiline resonants jäävad väljapoole selle nägemisulatust."}},
+        {h:{en:"What broke", et:"Mis läks valesti"},
+         body:{en:"Two failures were worth the time they cost. Hand-sawing 50 cm aluminium members produced twisted and bent parts that slowed assembly badly; we moved to the TU/e Innovation Space and recut everything properly. More instructive: CAD imported into Omniverse kept arriving as a single merged mesh, which makes per-member stress colouring impossible — the whole point of the visualisation. The fix was to abandon intermediate formats and export .step with a strictly defined assembly tree so every beam stays individually addressable by the analysis script. Naming discipline in the CAD turned out to be a hard requirement of the pipeline, not housekeeping.",
+               et:"Kaks ebaõnnestumist olid oma aja väärt. 50 cm alumiiniumprofiilide käsitsi saagimine andis väändunud ja painutatud detaile, mis aeglustasid koostamist tugevalt; kolisime TU/e Innovation Space'i ja lõikasime kõik korralikult uuesti. Õpetlikum: Omniverse'i imporditud CAD saabus pidevalt ühe kokkusulanud võrguna, mis muudab detailipõhise pingevärvimise võimatuks — ehk kogu visualiseerimise mõtte. Lahendus oli loobuda vaheformaatidest ja eksportida .step rangelt määratletud koostepuuga, nii et iga tala jääb analüüsiskriptile eraldi adresseeritavaks. Nimetamisdistsipliin CAD-is osutus torustiku kõvaks nõudeks, mitte korrashoiuks."}},
+        {h:{en:"Honest state and limitations", et:"Aus seis ja piirangud"},
+         body:{en:"What was demonstrated is the pipeline: CAD to live 3D scene with per-member stress mapping driven by a simplified beam model — accurate enough to prove the visualisation and decision workflow, not accurate enough to trust structurally. The full DSM solver and live sensor integration were specified rather than finished. Known weaknesses: four strain gauges on symmetric members under-determine the calibration problem, simulation lags the physical strain reading, and scaling is imperfect — gauge behaviour, connection detail, and material thickness do not scale linearly to a real steel bridge.",
+               et:"Demonstreeritud sai torustik: CAD-ist reaalajas 3D-stseeniks koos detailipõhise pingekaardistusega, mida juhib lihtsustatud talamudel — piisavalt täpne visualiseerimise ja otsustusloogika tõestamiseks, mitte piisavalt täpne struktuurseks usaldamiseks. Täielik DSM-lahendaja ja andurite reaalajas integreerimine olid spetsifitseeritud, mitte lõpetatud. Teadaolevad nõrkused: neli tensoandurit sümmeetrilistel elementidel jätavad kalibreerimisülesande alamääratuks, simulatsioon jääb füüsilisest mõõtmisest maha ning skaleerimine on ebatäiuslik — anduri käitumine, ühenduste detailid ja materjali paksus ei skaleeru lineaarselt päris terassillale."}}
+      ],
+      status:{en:"Coursework project, Apr–Jun 2026", et:"Õppeprojekt, aprill–juuni 2026"}
+    }
+  },
+  {
+    id:"sustainable-fuels",
+    tag:{en:"EXPERIMENTAL THERMODYNAMICS", et:"EKSPERIMENTAALNE TERMODÜNAAMIKA"},
+    context:{en:"Course 4CBLB10 · TU Eindhoven · group project · team of 8", et:"Kursus 4CBLB10 · TU Eindhoven · rühmaprojekt · 8-liikmeline meeskond"},
+    kind:{en:"Course project", et:"Kursuseprojekt"},
+    year:"2025–26",
+    stack:"MATLAB · LabVIEW · MoTeC M1 Tune · GREET 2024",
+    title:{en:"Sustainable drop-in fuels on a diesel engine", et:"Jätkusuutlikud drop-in kütused diiselmootoril"},
+    summary:{en:"Bench-testing HVO and GTL as drop-in replacements in an unmodified single-cylinder diesel. My scope was the measurement chain: cylinder kinematics, pressure signal conditioning, and turning raw exhaust readings into brake-specific emissions.",
+             et:"HVO ja GTL katsetamine drop-in asenduskütustena muutmata ühesilindrilises diiselmootoris. Minu osa oli mõõteahel: silindri kinemaatika, rõhusignaali töötlus ja toorete heitgaasinäitude teisendamine piduri-erikoguslikeks heitmeteks."},
+    badges:["engine testing","signal processing","MATLAB","uncertainty analysis","LCA"],
+    detail:{
+      overview:{en:"An eight-person project asking which sustainable drop-in fuel cuts well-to-wheel greenhouse gas emissions most without touching the engine hardware. Testing ran on an unmodified 722 cm³ single-cylinder diesel at a fixed 1500 rpm.",
+                et:"Kaheksaliikmeline projekt küsimusega, milline jätkusuutlik drop-in kütus vähendab kõige rohkem kasvuhoonegaaside heidet kogu olelusringis ilma mootoririistvara muutmata. Katsetati muutmata 722 cm³ ühesilindrilisel diiselmootoril püsikiirusel 1500 p/min."},
+      metrics:[
+        {value:"100", label:{en:"cycles logged per point", et:"tsüklit mõõtepunkti kohta"}},
+        {value:"3", label:{en:"load points (25/50/75%)", et:"koormuspunkti (25/50/75%)"}},
+        {value:"±3°", label:{en:"injection timing sweep", et:"sissepritse ajastuse skann"}},
+        {value:"±1.7%", label:{en:"power uncertainty", et:"võimsuse määramatus"}}
+      ],
+      media:[
+        {type:"image", src:"media/hvo-rohr.png",
+         caption:{en:"Apparent rate of heat release, HVO, injection timing swept across four crank angles — filtered to preserve peak phasing.",
+                  et:"Näiv soojuseralduse kiirus, HVO, sissepritse ajastus neljal väntvõlli nurgal — filtreeritud tipu faasi säilitades."}},
+        {type:"image", src:"media/hvo-cumulative.png",
+         caption:{en:"Cumulative heat release for the same sweep, with CA10 / CA50 / CA90 markers.",
+                  et:"Kumulatiivne soojuseraldus sama skanni jaoks, CA10 / CA50 / CA90 markeritega."}}
+      ],
+      sections:[
+        {h:{en:"Scope and setup", et:"Ulatus ja katseülesehitus"},
+         body:{en:"The constraint that shaped everything: fully EN590-compatible drop-in fuels only, no hardware modification. Each fuel was run at 25%, 50%, and 75% load with injection timing swept ±3° to locate the efficiency-optimal heat-release phasing, against the standing trade-off that timing which maximises efficiency also drives NOx up.",
+               et:"Kõike kujundanud piirang: ainult täielikult EN590-ga ühilduvad drop-in kütused, ilma riistvara muutmata. Iga kütust katsetati 25%, 50% ja 75% koormusel, sissepritse ajastust skanniti ±3°, et leida kasuteguri poolest optimaalne soojuseralduse faas — arvestades püsivat kompromissi, et kasutegurit maksimeeriv ajastus tõstab ka NOx-i."}},
+        {h:{en:"My contribution", et:"Minu panus"},
+         body:{en:"I owned the path from raw sensor data to reportable KPIs: the dynamic cylinder-volume model, pressure signal conditioning and pegging, and the conversion of dry exhaust volume percentages into brake-specific CO2 and NOx via measured air-fuel ratio. Life-cycle assessment and the experimental campaign itself were carried by other team members.",
+               et:"Minu vastutada oli tee toorandmetest raporteeritavate näitajateni: silindri dünaamilise ruumala mudel, rõhusignaali töötlus ja nullnihke korrigeerimine ning kuivade heitgaasi mahuprotsentide teisendamine piduri-erikoguseliseks CO2-ks ja NOx-iks mõõdetud õhu-kütuse suhte kaudu. Olelusringi hindamine ja katsete läbiviimine olid teiste meeskonnaliikmete kanda."}},
+        {h:{en:"Choosing the filter", et:"Filtri valik"},
+         body:{en:"In-cylinder pressure needed high-frequency noise removed before heat-release could be computed. I compared a Butterworth filter against a 3rd-order Savitzky-Golay with a 49-point window and chose Savitzky-Golay: Butterworth introduced a phase shift in the combustion peak, and heat-release analysis depends on the peak sitting at the correct crank angle. Getting the amplitude right is useless if the phasing moves.",
+               et:"Silindrisisesest rõhust tuli enne soojuseralduse arvutamist eemaldada kõrgsageduslik müra. Võrdlesin Butterworthi filtrit 3. järku Savitzky-Golay filtriga (49-punktiline aken) ja valisin viimase: Butterworth nihutas põlemistipu faasi, soojuseralduse analüüs aga sõltub tipu õigest väntvõlli nurgast. Amplituudi täpsusest pole kasu, kui faas nihkub."}},
+        {h:{en:"Rebuilding the emissions chain", et:"Heitmeahela ümberehitamine"},
+         body:{en:"Two things had to be replaced. The supplied cylinder-volume code used a plain sine function, implicitly assuming an infinitely long connecting rod; I rewrote it with proper slider-crank kinematics using the actual 136.5 mm rod length. Separately, an earlier attempt at emissions mass flow produced physically implausible magnitudes, so I rebuilt that calculation from stoichiometry and the measured air-fuel ratio instead. Pressure pegging was referenced at -150° crank angle rather than the suggested -140°, which sat in a noisier region and pushed inconsistent offsets into cycle-averaged results.",
+               et:"Kaks asja vajasid asendamist. Etteantud ruumalakood kasutas lihtsat siinusfunktsiooni, eeldades vaikimisi lõpmata pikka kepsu; kirjutasin selle ümber korrektse väntmehhanismi kinemaatikaga, kasutades tegelikku 136,5 mm kepsu pikkust. Eraldi andis varasem heitmete massivoo katse füüsikaliselt ebausutavaid suurusjärke, seega ehitasin selle arvutuse ümber stöhhiomeetriale ja mõõdetud õhu-kütuse suhtele. Rõhu nullnihe viidati -150° väntvõlli nurgale varem soovitatud -140° asemel, mis asus mürarikkamas piirkonnas ja tekitas tsüklikeskmistesse ebajärjekindlaid nihkeid."}},
+        {h:{en:"Uncertainty and limitations", et:"Määramatus ja piirangud"},
+         body:{en:"Propagated uncertainties: ±1.7% on work and power, ±2.2% on brake-specific NOx, ±4.8% on efficiency, and ±10.8% on brake-specific CO2 — the emissions figures are markedly softer than the mechanical ones. Known weaknesses: the piezoelectric pressure sensor drifts, cycle-to-cycle pressure variation near the combustion peak survives filtering, the exhaust mass-flow calculation rests on an assumed stoichiometric air-fuel ratio that was not independently verified, and the life-cycle model lacked European-specific pathways for HVO and GTL, forcing hybrid estimates from literature.",
+               et:"Levitatud määramatused: ±1,7% tööl ja võimsusel, ±2,2% piduri-erikoguselisel NOx-il, ±4,8% kasuteguril ja ±10,8% piduri-erikoguselisel CO2-l — heitmenäitajad on mehaanilistest märgatavalt pehmemad. Teadaolevad nõrkused: piesoelektriline rõhuandur triivib, tsüklitevaheline rõhu hajuvus põlemistipu läheduses jääb filtreerimisele alla, heitgaasi massivoo arvutus tugineb eeldatud stöhhiomeetrilisele õhu-kütuse suhtele, mida eraldi ei kontrollitud, ning olelusringi mudelil puudusid Euroopa-spetsiifilised HVO ja GTL rajad, mis sundis kirjandusest hübriidhinnanguid tuletama."}}
+      ],
+      status:{en:"Coursework project, Nov 2025 – Jan 2026", et:"Õppeprojekt, november 2025 – jaanuar 2026"}
+    }
+  },
+  {
+    id:"pick-and-flip",
+    tag:{en:"ROBOTICS · MOTION CONTROL", et:"ROBOOTIKA · LIIKUMISJUHTIMINE"},
+    context:{en:"Course 4CBLB20 · TU Eindhoven · group project · team of 8", et:"Kursus 4CBLB20 · TU Eindhoven · rühmaprojekt · 8-liikmeline meeskond"},
+    kind:{en:"Course project", et:"Kursuseprojekt"},
+    year:"2026",
+    stack:"MATLAB · Simulink · Stateflow · Raspberry Pi",
+    title:{en:"Pick-and-flip robot for package volume measurement", et:"Haaramis- ja ümberpööramisrobot pakendi ruumala mõõtmiseks"},
+    summary:{en:"A flexible robot arm that picks a cuboid off a conveyor, flips it against a ledge, and derives its volume from two camera views. My scope was the motion architecture, pick verification, and contributions to the feedforward controller and volume model.",
+             et:"Painduv robotkäsi, mis haarab kuubiku konveierilindilt, pöörab selle serva vastu ümber ja tuletab ruumala kahest kaamerapildist. Minu osa oli liikumisarhitektuur, haarde verifitseerimine ning panus feedforward-juhtimisse ja ruumalamudelisse."},
+    badges:["motion sequencing","Stateflow","feedforward control","machine vision","embedded limits"],
+    detail:{
+      overview:{en:"The camera sees only the top face of an object, so a single view cannot give volume. The system solves this by flipping the cuboid against a fixed ledge and measuring a second face: with one square face imposed, the side length follows from the square root of the top area, and volume is that side length times the flipped-face area.",
+                et:"Kaamera näeb ainult objekti pealmist tahku, seega üks vaade ei anna ruumala. Süsteem lahendab selle, pöörates kuubiku fikseeritud serva vastu ümber ja mõõtes teise tahu: ühe ruudukujulise tahu eeldusel tuleneb külje pikkus pealmise pindala ruutjuurest ja ruumala on see külg korrutatuna ümberpööratud tahu pindalaga."},
+      metrics:[
+        {value:"100%", label:{en:"flip success (N>20)", et:"õnnestunud pöördeid (N>20)"}},
+        {value:"83%", label:{en:"pickup within ±5 mm", et:"haaret ±5 mm täpsusega"}},
+        {value:"27%", label:{en:"volume error (target <10%)", et:"ruumala viga (siht <10%)"}},
+        {value:"12 s", label:{en:"cycle time (target ≤5 s)", et:"tsükliaeg (siht ≤5 s)"}}
+      ],
+      media:[
+        {type:"video", src:"media/pickflip-cycle.mp4",
+         caption:{en:"One pick-flip-measure cycle.", et:"Üks haaramis-, pööramis- ja mõõtmistsükkel."}}
+      ],
+      sections:[
+        {h:{en:"My contribution", et:"Minu panus"},
+         body:{en:"I owned the motion architecture and pick verification, and contributed alongside others to the feedforward controller, the camera algorithm, and the volume model. System identification and feedback controller design were handled by other members of the eight-person team.",
+               et:"Minu vastutada olid liikumisarhitektuur ja haarde verifitseerimine ning panustasin koos teistega feedforward-juhtimisse, kaameraalgoritmi ja ruumalamudelisse. Süsteemi identifitseerimise ja tagasisidejuhtimise disainiga tegelesid teised kaheksaliikmelise meeskonna liikmed."}},
+        {h:{en:"Motion architecture and its deliberate cost", et:"Liikumisarhitektuur ja selle teadlik hind"},
+         body:{en:"Three decisions shaped the sequencing. The conveyor stops before measuring and picking, which removes the need for motion prediction and latency compensation entirely — a simplification bought at a direct cost in throughput. The arm always lifts to a safe Z-height before any sideways motion and retracts before flipping, which eliminates the collision cases rather than trying to control through them. And every pick is verified by vacuum sensor feedback, giving the state machine a clean boolean rather than an inferred success.",
+               et:"Kolm otsust kujundasid järjestuse. Konveier peatub enne mõõtmist ja haaramist, mis kaotab täielikult vajaduse liikumise ennustamise ja latentsuse kompenseerimise järele — lihtsustus, mille eest maksti otseselt läbilaskevõimes. Käsi tõuseb alati ohutule Z-kõrgusele enne külgsuunalist liikumist ja tõmbub enne ümberpööramist tagasi, mis välistab kokkupõrkejuhtumid, selle asemel et neid juhtida. Ja iga haare verifitseeritakse vaakumanduri tagasisidega, andes olekumasinale puhta tõeväärtuse oletatud õnnestumise asemel."}},
+        {h:{en:"The Raspberry Pi ceiling", et:"Raspberry Pi lagi"},
+         body:{en:"Adding Stateflow logic, the feedforward controller, and quintic trajectory generation at once produced severe computational lag and the arm stopped executing correctly — despite all of it working in desktop simulation. I stripped logic blocks away one at a time to find where the onboard processor gave out, then rebuilt from a known-good template. A separate Simulink assertion error traced to a default constant offset embedded in the Z-coordinate of the feedforward block. The transferable lesson is blunt: simulation success is not hardware viability, and the compute budget is a design constraint like any other.",
+               et:"Stateflow-loogika, feedforward-kontrolleri ja viienda järgu trajektoorigeneraatori üheaegne lisamine tekitas tugeva arvutusliku viivituse ja käsi lakkas korrektselt töötamast — kuigi kõik toimis lauaarvuti simulatsioonis. Eemaldasin loogikaplokke ükshaaval, et leida, kus pardaprotsessor alla andis, ja ehitasin seejärel teadaolevalt töötavast mallist uuesti üles. Eraldi Simulinki tõrge taandus vaikimisi konstantsele nihkele feedforward-ploki Z-koordinaadis. Ülekantav õppetund on karm: simulatsiooni õnnestumine ei ole riistvaraline teostatavus ja arvutusressurss on disainipiirang nagu iga teine."}},
+        {h:{en:"Results against requirements", et:"Tulemused nõuete vastu"},
+         body:{en:"Two targets met, two missed, over more than twenty trials. Flip success reached 100% against a 90% requirement and centroid pickup accuracy 83% against 80%. Cycle time landed at 12 s against a 5 s target — the direct and anticipated cost of stopping the conveyor. Volume error came in at 27% against a 10% requirement, caused by perspective distortion: the camera measures apparent face area from a finite viewing distance, so the projected area is not the true face area, and the error propagates through both terms of the volume expression.",
+               et:"Kaks sihti saavutatud, kaks mitte, enam kui kahekümne katse põhjal. Ümberpööramise õnnestumine ulatus 100%-ni nõude 90% vastu ja haarde täpsus massikeskme suhtes 83%-ni nõude 80% vastu. Tsükliaeg jäi 12 sekundile 5 sekundi sihi vastu — konveieri peatamise otsene ja ettenähtud hind. Ruumala viga tuli 27% nõude 10% vastu, põhjuseks perspektiivmoonutus: kaamera mõõdab näivat tahu pindala lõplikult kauguselt, seega projitseeritud pindala ei ole tegelik tahu pindala ja viga levib ruumalavalemi mõlemasse liikmesse."}},
+        {h:{en:"What the volume error actually tells you", et:"Mida ruumala viga tegelikult näitab"},
+         body:{en:"The 27% is the most useful result in the project. The control side worked — the arm reliably picked, lifted, flipped, and reported. What failed was an unexamined assumption in the measurement model: that a projected area equals a physical area. No amount of controller tuning fixes that, and it would have been caught earlier by calibrating the camera and correcting for perspective before trusting any area reading. Sorting the packages by computed volume was specified but never implemented, since the volume figure was not accurate enough to sort on.",
+               et:"27% on projekti kasulikem tulemus. Juhtimispool töötas — käsi haaras, tõstis, pööras ja raporteeris usaldusväärselt. Ebaõnnestus uurimata eeldus mõõtmismudelis: et projitseeritud pindala võrdub füüsilise pindalaga. Ükski kontrolleri häälestus seda ei paranda ning see oleks avastatud varem, kalibreerides kaamera ja korrigeerides perspektiivi enne ühegi pindalanäidu usaldamist. Pakendite sorteerimine arvutatud ruumala järgi oli spetsifitseeritud, kuid jäi teostamata, kuna ruumalanäit polnud sorteerimiseks piisavalt täpne."}}
+      ],
+      status:{en:"Coursework project, Feb–Apr 2026", et:"Õppeprojekt, veebruar–aprill 2026"}
+    }
+  },
+  {
+    id:"truss-crane",
+    tag:{en:"STRUCTURAL DESIGN", et:"KONSTRUKTSIOONIDISAIN"},
+    context:{en:"Course 4CBLA00 · TU Eindhoven · first year · group project · team of 9", et:"Kursus 4CBLA00 · TU Eindhoven · esimene aasta · rühmaprojekt · 9-liikmeline meeskond"},
+    kind:{en:"Course project", et:"Kursuseprojekt"},
+    year:"2024",
+    stack:"Euler buckling · Marc Mentat FEA · hand calculation",
+    title:{en:"Scale-model truss crane over a historic wall", et:"Mõõtkavas sõrestikkraana ajaloolise müüri kohal"},
+    summary:{en:"A 1:3 steel truss crane suspending a 3 kN load past a protected wall it may not touch, built from a fixed material allowance. My part was the 2D truss analysis, the safety factor calculations, and the joint fabrication planning.",
+             et:"1:3 mõõtkavas terassõrestikkraana, mis riputab 3 kN koormuse üle kaitstud müüri, mida ei tohi puudutada, ehitatud fikseeritud materjalinormi piires. Minu osa oli 2D sõrestikanalüüs, varutegurite arvutamine ja liidete valmistamise planeerimine."},
+    badges:["truss analysis","Euler buckling","safety factors","FEA","design iteration"],
+    detail:{
+      overview:{en:"The brief: hang stage decorations in front of a historic town wall using only a maintenance foundation behind it. Nothing may attach to or touch the monument, the structure must clear a 1500 mm wall without exceeding 1200 mm above it, and the whole thing must come out of a fixed allowance of steel strip and corner profile.",
+                et:"Ülesanne: riputada lavakaunistused ajaloolise linnamüüri ette, kasutades ainult müüri taga olevat hooldusvundamenti. Miski ei tohi mälestist puudutada ega selle külge kinnituda, konstruktsioon peab ületama 1500 mm müüri, tõusmata sellest üle 1200 mm, ja kogu ehitis peab mahtuma fikseeritud terasriba ja nurgaprofiili normi sisse."},
+      metrics:[
+        {value:"3.54", label:{en:"min safety factor (target >3.0)", et:"min varutegur (siht >3,0)"}},
+        {value:"3 kN", label:{en:"design load", et:"arvutuskoormus"}},
+        {value:"1:3", label:{en:"model scale", et:"mudeli mõõtkava"}},
+        {value:"96%", label:{en:"of corner profile allowance used", et:"nurgaprofiili normist kasutatud"}}
+      ],
+      sections:[
+        {h:{en:"My contribution", et:"Minu panus"},
+         body:{en:"I ran the 2D truss analyses and the safety factor calculations, co-authored the structural calculations in the final report, and planned the fabrication of the custom joints. Finite element work was run by a teammate.",
+               et:"Tegin 2D sõrestikanalüüsid ja varutegurite arvutused, olin lõpparuande konstruktsiooniarvutuste kaasautor ja planeerisin eritellimusliidete valmistamise. Lõplike elementide analüüsi tegi meeskonnakaaslane."}},
+        {h:{en:"The error I made, and what it cost", et:"Viga, mille tegin, ja mida see maksis"},
+         body:{en:"My first buckling calculation returned a safety factor of 15.98 — comfortable, and wrong. I had substituted the scaled 1:3 member lengths into Euler's column formula instead of the full lengths. Critical load goes as one over length squared, so a threefold error in length inflates the buckling capacity ninefold. Recomputed properly the figure was 1.78, and the ratio between the two numbers is almost exactly nine, which is the signature of that specific mistake. Catching it turned a structure that looked safe into one that was demonstrably not, and it triggered the redesign.",
+               et:"Mu esimene nõtkearvutus andis varuteguriks 15,98 — mugav ja vale. Olin asendanud Euleri valemisse 1:3 mõõtkavas varda pikkused täispikkuste asemel. Kriitiline koormus on pöördvõrdeline pikkuse ruuduga, seega kolmekordne viga pikkuses paisutab nõtkekandevõime üheksakordseks. Korrektselt ümber arvutatuna oli tulemus 1,78 ja nende kahe arvu suhe on peaaegu täpselt üheksa, mis on just selle vea tunnus. Selle avastamine muutis ohutuna näiva konstruktsiooni tõendatavalt ebaohutuks ja käivitas ümberdisaini."}},
+        {h:{en:"What the corrected numbers forced", et:"Mida korrigeeritud arvud tingisid"},
+         body:{en:"With honest compression figures, three changes did the work. Zero-force members were added at the midpoints of the most heavily compressed base members — carrying no load themselves, but halving the effective buckling length and so roughly quadrupling the critical load for almost no material. Corner profiles went to compression members and flat strips to tension members, putting the higher second moment of area exactly where buckling governs and nowhere it doesn't. Critical joints got multiple bolts to approach fixed rather than pinned end conditions, and to spread shear across more than one fastener. The result cleared the target: a minimum safety factor of 3.54, corresponding to an estimated capacity of 10.6 kN against the 3 kN requirement.",
+               et:"Ausate survejõududega tegid töö ära kolm muudatust. Kõige tugevamalt surutud alusvarraste keskele lisati nulljõuvardad — ise koormust kandmata poolitavad nad nõtkepikkuse ja neljakordistavad seega kriitilise koormuse peaaegu materjalikuluta. Nurgaprofiilid määrati surutud varrastele ja lamedad ribad tõmmatud varrastele, viies suurema inertsimomendi täpselt sinna, kus nõtke on määrav, ja mitte kuhugi mujale. Kriitilistele liidetele lisati mitu polti, et läheneda jäigale, mitte liigendtoele ja jaotada nihe rohkem kui ühele kinnitile. Tulemus ületas sihi: minimaalne varutegur 3,54, mis vastab hinnangulisele kandevõimele 10,6 kN nõutud 3 kN vastu."}},
+        {h:{en:"Building the joints", et:"Liidete ehitamine"},
+         body:{en:"Two joints brought seven members together at once, which I could not lay out reliably in my head or on a flat drawing. I built them in paper first and used the physical models to establish the drilling and cutting geometry before touching steel.",
+               et:"Kahes liites kohtus korraga seitse varrast, mida ma ei suutnud usaldusväärselt peas ega lametasandilisel joonisel paika panna. Ehitasin need esmalt paberist ja kasutasin füüsilisi mudeleid puurimis- ja lõikamisgeomeetria määramiseks, enne kui terase juurde asusin."}},
+        {h:{en:"What these numbers do and don't prove", et:"Mida need arvud tõestavad ja mida mitte"},
+         body:{en:"The safety factors are calculated and simulated, not measured — I am not presenting them as tested capacity. Three caveats matter. The analysis modelled two physically continuous beams as separate members meeting at joints, which does not match how they actually carry load. Holes drilled mid-member for the zero-force additions create stress concentrations that the hand calculations set aside as a roughly two percent effect rather than modelling. And the weakest members were identified but not strengthened, so the predicted first failure locations are known rather than fixed.",
+               et:"Varutegurid on arvutatud ja simuleeritud, mitte mõõdetud — ma ei esita neid katseliselt tõestatud kandevõimena. Loeb kolm hoiatust. Analüüs modelleeris kaks füüsiliselt pidevat tala eraldi varrastena, mis kohtuvad liites, ning see ei vasta sellele, kuidas nad tegelikult koormust kannavad. Nulljõuvarraste jaoks varda keskele puuritud augud tekitavad pingekontsentratsioone, mille käsiarvutused jätsid kõrvale ligikaudu kaheprotsendilise mõjuna, selle asemel et neid modelleerida. Ja nõrgimad vardad tuvastati, kuid neid ei tugevdatud, seega ennustatud esimesed purunemiskohad on teada, mitte kõrvaldatud."}}
+      ],
+      status:{en:"Coursework project, Sep–Oct 2024", et:"Õppeprojekt, september–oktoober 2024"}
+    }
+  },
+  {
+    id:"launch-mechanism",
+    tag:{en:"MECHANISM DESIGN · DfAM", et:"MEHHANISMIDISAIN · DfAM"},
+    context:{en:"Course 4CBLA10 · TU Eindhoven · first year · group project · team of 7", et:"Kursus 4CBLA10 · TU Eindhoven · esimene aasta · rühmaprojekt · 7-liikmeline meeskond"},
+    kind:{en:"Course project", et:"Kursuseprojekt"},
+    year:"2024–25",
+    stack:"Siemens NX · SLS nylon · hand calculation",
+    title:{en:"Gravity-powered aircraft launcher", et:"Gravitatsioonijõul töötav lennukiheitja"},
+    summary:{en:"A 3D-printed mechanism that launches a foam plane as far as possible with a falling counterweight as its only power source, inside a 150 cm³ material budget. My scope was the cart CAD, the wing hook concepts, and the transmission loss analysis.",
+             et:"3D-prinditud mehhanism, mis heidab vahtplastist lennuki võimalikult kaugele, kasutades ainsa jõuallikana langevat vastukaalu, 150 cm³ materjalieelarve piires. Minu osa oli käru CAD, tiivakonksu kontseptsioonid ja ülekande kadude analüüs."},
+    badges:["design for AM","transmission design","trade studies","CAD","energy budgeting"],
+    detail:{
+      overview:{en:"Gravity is the only energy input, so the entire design problem is conversion efficiency: how much of a falling mass's potential energy ends up as exit velocity in the aircraft. Everything is selectively laser-sintered nylon, and the parts together may occupy no more than a tenth of a 300 × 50 × 100 mm envelope — about 150 cm³ of material for the whole machine, plus exactly one item from a short list of permitted extras.",
+                et:"Ainus energiasisend on gravitatsioon, seega kogu disainiülesanne on muundamise kasutegur: kui suur osa langeva massi potentsiaalsest energiast jõuab lennuki väljumiskiiruseks. Kõik on selektiivselt lasersinterdatud nailon ja detailid kokku ei tohi hõivata rohkem kui kümnendiku 300 × 50 × 100 mm ümbrikust — umbes 150 cm³ materjali kogu masina jaoks, pluss täpselt üks ese lubatud lisandite lühikesest nimekirjast."},
+      metrics:[
+        {value:"150 cm³", label:{en:"total material budget", et:"kogu materjalieelarve"}},
+        {value:"3:1", label:{en:"counterweight reduction", et:"vastukaalu ülekanne"}},
+        {value:"1", label:{en:"extra part permitted", et:"lubatud lisadetail"}},
+        {value:"gravity", label:{en:"only power source", et:"ainus jõuallikas"}}
+      ],
+      sections:[
+        {h:{en:"My contribution", et:"Minu panus"},
+         body:{en:"I generated the concepts for the wing hook, took the cart to a finished 3D model, evaluated the energy losses through the transmission, and wrote the report sections covering the transmission choice and the assembly.",
+               et:"Töötasin välja tiivakonksu kontseptsioonid, viisin käru valmis 3D-mudelini, hindasin ülekande energiakadusid ja kirjutasin aruande osad ülekande valiku ja koostu kohta."}},
+        {h:{en:"Why a CVT", et:"Miks CVT"},
+         body:{en:"Three transmission architectures were compared. A fixed gearbox trades away top speed to get starting torque, and here both matter — the counterweight must break static friction and then keep accelerating. Nautilus gears give a varying ratio but reset after a single rotation, which caps the usable stroke. A continuously variable transmission gives high torque at release and shifts smoothly toward speed with no rotation limit, and is simpler to realise than a Nautilus profile. Separately, the team declined the offered extra nuts: they would have roughly doubled the stored potential energy, but the added mass drives up forces everywhere in a structure printed in nylon with a 150 cm³ budget.",
+               et:"Võrreldi kolme ülekandearhitektuuri. Fikseeritud käigukast ohverdab tippkiiruse käivitusmomendi nimel, kuid siin loevad mõlemad — vastukaal peab ületama seisuhõõrde ja seejärel jätkama kiirendamist. Nautiluse hammasrattad annavad muutuva ülekandearvu, kuid lähtestuvad ühe pöörde järel, mis piirab kasutatavat käiku. Astmeteta ülekanne annab vabastamisel suure momendi ja nihkub sujuvalt kiiruse suunas ilma pöördepiiranguta ning on lihtsam teostada kui Nautiluse profiil. Eraldi loobus meeskond pakutud lisamutritest: need oleksid ligikaudu kahekordistanud salvestatud potentsiaalse energia, kuid lisamass tõstab jõude kõikjal nailonist prinditud konstruktsioonis 150 cm³ eelarvega."}},
+        {h:{en:"An assumption I could not properly justify", et:"Eeldus, mida ma korralikult põhjendada ei suutnud"},
+         body:{en:"I assumed a flat 3% energy loss across the transmission. The honest account of that number: it is the upper end of published losses for commercial metal spur gears, and I applied it to a 3D-printed nylon CVT because the angular acceleration of the drums and the achievable tolerances were not something I could compute from what we had. It ignores unlubricated nylon-on-nylon friction and the inertia of the drums themselves, both of which push real losses higher. It is a placeholder that let the energy budget close, not a result — and knowing which of your numbers are load-bearing and which are guesses is the part I would carry forward.",
+               et:"Eeldasin ülekandes ühtlast 3% energiakadu. Aus selgitus selle arvu kohta: see on kaubanduslike metallist silinderhammasrataste avaldatud kadude ülempiir ja rakendasin seda 3D-prinditud nailonist astmeteta ülekandele, kuna trumlite nurkkiirendus ja saavutatavad tolerantsid ei olnud olemasoleva põhjal arvutatavad. See eirab määrdeaineta nailon-nailon hõõret ja trumlite endi inertsi, mis mõlemad tõstavad tegelikke kadusid. Tegu on kohatäitega, mis lubas energiaeelarve sulgeda, mitte tulemusega — ja teadmine, millised sinu arvudest kannavad koormust ja millised on oletused, on see osa, mille edasi võtan."}},
+        {h:{en:"Designing past the print envelope", et:"Prindiümbrikust välja disainimine"},
+         body:{en:"I remeasured the foam plane, widened the cart base by 6 mm to suit it, and did not check the result against the build volume — the part came out 6 mm too wide to print. The fix was to stop treating the cart as one body: I cut the arms off and made them separate printable pieces joined to the base by 5 × 2.5 × 10 mm rectangular press-fit joints, rectangular so the joint resists shear rather than relying on friction alone. Splitting it also let the parts nest more tightly in the print layout, recovering material elsewhere. The manufacturing envelope is a design constraint that has to be checked on every revision, not once at the start.",
+               et:"Mõõtsin vahtplastist lennuki üle, laiendasin käru alust selle järgi 6 mm võrra ega kontrollinud tulemust ehitusmahu vastu — detail tuli printimiseks 6 mm liiga lai. Lahendus oli lõpetada käru käsitlemine ühe kehana: lõikasin käepidemed ära ja tegin neist eraldi prinditavad osad, mis ühenduvad alusega 5 × 2,5 × 10 mm ristkülikukujuliste pressliidetega, ristkülikukujulised selleks, et liide peaks vastu nihkele, mitte ei toetuks ainult hõõrdele. Jagamine lubas ka detaile prindipaigutuses tihedamalt paigutada, säästes materjali mujal. Tootmisümbrik on disainipiirang, mida tuleb kontrollida igal muudatusel, mitte üks kord alguses."}},
+        {h:{en:"Optimising the wrong thing", et:"Vale asja optimeerimine"},
+         body:{en:"The most useful thing I took out of this project was noticing, partway through, that we were tuning gear interactions when the objective was exit velocity of the aircraft. Those are related but not the same: a more efficient transmission only matters insofar as it moves energy into the plane, and we had never written the objective down that way. The team had also gone straight to optimising before settling clear conceptual designs, which made the work disjointed. Both are process failures rather than analysis failures, and they cost more than any single calculation did.",
+               et:"Kõige kasulikum, mille sellest projektist sain, oli poole peal märkamine, et häälestasime hammasrataste koostööd, kuigi eesmärk oli lennuki väljumiskiirus. Need on seotud, kuid mitte samad: tõhusam ülekanne loeb vaid niivõrd, kuivõrd see viib energiat lennukisse, ja me polnud eesmärki kunagi nii kirja pannud. Meeskond oli ka läinud otse optimeerimise juurde, enne kui selged kontseptuaalsed lahendused paigas olid, mis muutis töö killustatuks. Mõlemad on protsessi-, mitte analüüsivead, ja need maksid rohkem kui ükski üksik arvutus."}}
+      ],
+      status:{en:"Coursework project, Nov 2024 – Jan 2025 — design phase; simulation and physical testing were planned beyond the documented scope", et:"Õppeprojekt, november 2024 – jaanuar 2025 — disainifaas; simulatsioon ja füüsiline katsetamine olid planeeritud dokumenteeritud ulatusest väljapoole"}
+    }
+  },
+  {
+    id:"multiped-robot",
+    tag:{en:"ROBOTICS · PROTOTYPING", et:"ROBOOTIKA · PROTOTÜÜPIMINE"},
+    context:{en:"Course 4CBLA20 · TU Eindhoven · first year · group project · team of 7", et:"Kursus 4CBLA20 · TU Eindhoven · esimene aasta · rühmaprojekt · 7-liikmeline meeskond"},
+    kind:{en:"Course project", et:"Kursuseprojekt"},
+    year:"2025",
+    stack:"Siemens NX · Arduino · CURA · Python",
+    title:{en:"Tracked robot for a stair parkour course", et:"Roomikrobot trepiparkuuri läbimiseks"},
+    summary:{en:"A folding tracked robot built to climb stairs and duck under a beam, unfolding from a 296 mm box. It did not complete the course — and the gap between what the model predicted and what the hardware did turned out to be a factor of sixteen.",
+             et:"Kokkupandav roomikrobot, mis pidi ronima treppe ja läbima madala tala alt, avanedes 296 mm kastist. Rada jäi läbimata — ja lõhe mudeli ennustuse ja riistvara tegeliku käitumise vahel osutus kuueteistkordseks."},
+    badges:["tracked locomotion","Arduino","CAD","model validation","DfAM"],
+    detail:{
+      overview:{en:"The course demanded two incompatible geometries: enough reach to hold a steep angle against stair treads, and a folded form low enough to pass under a 10 cm beam and start from a 296 × 296 × 150 mm box. The answer was a tracked machine with a hinged front arm that changes configuration between obstacles.",
+                et:"Rada nõudis kahte kokkusobimatut geomeetriat: piisavat ulatust järsu nurga hoidmiseks trepiastmete vastu ja kokkupandud kuju, mis mahub 10 cm tala alt läbi ning stardib 296 × 296 × 150 mm kastist. Lahendus oli roomikutel masin liigendatud esikäega, mis muudab takistuste vahel konfiguratsiooni."},
+      metrics:[
+        {value:"16×", label:{en:"velocity model overestimate", et:"kiirusmudeli ülehinnang"}},
+        {value:"0.19 m/s", label:{en:"measured climb speed", et:"mõõdetud ronimiskiirus"}},
+        {value:"210", label:{en:"printed track links", et:"prinditud roomikulüli"}},
+        {value:"59 h", label:{en:"estimated print time", et:"hinnanguline printimisaeg"}}
+      ],
+      media:[
+        {type:"image", src:"media/multiped-cad.jpeg",
+         caption:{en:"CAD assembly: bevel-gear transmission and hinged front arm.",
+                  et:"CAD-koost: koonushammasülekanne ja liigendatud esikäsi."}},
+        {type:"video", src:"media/multiped-course.mp4",
+         caption:{en:"Prototype on the parkour course.", et:"Prototüüp parkuurirajal."}}
+      ],
+      sections:[
+        {h:{en:"My contribution", et:"Minu panus"},
+         body:{en:"I worked the concept iterations, modelled the transmission and the front arm in NX, calculated print times across the full plate, and wrote the Arduino control logic.",
+               et:"Tegelesin kontseptsiooni iteratsioonidega, modelleerisin NX-is ülekande ja esikäe, arvutasin printimisajad kogu plaadi ulatuses ning kirjutasin Arduino juhtimisloogika."}},
+        {h:{en:"A servo choice forced by geometry", et:"Geomeetria tingitud servovalik"},
+         body:{en:"The front arm was first driven by a 180° positional servo, which could not do both jobs: fold flat enough for the starting box and still swing to the angle the stairs needed. I moved it to a continuous-rotation servo and drove it with timed bursts in code, trading absolute position feedback for the range the geometry actually required. Smaller changes followed from the same pressure — axle holes opened from 5 × 5 to 6 × 6 mm to take a stiffer shaft, and the bevel gears were generated inside NX with its toolkit after externally generated STLs kept arriving corrupted.",
+               et:"Esikätt liigutas algul 180° positsiooniservo, mis ei suutnud teha mõlemat tööd: voltida piisavalt lamedaks stardikasti jaoks ja ulatuda ikkagi trepi jaoks vajaliku nurgani. Vahetasin selle pideva pöörlemisega servo vastu ja juhtisin seda koodis ajastatud impulssidega, vahetades absoluutse asendi tagasiside geomeetria nõutud ulatuse vastu. Samast survest tulenesid väiksemad muudatused — teljeavad avardati 5 × 5 mm-lt 6 × 6 mm-le jäigema võlli jaoks ja koonushammasrattad genereeriti NX-i enda tööriistakomplektiga pärast seda, kui väliselt loodud STL-failid saabusid järjepidevalt vigastena."}},
+        {h:{en:"Sixteen times off", et:"Kuusteist korda mööda"},
+         body:{en:"The kinematic model related servo input to robot velocity and predicted 3 m/s of vertical climb. Measured from video, frame-counted over a known distance, the robot managed 0.1875 m/s — precisely one sixteenth. The model assumed rigid components, ideal motor output, no friction and no track slip, and every one of those assumptions removes a loss that dominates in reality. A model that omits all dissipation does not give an optimistic estimate of performance; it gives an upper bound that carries no information about the machine you actually built.",
+               et:"Kinemaatiline mudel sidus servo sisendi roboti kiirusega ja ennustas 3 m/s vertikaalset ronimiskiirust. Videost kaadreid lugedes teadaoleval vahemaal mõõdetuna saavutas robot 0,1875 m/s — täpselt ühe kuueteistkümnendiku. Mudel eeldas jäiku komponente, ideaalset mootoriväljundit, hõõrde puudumist ja roomiku libisemise puudumist ning iga neist eeldustest eemaldab kao, mis reaalsuses domineerib. Mudel, mis jätab välja kogu hajumise, ei anna optimistlikku jõudlushinnangut; see annab ülempiiri, mis ei kanna infot tegelikult ehitatud masina kohta."}},
+        {h:{en:"Three things that broke", et:"Kolm asja, mis purunes"},
+         body:{en:"The prototype never climbed the stairs, and the causes were separable. First, the axles ran in bare circular holes cut into the plywood frame with no bearings; under track tension the steel dug into the wood, friction climbed, the axles bent, the frame walls tore out, gears fell out of mesh and the tracks derailed. Enclosed bearings are not a refinement here — they are what carries track tension away from the axle. Second, the front arm met its axle at a single connection point, and that linkage snapped under climbing load. Third, the control code read serial input inside poorly bounded while loops and trapped the processor, locking the drive servo and snapping the arm servo back to its start position; I rewrote those as if/else if so each serial command executes once, which brought the hardware back under control.",
+               et:"Prototüüp ei roninud kunagi treppi ja põhjused olid eristatavad. Esiteks jooksid teljed paljastes ümmargustes avades, mis olid lõigatud vineerraami ilma laagriteta; roomiku pinge all kaevus teras puitu, hõõre kasvas, teljed paindusid, raami seinad rebenesid, hammasrattad väljusid haardest ja roomikud tulid rennist. Suletud laagrid ei ole siin täiendus — need on see, mis viib roomiku pinge teljelt eemale. Teiseks kohtus esikäsi teljega ühes ainsas ühenduspunktis ja see ühendus murdus ronimiskoormuse all. Kolmandaks luges juhtimiskood jadaliidest halvasti piiritletud while-tsüklites ja lukustas protsessori, blokeerides veoservo ja saates käeservo hetkega algasendisse; kirjutasin need ümber if/else if kujule, nii et iga jadakäsk täidetakse ühe korra, mis tõi riistvara kontrolli alla tagasi."}},
+        {h:{en:"The part that was never going to work", et:"Osa, mis ei saanudki toimida"},
+         body:{en:"The tracks needed 210 individually printed links, 98 at the front and 112 at the base — roughly 59 hours of print time and 210 opportunities for dimensional error to accumulate around a closed loop. Even had the frame held, that is not a viable way to build a track. The fix is to stop printing links: a continuously printed flexible TPU band removes the assembly entirely and grips better. Two further changes follow from the failures rather than the manufacturing — widen the tracks to spread ground pressure, and drive each axle with its own servo to halve the torque on any one of them, which incidentally makes the robot steerable.",
+               et:"Roomikud vajasid 210 eraldi prinditud lüli, 98 ees ja 112 all — ligikaudu 59 tundi printimisaega ja 210 võimalust mõõtmevea kuhjumiseks suletud ahelas. Isegi kui raam oleks pidanud, ei ole see elujõuline viis roomiku ehitamiseks. Lahendus on lõpetada lülide printimine: pidevalt prinditud painduv TPU-lint kaotab koostetöö täielikult ja haardub paremini. Kaks järgnevat muudatust tulenevad riketest, mitte tootmisest — laiendada roomikuid pinnasurve jaotamiseks ja vedada iga telge oma servoga, poolitades ühele langeva momendi, mis muudab roboti ühtlasi juhitavaks."}}
+      ],
+      status:{en:"Coursework project, Feb–Apr 2025 — prototype built and tested; course not completed", et:"Õppeprojekt, veebruar–aprill 2025 — prototüüp ehitatud ja katsetatud; rada jäi läbimata"}
+    }
+  },
+  {
+    id:"compressed-air-storage",
+    tag:{en:"ENERGY SYSTEMS · MODELLING", et:"ENERGIASÜSTEEMID · MODELLEERIMINE"},
+    context:{en:"Course 4CBLA30 · TU Eindhoven · group project · team of 5", et:"Kursus 4CBLA30 · TU Eindhoven · rühmaprojekt · 5-liikmeline meeskond"},
+    kind:{en:"Course project", et:"Kursuseprojekt"},
+    year:"2025",
+    stack:"MATLAB/Simulink · Arduino · Git",
+    title:{en:"Compressed-air storage between a wind farm and a city", et:"Suruõhusalvestus tuulepargi ja linna vahel"},
+    summary:{en:"A validated Simulink model of compressed-air energy storage buffering a Flevopolder wind farm against an Amsterdam office building's 7 GWh annual demand. I built the loss, leakage and time-dependence modelling.",
+             et:"Valideeritud Simulinki mudel suruõhu energiasalvestusest, mis puhverdab Flevopolderi tuuleparki Amsterdami büroohoone 7 GWh aastanõudluse vastu. Ehitasin kadude, lekke ja ajasõltuvuse modelleerimise."},
+    badges:["Simulink","thermodynamics","model validation","scaling analysis","Git"],
+    detail:{
+      overview:{en:"Wind supply and office demand do not line up in time, so the question is what sits between them. The proposal stores surplus as compressed air at up to 100 bar across fifteen 10,000 m³ steel tanks, and the work was to model that system honestly enough to say whether it closes the gap — then test the model against a lab rig.",
+                et:"Tuule pakkumine ja büroo nõudlus ei lange ajas kokku, seega on küsimus, mis jääb nende vahele. Ettepanek salvestab ülejäägi suruõhuna kuni 100 baari juures viieteistkümnes 10 000 m³ terasmahutis ning töö seisnes selle süsteemi piisavalt ausas modelleerimises, et öelda, kas see katab lõhe — ja seejärel mudeli katsetamises laboriseadme vastu."},
+      metrics:[
+        {value:"7 GWh", label:{en:"annual demand modelled", et:"modelleeritud aastanõudlus"}},
+        {value:"~70%", label:{en:"simulated system efficiency", et:"simuleeritud süsteemi kasutegur"}},
+        {value:"100 bar", label:{en:"peak storage pressure", et:"salvestuse tipprõhk"}},
+        {value:"3×", label:{en:"repeated validation runs", et:"korratud valideerimiskatset"}}
+      ],
+      media:[
+        {type:"image", src:"media/compressed-air-rig.jpeg",
+         caption:{en:"Lab validation rig: two air tanks, flow switch, pressure sensor and Arduino logging.",
+                  et:"Labori valideerimisseade: kaks õhumahutit, vooluandur, rõhuandur ja Arduino andmelogi."}}
+      ],
+      links:[{label:{en:"Project poster (PDF)", et:"Projekti poster (PDF)"}, url:"media/compressed-air-poster.pdf"}],
+      sections:[
+        {h:{en:"My contribution", et:"Minu panus"},
+         body:{en:"I modelled the loss terms — thermal conduction, leakage, and the time-dependence algorithms tying them to the simulation's step size — managed the team's Git repository, and co-authored the modelling chapter of the report.",
+               et:"Modelleerisin kaoliikmed — soojusjuhtivuse, lekke ja ajasõltuvuse algoritmid, mis seovad need simulatsiooni sammupikkusega — haldasin meeskonna Giti hoidlat ja olin aruande modelleerimispeatüki kaasautor."}},
+        {h:{en:"Why compressed air", et:"Miks suruõhk"},
+         body:{en:"Pumped hydro was ruled out on power capacity, and mechanical gravity storage on cost and footprint — roughly $1000/kWh and structures on the order of 280 m tall, neither of which suits a Dutch polder. Compressed air fits the site: the volume was split across fifteen tanks rather than one, since excavating a single 150,000 m³ vessel is not realistic in Flevopolder, and multiple units scale incrementally. Each tank carries 2 m of polyurethane insulation against a stainless wall, a deliberate imbalance given the roughly eight-hundred-fold difference in thermal conductivity between the two.",
+               et:"Pumphüdro välistati võimsuse tõttu ja mehaaniline gravitatsioonisalvestus hinna ja jalajälje tõttu — ligikaudu 1000 $/kWh ja umbes 280 m kõrgused rajatised, millest kumbki ei sobi Hollandi polderisse. Suruõhk sobib asukohaga: maht jagati viieteistkümne mahuti vahel ühe asemel, kuna ühe 150 000 m³ anuma kaevamine ei ole Flevopolderis realistlik, ja mitu üksust skaleeruvad astmeliselt. Iga mahuti kannab 2 m polüuretaanisolatsiooni roostevaba seina vastu, teadlik ebavõrdsus, arvestades nende ligikaudu kaheksasajakordset soojusjuhtivuse erinevust."}},
+        {h:{en:"Modelling the losses", et:"Kadude modelleerimine"},
+         body:{en:"Air was treated as an ideal gas corrected by a compressibility factor, with compression modelled as polytropic rather than forced to either the isothermal or adiabatic limit. Conduction losses used parallel thermal resistances, separating the flat ends from the curved wall. For leakage I derived a fresh expression by applying the product and chain rules to the gas law, so that pressure and temperature could vary simultaneously across a fifteen-minute step — the earlier version assumed isothermal behaviour on daily steps, which is not compatible with the timescale the rest of the model runs on. That derivation was ultimately superseded by a literature coefficient once it became clear that leakage through steel walls is negligible at around 0.001% per day. I also clamped the stored-energy integral, which had been free to go negative once losses were subtracted.",
+               et:"Õhku käsitleti ideaalse gaasina, mida korrigeerib kokkusurutavustegur, ja kokkusurumist modelleeriti polütroopsena, mitte sundides seda isotermilisse või adiabaatilisse piiri. Juhtivuskaod kasutasid rööpseid soojustakistusi, eristades lamedad otsad kõverast seinast. Lekke jaoks tuletasin uue avaldise, rakendades gaasiseadusele korrutise- ja ahelreeglit, nii et rõhk ja temperatuur said muutuda üheaegselt viieteistminutilise sammu jooksul — varasem versioon eeldas isotermilist käitumist ööpäevaste sammudega, mis ei sobi kokku ajaskaalaga, millel ülejäänud mudel töötab. See tuletus asendati lõpuks kirjandusest võetud teguriga, kui selgus, et leke läbi terasseinte on tühine, ligikaudu 0,001% ööpäevas. Piirasin ka salvestatud energia integraali, mis oli seni saanud pärast kadude lahutamist negatiivseks muutuda."}},
+        {h:{en:"When the experiment disagreed with the model", et:"Kui katse mudelile vastu rääkis"},
+         body:{en:"Two lab tanks were pressurised to 5 bar, isolated, and monitored for fifteen minutes while pressure and mass flow were logged; the run was repeated three times and averaged. The model predicted an exponential pressure decay. The rig produced a straight line. The reason is not a modelling error but a physics mismatch: at 5 bar, compression generates too little heat for conduction to contribute anything measurable, so the only loss present in the lab is mass leakage — a linear process. The industrial case at 100 bar is dominated by exactly the term the experiment could not exercise. Two further divergences compound it: the full-scale tank has a far lower surface-to-volume ratio and therefore much slower thermal dynamics, and the simulation integrated on fifteen-minute steps while the rig logged every thirty seconds, so the experimental curve carries environmental noise the model has no way to contain.",
+               et:"Kaks laborimahutit rõhustati 5 baarini, isoleeriti ja jälgiti viisteist minutit, logides rõhku ja massivoolu; katset korrati kolm korda ja keskmistati. Mudel ennustas eksponentsiaalset rõhulangust. Seade andis sirge joone. Põhjus ei ole modelleerimisviga, vaid füüsikaline mittevastavus: 5 baari juures tekitab kokkusurumine liiga vähe soojust, et juhtivus midagi mõõdetavat annaks, seega ainus laboris esinev kadu on massileke — lineaarne protsess. Tööstuslikku juhtumit 100 baari juures domineerib täpselt see liige, mida katse ei suutnud rakendada. Kaks edasist lahknevust võimendavad seda: täismõõdus mahutil on tunduvalt madalam pindala-ruumala suhe ja seega palju aeglasem soojusdünaamika ning simulatsioon integreeris viieteistminutiliste sammudega, samal ajal kui seade logis iga kolmekümne sekundi järel, mistõttu katsekõver kannab keskkonnamüra, mida mudel ei suuda sisaldada."}},
+        {h:{en:"What this means for the numbers", et:"Mida see arvude jaoks tähendab"},
+         body:{en:"The simulation puts overall system efficiency near 70%, with about 15% of the building's energy still bought from the grid. Those figures inherit the model's limitations and should be read as such. The model accounts for conduction but not convection, and assumes the tank surface sits in equilibrium with ambient — a stated simplification, with Nusselt–Reynolds–Prandtl correlations the obvious next step. Under some conditions the solver also produced a non-physical low-temperature excursion; raising the minimum pressure and clamping the integral contained it, but the underlying cause was never fully traced, and I would not present the efficiency figure without saying so. The broader lesson was about validation design: scaling is not a multiplier, and the dimensionless groups that tell you whether a small rig and a large system are even in the same regime belong at the start of the work, not the end.",
+               et:"Simulatsioon annab süsteemi üldkasuteguriks ligi 70%, kusjuures umbes 15% hoone energiast ostetakse endiselt võrgust. Need arvud pärivad mudeli piirangud ja neid tulebki nii lugeda. Mudel arvestab juhtivust, kuid mitte konvektsiooni, ja eeldab, et mahuti pind on tasakaalus ümbritsevaga — väljaöeldud lihtsustus, mille ilmne järgmine samm on Nusselti–Reynoldsi–Prandtli seosed. Mõnedel tingimustel andis lahendaja ka mittefüüsikalise madala temperatuuri kõrvalekalde; minimaalse rõhu tõstmine ja integraali piiramine ohjas selle, kuid algpõhjust ei jälitatud lõpuni ja ma ei esitaks kasuteguri arvu seda mainimata. Laiem õppetund puudutas valideerimise kavandamist: skaleerimine ei ole kordaja ja mõõtmeta arvud, mis ütlevad, kas väike seade ja suur süsteem on üldse samas režiimis, kuuluvad töö algusesse, mitte lõppu."}}
+      ],
+      status:{en:"Coursework project, Feb–Jun 2025", et:"Õppeprojekt, veebruar–juuni 2025"}
+    }
+  },
+  /* ---- TEMPLATE: uncomment, fill, and add a comma after the entry above ----
+  ,{
+    id:"my-new-project",
+    tag:"CATEGORY",
+    kind:"Course project",             // "Course project" | "Self-initiated" | "Research thesis"
+    year:"2026",                       // shown on the card, e.g. "2026", "2024–25", "Ongoing"
+    context:"course code · group project · team of N",
+    stack:"Tool · Tool · Tool",
+    title:"Project title",
+    summary:"One or two sentences for the card.",
+    badges:["tag1","tag2"],
+    detail:{
+      overview:"Opening paragraph of the deep-dive.",
+      metrics:[{value:"42", label:"unit / thing"}],           // optional
+      // media:[                                              // optional — images/videos from ./media/
+      //   {type:"image", src:"media/pic.webp", caption:{en:"Caption", et:"Pealkiri"}},
+      //   {type:"video", src:"media/clip.mp4", poster:"media/clip.jpg", caption:{en:"Caption", et:"Pealkiri"}}
+      // ],
+      sections:[
+        {h:"Section heading", body:"Section text."},
+        {h:"Another heading", body:"More text."}
+      ],
+      links:[{label:"GitHub repo", url:"https://github.com/..."}], // optional
+      status:"Active / Completed / Ongoing"                    // optional
+    }
+  }
+  */
+];
+
+/* ---------- fixed display order (reorders the array without touching any
+   project's contents; unlisted ids fall to the end) ---------- */
+const ORDER = ["propeller","generative-rims","compressed-air-storage","shuffleboard",
+  "bridge-twin","sustainable-fuels","pick-and-flip","multiped-robot","truss-crane","launch-mechanism"];
+PROJECTS.sort((a,b)=>{
+  const ia = ORDER.indexOf(a.id), ib = ORDER.indexOf(b.id);
+  return (ia<0?ORDER.length:ia) - (ib<0?ORDER.length:ib);
+});
+
+/* ---------- i18n for static nodes ---------- */
 const nodes = [...document.querySelectorAll('[data-i18n],[data-i18n-html]')];
 const EN = {};
 for (const n of nodes){
   const key = n.dataset.i18n || n.dataset.i18nHtml;
   EN[key] = n.dataset.i18nHtml ? n.innerHTML.trim() : n.textContent.trim();
 }
+
+/* ---------- helpers ---------- */
+const esc = s => String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const t = (f,lang)=> f==null ? '' : (typeof f==='string' ? f : (f[lang]||f.en||''));
+// short code (drives the marker colour) derived from the English classification label
+const kindCode = p => ({'Self-initiated':'self','Course project':'course','Research thesis':'thesis'}[t(p.kind,'en')]||'self');
+
+/* ---------- render project cards ---------- */
+function renderProjects(lang){
+  const grid = document.getElementById('projGrid');
+  grid.innerHTML = PROJECTS.filter(p => filter==='all' || kindCode(p)===filter).map(p=>`
+    <article class="card" data-pid="${esc(p.id)}" tabindex="0" role="button"
+             aria-label="${esc(t(p.title,lang))} — open details">
+      ${p.kind?`<span class="kind" data-kind="${kindCode(p)}">${esc(t(p.kind,lang))}</span>`:''}
+      <div class="meta">${p.year?`<span>${esc(p.year)}</span>`:''}<span class="k">${esc(t(p.tag,lang))}</span>${
+        p.context?`<span>${esc(t(p.context,lang))}</span>`:''}${
+        p.stack?`<span>${esc(p.stack)}</span>`:''}</div>
+      <h3>${esc(t(p.title,lang))}</h3>
+      <p>${esc(t(p.summary,lang))}</p>
+      ${p.badges?`<div class="badges">${p.badges.map(b=>`<span class="badge">${esc(b)}</span>`).join('')}</div>`:''}
+      <span class="more">${lang==='et'?'Vaata lähemalt':'View details'} →</span>
+    </article>`).join('');
+}
+
+/* ---------- project filter chips ---------- */
+const FILTERS = [
+  {code:'all',    label:{en:'All',             et:ET['f.all']}},
+  {code:'self',   label:{en:'Self-initiated',  et:ET['f.self']}},
+  {code:'thesis', label:{en:'Research thesis', et:ET['f.thesis']}},
+  {code:'course', label:{en:'Course project',  et:ET['f.course']}}
+];
+function renderFilters(lang){
+  const box = document.getElementById('projFilters');
+  box.innerHTML = FILTERS.map(o=>
+    `<button class="chip" type="button" data-filter="${o.code}" aria-pressed="${filter===o.code}">${esc(t(o.label,lang))}</button>`
+  ).join('');
+}
+document.getElementById('projFilters').addEventListener('click', e=>{
+  const b=e.target.closest('[data-filter]'); if(!b) return;
+  filter=b.dataset.filter; renderProjects(cur); renderFilters(cur);
+});
+
+/* ---------- detail overlay + hash routing ---------- */
+const overlay = document.getElementById('pdOverlay');
+let lastFocus = null;
+function currentId(){ const m=location.hash.match(/^#p\/(.+)$/); return m?decodeURIComponent(m[1]):null; }
+function renderDetail(id,lang){
+  const p = PROJECTS.find(x=>x.id===id);
+  if(!p){ overlay.hidden=true; document.body.style.overflow=''; return; }
+  const d = p.detail||{};
+  overlay.querySelector('.pd-panel').innerHTML = `
+    <button class="pd-close" aria-label="Close">&times;</button>
+    ${p.kind?`<span class="kind" data-kind="${kindCode(p)}">${esc(t(p.kind,lang))}</span>`:''}
+    <div class="pd-eyebrow">${esc(t(p.tag,lang))}</div>
+    <h2 class="pd-title" id="pdTitle">${esc(t(p.title,lang))}</h2>
+    ${p.context?`<div class="pd-context">${esc(t(p.context,lang))}</div>`:''}
+    ${d.overview?`<p class="pd-lede">${esc(t(d.overview,lang))}</p>`:''}
+    ${d.metrics?`<div class="pd-metrics">${d.metrics.map(m=>
+        `<div class="pd-metric"><span class="v">${esc(m.value)}</span><span class="l">${esc(t(m.label,lang))}</span></div>`).join('')}</div>`:''}
+    ${(d.media&&d.media.length)?`<div class="pd-media">${d.media.map(mm=>{
+        const cap=esc(t(mm.caption,lang));
+        const el = mm.type==='video'
+          ? `<video src="${esc(mm.src)}"${mm.poster?` poster="${esc(mm.poster)}"`:''} muted loop playsinline preload="none" controls></video>`
+          : `<img src="${esc(mm.src)}" alt="${cap}" loading="lazy" decoding="async">`;
+        return `<figure>${el}<figcaption>${cap}</figcaption></figure>`;
+      }).join('')}</div>`:''}
+    ${(d.sections||[]).map(s=>
+        `<div class="pd-section"><h3>${esc(t(s.h,lang))}</h3><p>${esc(t(s.body,lang))}</p></div>`).join('')}
+    ${p.stack?`<div class="pd-stack"><span class="lbl">${lang==='et'?'Tööriistad':'Stack'}:</span> ${esc(p.stack)}</div>`:''}
+    ${d.status?`<div class="pd-status">${esc(t(d.status,lang))}</div>`:''}
+    ${d.links?`<div class="pd-materials"><div class="pd-mat-h">${lang==='et'?'Materjalid ja dokumendid':'Materials & documents'}</div><div class="pd-links">${d.links.map(l=>
+        `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(t(l.label,lang))} ↗</a>`).join('')}</div></div>`:''}
+  `;
+  overlay.hidden=false;
+  document.body.style.overflow='hidden';
+  overlay.setAttribute('aria-labelledby','pdTitle');
+  const closeBtn = overlay.querySelector('.pd-close');
+  closeBtn.addEventListener('click', closeDetail);
+  closeBtn.focus();
+}
+// Closing must NOT do `location.hash=''` — an empty hash makes the browser jump to the
+// top of the page. Strip the fragment through the History API instead, then close.
+function closeDetail(){
+  if(currentId()) history.replaceState(null, '', location.pathname + location.search);
+  overlay.hidden=true;
+  document.body.style.overflow='';
+  if(lastFocus && document.contains(lastFocus)) lastFocus.focus();
+}
+function route(){ const id=currentId(); if(id) renderDetail(id,cur); else { overlay.hidden=true; document.body.style.overflow=''; } }
+window.addEventListener('hashchange', route);
+overlay.addEventListener('click', e=>{ if(e.target===overlay) closeDetail(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !overlay.hidden) closeDetail(); });
+// trap Tab focus within the open panel
+overlay.addEventListener('keydown', e=>{
+  if(e.key!=='Tab' || overlay.hidden) return;
+  const f=[...overlay.querySelectorAll('.pd-panel button, .pd-panel a[href]')].filter(el=>el.offsetParent!==null);
+  if(!f.length) return;
+  const first=f[0], last=f[f.length-1];
+  if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+});
+
+// card open (event delegation survives re-renders)
+document.getElementById('projGrid').addEventListener('click', e=>{
+  const c=e.target.closest('[data-pid]'); if(c){ lastFocus=c; location.hash='p/'+c.dataset.pid; }
+});
+document.getElementById('projGrid').addEventListener('keydown', e=>{
+  if(e.key==='Enter'||e.key===' '){ const c=e.target.closest('[data-pid]'); if(c){ e.preventDefault(); lastFocus=c; location.hash='p/'+c.dataset.pid; } }
+});
+
+/* ---------- language ---------- */
 function apply(lang){
   const dict = lang==='et' ? ET : EN;
   for (const n of nodes){
@@ -366,9 +1000,14 @@ function apply(lang){
   document.documentElement.lang = lang;
   const b = document.getElementById('langToggle');
   b.innerHTML = lang==='et' ? '<b>ET</b>&nbsp;·&nbsp;EN' : 'EN&nbsp;·&nbsp;<b>ET</b>';
+  renderProjects(lang);
+  renderFilters(lang);
+  route(); // re-render an open detail in the new language
 }
-let cur='en';
-document.getElementById('langToggle').addEventListener('click',()=>{cur=cur==='en'?'et':'en';apply(cur);});
+let filter='all';
+let cur = (()=>{ try{ return localStorage.getItem('lang')==='et' ? 'et' : 'en'; }catch(e){ return 'en'; } })();
+document.getElementById('langToggle').addEventListener('click',()=>{cur=cur==='en'?'et':'en';try{ localStorage.setItem('lang', cur); }catch(e){}apply(cur);});
+apply(cur); // initial render (also opens a deep-linked project if the URL has one)
 </script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Markus — M monogram">
+  <!-- dark tile, single flat accent color — same teal used site-wide (nav ".eng", hover, focus, links) -->
+  <rect x="0" y="0" width="32" height="32" rx="7" fill="#14181C"/>
+  <path d="M8 22.5 L8 9.5 L16 16.5 L24 9.5 L24 22.5"
+        fill="none" stroke="#21908C" stroke-width="4.4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
