@@ -128,8 +128,15 @@ section{padding:54px 0}
 .pd-media figure{margin:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel)}
 .pd-media img,.pd-media video{display:block;width:100%;height:auto}
 .pd-media figcaption{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ink2);padding:.55rem .9rem;border-top:1px dashed var(--line)}
-.about-figure{margin:1.4rem 0 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.about-figure img{display:block;width:100%;height:auto}
+.about-figure{margin:1.4rem 0 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;max-width:240px}
+.about-figure img{display:block;width:100%;height:auto;cursor:zoom-in}
+.pd-media img{cursor:zoom-in}
+/* image lightbox / zoom */
+.lightbox{position:fixed;inset:0;z-index:60;background:rgba(20,24,28,.92);display:flex;align-items:center;justify-content:center;padding:3vh 3vw;overflow:auto;cursor:zoom-out}
+.lightbox[hidden]{display:none}
+.lightbox img{max-width:100%;max-height:94vh;object-fit:contain;border-radius:var(--radius);cursor:zoom-in}
+.lightbox.zoomed{align-items:flex-start;justify-content:flex-start}
+.lightbox.zoomed img{max-width:none;max-height:none;width:auto;height:auto;cursor:zoom-out}
 .pd-section{margin-bottom:1.3rem}
 .pd-section h3{font-family:Fraunces,serif;font-size:1.08rem;font-weight:640;margin-bottom:.35rem}
 .pd-section p{color:var(--ink2);font-size:.96rem}
@@ -259,6 +266,11 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
 <!-- project detail overlay (rendered by JS) -->
 <div class="pd-overlay" id="pdOverlay" hidden role="dialog" aria-modal="true">
   <div class="pd-panel" id="pdPanel"></div>
+</div>
+
+<!-- image lightbox (zoom) -->
+<div class="lightbox" id="lightbox" hidden aria-hidden="true">
+  <img id="lightboxImg" src="" alt="">
 </div>
 
 <!-- SKILLS -->
@@ -811,9 +823,12 @@ const PROJECTS = [
       media:[
         {type:"image", src:"media/compressed-air-rig.jpeg",
          caption:{en:"Lab validation rig: two air tanks, flow switch, pressure sensor and Arduino logging.",
-                  et:"Labori valideerimisseade: kaks õhumahutit, vooluandur, rõhuandur ja Arduino andmelogi."}}
+                  et:"Labori valideerimisseade: kaks õhumahutit, vooluandur, rõhuandur ja Arduino andmelogi."}},
+        {type:"image", src:"media/compressed-air-poster-full.jpg",
+         caption:{en:"Project poster: system concept, model parameters, governing assumptions, and simulation results across a full year of supply and demand data.",
+                  et:"Projekti poster: süsteemi kontseptsioon, mudeli parameetrid, alusteeldused ja simulatsioonitulemused terve aasta pakkumise ja nõudluse andmete peal."}}
       ],
-      links:[{label:{en:"Project poster (PDF)", et:"Projekti poster (PDF)"}, url:"media/compressed-air-poster.pdf"}],
+      links:[{label:{en:"Poster, full resolution", et:"Poster, täislahutus"}, url:"media/compressed-air-poster-full.jpg"}],
       sections:[
         {h:{en:"My contribution", et:"Minu panus"},
          body:{en:"I modelled the loss terms — thermal conduction, leakage, and the time-dependence algorithms tying them to the simulation's step size — managed the team's Git repository, and co-authored the modelling chapter of the report.",
@@ -924,6 +939,8 @@ document.getElementById('projFilters').addEventListener('click', e=>{
 /* ---------- detail overlay + hash routing ---------- */
 const overlay = document.getElementById('pdOverlay');
 let lastFocus = null;
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
 function currentId(){ const m=location.hash.match(/^#p\/(.+)$/); return m?decodeURIComponent(m[1]):null; }
 function renderDetail(id,lang){
   const p = PROJECTS.find(x=>x.id===id);
@@ -941,7 +958,7 @@ function renderDetail(id,lang){
     ${(d.media&&d.media.length)?`<div class="pd-media">${d.media.map(mm=>{
         const cap=esc(t(mm.caption,lang));
         const el = mm.type==='video'
-          ? `<video src="${esc(mm.src)}"${mm.poster?` poster="${esc(mm.poster)}"`:''} muted loop playsinline preload="none" controls></video>`
+          ? `<video src="${esc(mm.src)}"${mm.poster?` poster="${esc(mm.poster)}"`:''} muted loop playsinline preload="metadata" controls></video>`
           : `<img src="${esc(mm.src)}" alt="${cap}" loading="lazy" decoding="async">`;
         return `<figure>${el}<figcaption>${cap}</figcaption></figure>`;
       }).join('')}</div>`:''}
@@ -970,7 +987,7 @@ function closeDetail(){
 function route(){ const id=currentId(); if(id) renderDetail(id,cur); else { overlay.hidden=true; document.body.style.overflow=''; } }
 window.addEventListener('hashchange', route);
 overlay.addEventListener('click', e=>{ if(e.target===overlay) closeDetail(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !overlay.hidden) closeDetail(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && lightbox.hidden && !overlay.hidden) closeDetail(); });
 // trap Tab focus within the open panel
 overlay.addEventListener('keydown', e=>{
   if(e.key!=='Tab' || overlay.hidden) return;
@@ -980,6 +997,19 @@ overlay.addEventListener('keydown', e=>{
   if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
   else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
 });
+
+// image lightbox: click any project/about image to open; click image to toggle zoom, backdrop or Esc to close
+function openLightbox(src,alt){ lightboxImg.src=src; lightboxImg.alt=alt||''; lightbox.classList.remove('zoomed'); lightbox.hidden=false; }
+function closeLightbox(){ lightbox.hidden=true; lightbox.classList.remove('zoomed'); lightboxImg.removeAttribute('src'); }
+document.addEventListener('click', e=>{
+  const img=e.target.closest('.pd-media img, .about-figure img');
+  if(img) openLightbox(img.currentSrc||img.src, img.alt);
+});
+lightbox.addEventListener('click', e=>{
+  if(e.target===lightboxImg) lightbox.classList.toggle('zoomed');
+  else closeLightbox();
+});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !lightbox.hidden) closeLightbox(); });
 
 // card open (event delegation survives re-renders)
 document.getElementById('projGrid').addEventListener('click', e=>{
