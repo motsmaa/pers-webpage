@@ -128,7 +128,7 @@ section{padding:54px 0}
 .pd-media figure{margin:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel)}
 .pd-media img,.pd-media video{display:block;width:100%;height:auto}
 .pd-media figcaption{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ink2);padding:.55rem .9rem;border-top:1px dashed var(--line)}
-.about-figure{margin:1.4rem 0 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;max-width:240px}
+.about-figure{margin:1.4rem 0 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;max-width:560px}
 .about-figure img{display:block;width:100%;height:auto;cursor:zoom-in}
 .pd-media img{cursor:zoom-in}
 /* image lightbox / zoom */
@@ -345,7 +345,7 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
            hardware, simulation, or anywhere in between — let's talk.</p>
       </div>
       <div class="clinks">
-        <a href="cv.pdf" data-i18n="c.cv">Download CV (PDF)</a>
+        <a id="cvLink" href="media/cv-otsmaa-en.pdf" data-i18n="c.cv">Download CV (PDF)</a>
         <a href="mailto:markus.otsmaa@gmail.com">markus.otsmaa@gmail.com</a>
         <a href="https://www.linkedin.com/in/markus-otsmaa/" target="_blank" rel="noopener">linkedin.com/in/markus-otsmaa/</a>
         <a href="https://github.com/motsmaa" target="_blank" rel="noopener">github.com/motsmaa</a>
@@ -561,6 +561,11 @@ const PROJECTS = [
         {value:"€100", label:{en:"total budget", et:"kogueelarve"}},
         {value:"6", label:{en:"person team", et:"liikmeline meeskond"}}
       ],
+      media:[
+        {type:"image", src:"media/bridge-twin.jpeg",
+         caption:{en:"The 1:50 instrumented truss bridge on its test bench — strain gauges, live readout, and the logging laptops behind.",
+                  et:"1:50 mõõtkavas mõõteseadmetega sõrestiksild katsestendil — tensoandurid, reaalajas näidik ja logimissülearvutid taga."}}
+      ],
       sections:[
         {h:{en:"My contribution", et:"Minu panus"},
          body:{en:"I worked the front end of the V: writing the problem description, defining the technical and design requirements as a structured set, and holding the project scope together across a six-person multidisciplinary team. I then designed the physical test environment in Siemens NX, researched how the structural analysis should actually be implemented, and helped build the prototype. Sensor electronics, the Omniverse extension code, and modal analysis were owned by other team members.",
@@ -693,6 +698,10 @@ const PROJECTS = [
         {value:"1:3", label:{en:"model scale", et:"mudeli mõõtkava"}},
         {value:"96%", label:{en:"of corner profile allowance used", et:"nurgaprofiili normist kasutatud"}}
       ],
+      media:[
+        {type:"video", src:"media/truss-crane.mp4",
+         caption:{en:"The scale truss structure under test.", et:"Mõõtkavas sõrestikkonstruktsioon katsetamisel."}}
+      ],
       sections:[
         {h:{en:"My contribution", et:"Minu panus"},
          body:{en:"I ran the 2D truss analyses and the safety factor calculations, co-authored the structural calculations in the final report, and planned the fabrication of the custom joints. Finite element work was run by a teammate.",
@@ -732,6 +741,10 @@ const PROJECTS = [
         {value:"3:1", label:{en:"counterweight reduction", et:"vastukaalu ülekanne"}},
         {value:"1", label:{en:"extra part permitted", et:"lubatud lisadetail"}},
         {value:"gravity", label:{en:"only power source", et:"ainus jõuallikas"}}
+      ],
+      media:[
+        {type:"video", src:"media/launch-mechanism.mp4",
+         caption:{en:"The gravity-powered launcher firing.", et:"Gravitatsioonijõul töötav heitja laskmas."}}
       ],
       sections:[
         {h:{en:"My contribution", et:"Minu panus"},
@@ -1030,6 +1043,8 @@ function apply(lang){
   document.documentElement.lang = lang;
   const b = document.getElementById('langToggle');
   b.innerHTML = lang==='et' ? '<b>ET</b>&nbsp;·&nbsp;EN' : 'EN&nbsp;·&nbsp;<b>ET</b>';
+  const cv = document.getElementById('cvLink');
+  if(cv) cv.href = lang==='et' ? 'media/cv-otsmaa-et.pdf' : 'media/cv-otsmaa-en.pdf';
   renderProjects(lang);
   renderFilters(lang);
   route(); // re-render an open detail in the new language
