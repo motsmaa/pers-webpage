@@ -3,19 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Markus — Engineering for European Defence</title>
-<meta name="description" content="Portfolio of Markus — mechanical engineering student at TU Eindhoven building broad engineering capability aimed at the European defence and dual-use industry.">
+<title>Markus Andreas Otsmaa — Design Optimization &amp; Additive Manufacturing</title>
+<meta name="description" content="Portfolio of Markus Andreas Otsmaa, mechanical engineering student at TU Eindhoven on an 8.3/10 average: multidisciplinary design optimization, coupled CFD and FEA, and design for additive manufacturing, with honest project write-ups.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://markusotsmaa.com/">
-<meta property="og:title" content="Markus Andreas Otsmaa — Engineering for European Defence">
-<meta property="og:description" content="Mechanical engineering student at TU Eindhoven. Multi-fidelity simulation, optimization, mechatronics and systems engineering, aimed at the European defence and dual-use industry.">
-<meta property="og:image" content="https://markusotsmaa.com/media/hvo-rohr.png">
+<meta property="og:title" content="Markus Andreas Otsmaa — Design optimization &amp; additive manufacturing">
+<meta property="og:description" content="Mechanical engineering student at TU Eindhoven, 8.3/10 average. Multidisciplinary design optimization — coupled CFD, FEA and evolutionary search — carried through to printed hardware.">
+<meta property="og:image" content="https://markusotsmaa.com/media/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Markus Andreas Otsmaa — Engineering for European Defence">
-<meta name="twitter:description" content="Mechanical engineering student at TU Eindhoven. Simulation, optimization and systems engineering for European defence and dual-use.">
-<meta name="twitter:image" content="https://markusotsmaa.com/media/hvo-rohr.png">
+<meta name="twitter:title" content="Markus Andreas Otsmaa — Design optimization &amp; additive manufacturing">
+<meta name="twitter:description" content="Mechanical engineering student at TU Eindhoven, 8.3/10 average. Multidisciplinary design optimization and design for additive manufacturing, with the numbers and the failures.">
+<meta name="twitter:image" content="https://markusotsmaa.com/media/og-image.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="theme-color" content="#14181C">
+<link rel="canonical" href="https://markusotsmaa.com/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Markus Andreas Otsmaa","url":"https://markusotsmaa.com/","email":"mailto:markus.otsmaa@gmail.com","jobTitle":"Mechanical engineering student","knowsAbout":["Multidisciplinary design optimization","Additive manufacturing","Design for additive manufacturing","Computational fluid dynamics","Finite element analysis","Systems engineering","Mechatronics"],"affiliation":{"@type":"CollegeOrUniversity","name":"Eindhoven University of Technology"},"address":{"@type":"PostalAddress","addressLocality":"Eindhoven","addressCountry":"NL"},"sameAs":["https://www.linkedin.com/in/markus-otsmaa/","https://github.com/motsmaa"]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,640&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -59,7 +65,7 @@ nav ul a:hover{color:var(--ink)}
 
 /* ---- hero ---- */
 .hero{padding:70px 0 54px}
-h1{font-family:Fraunces,serif;font-weight:640;font-size:clamp(2.1rem,5vw,3.3rem);line-height:1.1;margin:.7rem 0 1rem;max-width:20ch}
+h1{font-family:Fraunces,serif;font-weight:640;font-size:clamp(2.1rem,5vw,3.3rem);line-height:1.1;margin:.7rem 0 1rem;max-width:24ch}
 h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lede{max-width:58ch;color:var(--ink2);font-size:1.05rem}
 .cta{margin-top:1.5rem;display:flex;gap:.8rem;flex-wrap:wrap}
@@ -177,10 +183,59 @@ section{padding:54px 0}
 .clinks a:hover{color:var(--v-hi)}
 
 footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBrains Mono',monospace}
+
+/* ---- hero credential strip ---- */
+.herostats{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.8rem;margin-top:1.9rem;max-width:780px}
+.hstat{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:.75rem .9rem}
+.hstat .v{display:block;font-family:'JetBrains Mono',monospace;font-size:1.12rem;font-weight:500;color:var(--ink)}
+.hstat .v b{font-weight:500;color:var(--v-lo)}
+.hstat .v i{font-style:normal;color:var(--ink2)}
+.hstat .l{display:block;font-size:.75rem;color:var(--ink2);margin-top:.22rem;line-height:1.35}
+
+/* ---- filter chips: theme chips sit first, separated from the project-kind chips ---- */
+.chip[data-filter="mdo"][aria-pressed="true"],.chip[data-filter="am"][aria-pressed="true"]{background:var(--v-mid);border-color:var(--v-mid)}
+.chipsep{width:1px;align-self:stretch;background:var(--line);margin:.1rem .35rem}
+.card .themes{display:inline}
+.badge.theme{border-color:var(--v-mid);color:var(--v-mid);background:rgba(33,144,140,.06)}
+
+/* ---- accessibility ---- */
+.skip{position:absolute;left:-999px;top:0;z-index:100;background:var(--ink);color:#fff;padding:.6rem 1rem;border-radius:0 0 var(--radius) 0;text-decoration:none;font-size:.85rem}
+.skip:focus{left:0}
+.card:focus-visible,.chip:focus-visible,.lang:focus-visible,.btn:focus-visible,.pd-close:focus-visible{outline:2px solid var(--v-mid);outline-offset:3px}
+
+/* ---- nav: logo · links · language toggle; wraps to two rows on phones ---- */
+nav ul{margin-left:auto}
+nav .lang{margin-left:1.5rem}
+@media(max-width:640px){
+  nav{flex-wrap:wrap;height:auto;padding:.55rem 0 .6rem;row-gap:.35rem}
+  nav .lang{margin-left:auto;order:2}
+  nav ul{order:3;width:100%;margin-left:0;gap:1.1rem}
+  nav ul a{font-size:.82rem}
+  .chipsep{display:none}
+}
+
+/* ---- hero figure scrolls sideways on narrow screens instead of shrinking to unreadable text ---- */
+.pipe .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:720px){.pipe svg{min-width:720px}}
+
+/* ---- detail overlay on small screens ---- */
+@media(max-width:600px){
+  .pd-overlay{padding:2vh 8px}
+  .pd-panel{padding:1.7rem 1.15rem 2rem}
+  .pd-title{font-size:1.4rem}
+}
+
+/* ---- print ---- */
+@media print{
+  header,.cta,.filters,.pd-overlay,.lightbox,.card .more,.skip{display:none!important}
+  body{background:#fff}
+  .card{break-inside:avoid;border-color:#bbb}
+}
 </style>
 </head>
 <body>
 <div class="colorbar" aria-hidden="true"></div>
+<a class="skip" href="#projects" data-i18n="skip">Skip to projects</a>
 <header>
   <div class="wrap">
     <nav aria-label="Main">
@@ -190,8 +245,8 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
         <li><a href="#skills" data-i18n="nav.skills">Toolbox</a></li>
         <li><a href="#about" data-i18n="nav.about">About</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-        <li><button id="langToggle" class="lang" aria-label="Switch language">EN&nbsp;·&nbsp;<b>ET</b></button></li>
       </ul>
+      <button id="langToggle" class="lang" aria-label="Switch language">EN&nbsp;·&nbsp;<b>ET</b></button>
     </nav>
   </div>
 </header>
@@ -201,54 +256,69 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <p class="eyebrow" data-i18n="hero.eyebrow">Mechanical engineering · TU Eindhoven · European defence &amp; dual-use</p>
-    <h1 data-i18n-html="hero.h1">A broad engineer, aimed at <span class="g">one target: European defence</span>.</h1>
+    <p class="eyebrow" data-i18n="hero.eyebrow">Multidisciplinary design optimization · Additive manufacturing · TU Eindhoven</p>
+    <h1 data-i18n-html="hero.h1">Design optimization across coupled disciplines, <span class="g">carried through to the printed part</span>.</h1>
     <p class="lede" data-i18n="hero.lede">
-      Defence systems don't respect disciplinary boundaries — so neither do I. I'm a mechanical
-      engineering student building deliberately wide capability across simulation, optimization,
-      mechatronics, and systems engineering, all pointed at one goal: contributing to Europe's
-      defence and dual-use industry.
+      I'm a final-year mechanical engineering student at TU Eindhoven. My work sits where the
+      disciplines couple — aerodynamics against structures, geometry against what a machine can
+      actually build — and I hold all of it inside one optimization loop, then carry the result
+      through to hardware.
     </p>
     <div class="cta">
       <a class="btn primary" href="#projects" data-i18n="hero.cta1">See projects</a>
       <a class="btn ghost" href="#contact" data-i18n="hero.cta2">Get in touch</a>
+      <a class="btn ghost cv-link" href="media/cv-otsmaa-en.pdf" data-i18n="hero.cta3">CV (PDF)</a>
+    </div>
+
+    <div class="herostats">
+      <div class="hstat"><span class="v"><b>8.3</b><i> / 10</i></span><span class="l" data-i18n="hs.1">weighted average, BSc Mechanical Engineering</span></div>
+      <div class="hstat"><span class="v">10</span><span class="l" data-i18n="hs.2">projects documented end to end</span></div>
+      <div class="hstat"><span class="v">CSWA</span><span class="l" data-i18n="hs.3">Certified SolidWorks Associate, 2026</span></div>
     </div>
 
     <figure class="pipe" aria-label="Multi-fidelity optimization pipeline diagram">
-      <svg viewBox="0 0 920 190" aria-hidden="true">
+      <div class="scroll">
+      <svg viewBox="0 0 920 215" aria-hidden="true">
         <defs>
           <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
             <path d="M0,0 L7,3 L0,6" fill="none" stroke="#4E565E" stroke-width="1.4"/>
           </marker>
         </defs>
-        <!-- stage boxes -->
         <g font-family="JetBrains Mono" font-size="11" text-anchor="middle">
-          <rect x="40"  y="60" width="150" height="54" rx="6" fill="none" stroke="#3B528B" stroke-width="1.6"/>
-          <text x="115" y="82" fill="#14181C">BEMT</text>
-          <text x="115" y="99" fill="#4E565E" font-size="9.5">blade element · seconds</text>
+          <rect x="30"  y="72"  width="150" height="54" rx="6" fill="none" stroke="#3B528B" stroke-width="1.6"/>
+          <text x="105" y="94"  fill="#14181C" data-i18n="fg.geo">GEOMETRY</text>
+          <text x="105" y="110" fill="#4E565E" font-size="9.5" data-i18n="fg.geo2">design variables</text>
 
-          <rect x="260" y="60" width="150" height="54" rx="6" fill="none" stroke="#21908C" stroke-width="1.6"/>
-          <text x="335" y="82" fill="#14181C">OpenFOAM CFD</text>
-          <text x="335" y="99" fill="#4E565E" font-size="9.5">RANS · hours</text>
+          <rect x="222" y="26"  width="190" height="54" rx="6" fill="none" stroke="#21908C" stroke-width="1.6"/>
+          <text x="317" y="48"  fill="#14181C" data-i18n="fg.aero">AERODYNAMICS</text>
+          <text x="317" y="64"  fill="#4E565E" font-size="9.5" data-i18n="fg.aero2">BEMT seconds → RANS hours</text>
 
-          <rect x="480" y="60" width="150" height="54" rx="6" fill="none" stroke="#5DC963" stroke-width="1.6"/>
-          <text x="555" y="82" fill="#14181C">CalculiX FEA</text>
-          <text x="555" y="99" fill="#4E565E" font-size="9.5">stress · deflection</text>
+          <rect x="222" y="118" width="190" height="54" rx="6" fill="none" stroke="#5DC963" stroke-width="1.6"/>
+          <text x="317" y="140" fill="#14181C" data-i18n="fg.str">STRUCTURE</text>
+          <text x="317" y="156" fill="#4E565E" font-size="9.5" data-i18n="fg.str2">CalculiX FEA · tip stress</text>
 
-          <rect x="710" y="60" width="170" height="54" rx="6" fill="none" stroke="#440D54" stroke-width="1.6"/>
-          <text x="795" y="82" fill="#14181C">NSGA-II</text>
-          <text x="795" y="99" fill="#4E565E" font-size="9.5">Pareto front: η vs. σ_max</text>
+          <rect x="454" y="72"  width="170" height="54" rx="6" fill="none" stroke="#440D54" stroke-width="1.6"/>
+          <text x="539" y="94"  fill="#14181C">NSGA-II</text>
+          <text x="539" y="110" fill="#4E565E" font-size="9.5" data-i18n="fg.opt2">Pareto front: η vs. σ_max</text>
+
+          <rect x="666" y="72"  width="200" height="54" rx="6" fill="none" stroke="#B9791F" stroke-width="1.6"/>
+          <text x="766" y="94"  fill="#14181C" data-i18n="fg.mfg">MANUFACTURABILITY</text>
+          <text x="766" y="110" fill="#4E565E" font-size="9.5" data-i18n="fg.mfg2">DfAM · build envelope</text>
         </g>
-        <!-- forward arrows -->
-        <line class="flow" x1="192" y1="87" x2="256" y2="87" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
-        <line class="flow" x1="412" y1="87" x2="476" y2="87" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
-        <line class="flow" x1="632" y1="87" x2="706" y2="87" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
-        <!-- feedback loop -->
-        <path class="flow" d="M795 118 L795 155 L115 155 L115 118" fill="none" stroke="#4E565E" stroke-width="1.4" stroke-dasharray="5 5" marker-end="url(#arr)"/>
-        <text x="455" y="172" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#4E565E">next generation → new candidate geometries</text>
-        <text x="455" y="40" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#4E565E">fidelity →</text>
+        <!-- geometry branches into the two coupled disciplines -->
+        <path class="flow" d="M182,92 C206,92 200,53 218,53"  fill="none" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
+        <path class="flow" d="M182,106 C206,106 200,145 218,145" fill="none" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
+        <!-- both disciplines feed one objective set -->
+        <path class="flow" d="M414,53 C438,53 432,92 450,92"  fill="none" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
+        <path class="flow" d="M414,145 C438,145 432,106 450,106" fill="none" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
+        <line class="flow" x1="626" y1="99" x2="660" y2="99" stroke="#4E565E" stroke-width="1.4" marker-end="url(#arr)"/>
+        <!-- manufacturability closes the loop -->
+        <path class="flow" d="M766 128 L766 192 L105 192 L105 130" fill="none" stroke="#4E565E" stroke-width="1.4" stroke-dasharray="5 5" marker-end="url(#arr)"/>
+        <text x="317" y="16"  font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#4E565E" data-i18n="fg.coupled">coupled disciplines</text>
+        <text x="435" y="207" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#4E565E" data-i18n="fg.loop">next generation → only geometries that can be built</text>
       </svg>
-      <figcaption class="cap" data-i18n="fig1">FIG. 1 — Self-initiated propeller optimization pipeline: cheap models filter, expensive models verify, the optimizer closes the loop.</figcaption>
+      </div>
+      <figcaption class="cap" data-i18n="fig1">FIG. 1 — How I work a design problem: cheap models filter, coupled high-fidelity models verify, the optimizer closes the loop, and manufacturability decides what is actually buildable.</figcaption>
     </figure>
   </div>
 </section>
@@ -278,14 +348,18 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
   <div class="wrap">
     <div class="shead"><span class="eyebrow">02</span><h2 data-i18n="nav.skills">Toolbox</h2></div>
     <div class="grid">
-      <div class="cell"><h3 data-i18n="s.g1">Applied in projects</h3>
-        <p data-i18n="s.g1b">OpenFOAM (RANS) and CalculiX in a working multi-fidelity pipeline; NSGA-II multi-objective optimization; MATLAB/Simulink; Python automation of solver workflows; Siemens NX and FreeCAD.</p></div>
-      <div class="cell"><h3 data-i18n="s.g2">Systems &amp; method</h3>
-        <p data-i18n="s.g2b">Requirements definition and flow-down, V-model verification planning, FMEA, trade studies and concept selection, mass/power/energy budget closure.</p></div>
-      <div class="cell"><h3 data-i18n="s.g3">Experimental</h3>
-        <p data-i18n="s.g3b">Engine test-bench measurement chains, signal conditioning and filter selection, uncertainty propagation, design of controlled comparisons.</p></div>
-      <div class="cell"><h3 data-i18n="s.g4">Working knowledge</h3>
-        <p data-i18n="s.g4b">Topology optimization (SIMP), surrogate modelling (GP/RBF), turbomachinery fundamentals, thermal management, embedded control on STM32/Arduino.</p></div>
+      <div class="cell"><h3 data-i18n="s.g1">Multidisciplinary design optimization</h3>
+        <p data-i18n="s.g1b">Coupled multi-fidelity loops: BEMT screening, OpenFOAM RANS and CalculiX FEA evaluated under one objective set. NSGA-II multi-objective search with pymoo, Pareto trade-offs between efficiency and structural margin, GP/RBF surrogates, topology optimization (SIMP).</p></div>
+      <div class="cell"><h3 data-i18n="s.g2">Additive manufacturing &amp; DfAM</h3>
+        <p data-i18n="s.g2b">Design for additive manufacturing: splitting parts around the build envelope, press-fit joints that resist shear, print orientation and plate nesting, print-time and material budgeting. Materials across PLA, PLA resin, TPU and SLS nylon. Generative design taken from CAD through print to measured test.</p></div>
+      <div class="cell"><h3 data-i18n="s.g3">Simulation &amp; analysis</h3>
+        <p data-i18n="s.g3b">OpenFOAM (RANS), CalculiX, Marc Mentat, Fusion 360 simulation. Direct Stiffness Method solvers written from scratch, Euler buckling and hand calculation kept as the check on every solver result.</p></div>
+      <div class="cell"><h3 data-i18n="s.g4">CAD &amp; prototyping</h3>
+        <p data-i18n="s.g4b">SolidWorks (Certified SolidWorks Associate, 2026), Siemens NX, Fusion 360 including generative design, FreeCAD. FDM and SLS printing, fabrication planning for steel and plywood builds, physical mock-ups to resolve joint geometry.</p></div>
+      <div class="cell"><h3 data-i18n="s.g5">Systems &amp; method</h3>
+        <p data-i18n="s.g5b">Requirements definition and flow-down, V-model verification planning, FMEA, trade studies and concept selection, mass/power/energy budget closure.</p></div>
+      <div class="cell"><h3 data-i18n="s.g6">Experimental, software &amp; control</h3>
+        <p data-i18n="s.g6b">Engine test-bench measurement chains, signal conditioning and filter selection, uncertainty propagation. Python for solver automation and data processing, MATLAB/Simulink/Stateflow, LabVIEW, Git, embedded control on Arduino and Raspberry Pi.</p></div>
     </div>
   </div>
 </section>
@@ -297,22 +371,27 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
     <div class="two">
       <div>
         <p data-i18n-html="a.now"><strong>Now:</strong> final-year BSc Mechanical Engineering at Eindhoven University of
-           Technology. Coursework and projects across the breadth of the discipline: fluids,
-           structures, dynamics, control, and design.</p>
-        <p data-i18n-html="a.how"><strong>How I work:</strong> I like problems where one engineer can own the whole
-           loop — model it, verify it, build it, iterate. My propeller optimization pipeline
-           is entirely self-initiated, and it's where most of my CFD, FEA and optimization
-           tooling came from — well beyond the curriculum.</p>
+           Technology, on an <strong>8.3/10 weighted average</strong> — high for a programme that grades
+           hard. Coursework and projects across the breadth of the discipline: fluids, structures,
+           dynamics, control, and design.</p>
+        <p data-i18n-html="a.how"><strong>How I work:</strong> optimization is only worth as much as the model under it,
+           and a model is only worth as much as the part it produces. So I try to hold the whole
+           chain — couple the physics, run the search, then check the winning geometry against what a
+           printer or a workshop can actually make. My propeller optimization pipeline is entirely
+           self-initiated, and it's where most of my CFD, FEA and optimization tooling came from,
+           well beyond the curriculum.</p>
+        <p data-i18n-html="a.lang"><strong>Languages:</strong> Estonian (native), English (C2).</p>
       </div>
       <div>
-        <p data-i18n-html="a.head"><strong>Where I'm headed:</strong> the European defence and dual-use industry — that
-           part is decided. The breadth is deliberate: defence systems are integration problems, and
-           I want to be the engineer who understands the aerodynamics, the structures, and the
-           control loop. Estonian citizen with a foot in both the Brainport (Eindhoven) and Estonian
-           defence-innovation communities.</p>
-        <p data-i18n-html="a.look"><strong>Looking for:</strong> internships and student engineering roles at defence and
-           dual-use companies — simulation, design, mechatronics, or test — anywhere in the
-           European ecosystem.</p>
+        <p data-i18n-html="a.head"><strong>Where I'm headed:</strong> multidisciplinary design optimization and additive
+           manufacturing, and specifically the place where the two meet. Optimizers now produce
+           geometry no conventional process could cut, and printing is what makes those shapes real —
+           which also means the manufacturing constraints belong inside the optimization, not after
+           it. Aerospace, robotics and energy all have that shape, and I'm open to any of them.
+           Estonian citizen, based in Eindhoven's Brainport region and connected to the engineering
+           community in Tallinn.</p>
+        <p data-i18n-html="a.look"><strong>Looking for:</strong> internships and student engineering roles — simulation,
+           design, mechatronics, or test — anywhere in Europe.</p>
       </div>
     </div>
     <div class="aside-note">
@@ -340,12 +419,13 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
   <div class="wrap">
     <div class="contact">
       <div>
-        <h2 data-i18n="c.head">Open to internships and student roles in defence &amp; dual-use engineering.</h2>
-        <p data-i18n="c.body">Based in Eindhoven, connected to Tallinn. If you're building for European defence —
-           hardware, simulation, or anywhere in between — let's talk.</p>
+        <h2 data-i18n="c.head">Open to internships and student engineering roles.</h2>
+        <p data-i18n="c.body">Based in Eindhoven, connected to Tallinn. If you work on simulation-driven design,
+           optimization or additive manufacturing — or anything where the model and the hardware have
+           to agree — let's talk.</p>
       </div>
       <div class="clinks">
-        <a id="cvLink" href="media/cv-otsmaa-en.pdf" data-i18n="c.cv">Download CV (PDF)</a>
+        <a class="cv-link" href="media/cv-otsmaa-en.pdf" data-i18n="c.cv">Download CV (PDF)</a>
         <a href="mailto:markus.otsmaa@gmail.com">markus.otsmaa@gmail.com</a>
         <a href="https://www.linkedin.com/in/markus-otsmaa/" target="_blank" rel="noopener">linkedin.com/in/markus-otsmaa/</a>
         <a href="https://github.com/motsmaa" target="_blank" rel="noopener">github.com/motsmaa</a>
@@ -363,28 +443,41 @@ footer{padding:2rem 0 3rem;color:var(--ink2);font-size:.78rem;font-family:'JetBr
 <script>
 const ET = {
   "nav.projects":"Projektid","nav.skills":"Oskused","nav.about":"Minust","nav.contact":"Kontakt",
-  "hero.eyebrow":"Masinaehitus · TU Eindhoven · Euroopa kaitse ja kahesugune kasutus",
-  "hero.h1":"Laia haardega insener, sihitud <span class=\"g\">ühele eesmärgile: Euroopa kaitse</span>.",
-  "hero.lede":"Kaitsesüsteemid ei austa erialapiire — seega ei tee seda ka mina. Olen masinaehituse tudeng, kes ehitab teadlikult laia võimekust simulatsiooni, optimeerimise, mehhatroonika ja süsteemiinseneeria vallas, kõik suunatud ühele eesmärgile: panustada Euroopa kaitse- ja kahesuguse kasutusega tööstusesse.",
-  "hero.cta1":"Vaata projekte","hero.cta2":"Võta ühendust",
-  "fig1":"JOONIS 1 — Omaalgatuslik propelleri optimeerimispipeline: odavad mudelid filtreerivad, kallid mudelid verifitseerivad, optimeerija sulgeb tsükli.",
+  "skip":"Hüppa projektide juurde",
+  "hero.eyebrow":"Multidistsiplinaarne disainioptimeerimine · Lisandtootmine · TU Eindhoven",
+  "hero.h1":"Disainioptimeerimine üle seotud erialade, <span class=\"g\">viiduna välja prinditud detailini</span>.",
+  "hero.lede":"Olen viimase aasta masinaehituse tudeng TU Eindhovenis. Minu töö asub seal, kus erialad omavahel seotud on — aerodünaamika struktuuride vastu, geomeetria selle vastu, mida masin päriselt teha suudab — ja hoian kõike seda ühes optimeerimistsüklis, viies tulemuse seejärel riistvarani.",
+  "hero.cta1":"Vaata projekte","hero.cta2":"Võta ühendust","hero.cta3":"CV (PDF)",
+  "hs.1":"kaalutud keskmine, masinaehituse bakalaureus","hs.2":"projekti algusest lõpuni dokumenteeritud","hs.3":"Certified SolidWorks Associate, 2026",
+  "f.mdo":"Optimeerimine","f.am":"Lisandtootmine",
+  "fg.geo":"GEOMEETRIA","fg.geo2":"disainimuutujad",
+  "fg.aero":"AERODÜNAAMIKA","fg.aero2":"BEMT sekundid → RANS tunnid",
+  "fg.str":"STRUKTUUR","fg.str2":"CalculiX FEA · tipu pinge",
+  "fg.opt2":"Pareto rinne: η vs. σ_max",
+  "fg.mfg":"VALMISTATAVUS","fg.mfg2":"DfAM · ehitusmaht",
+  "fg.coupled":"seotud erialad",
+  "fg.loop":"järgmine põlvkond → ainult ehitatavad geomeetriad",
+  "fig1":"JOONIS 1 — Kuidas ma disainiülesannet lahendan: odavad mudelid filtreerivad, seotud kõrge täpsusega mudelid verifitseerivad, optimeerija sulgeb tsükli ja valmistatavus otsustab, mis on tegelikult ehitatav.",
   "proj.head":"Valik töid","proj.hint":"Klõpsa projektil, et lugeda täielikku ülevaadet ↓",
   "f.all":"Kõik","f.self":"Omaalgatuslik","f.thesis":"Uurimistöö","f.course":"Kursuseprojekt",
-  "s.g1":"Projektides rakendatud","s.g1b":"OpenFOAM (RANS) ja CalculiX töötavas mitmetasandilises pipeline'is; NSGA-II mitme-eesmärgiline optimeerimine; MATLAB/Simulink; Pythoniga lahendaja-töövoogude automatiseerimine; Siemens NX ja FreeCAD.",
-  "s.g2":"Süsteemid ja metoodika","s.g2b":"Nõuete määratlemine ja viimine alamsüsteemidesse, V-mudeli verifitseerimisplaan, FMEA, võrdlusuuringud ja kontseptsioonivalik, massi-, võimsus- ja energiaeelarvete sulgemine.",
-  "s.g3":"Eksperimentaalne","s.g3b":"Mootori katsestendi mõõteahelad, signaalitöötlus ja filtrite valik, määramatuse levik, kontrollitud võrdluskatsete kavandamine.",
-  "s.g4":"Töötav teadmine","s.g4b":"Topoloogiaoptimeerimine (SIMP), surrogaatmodelleerimine (GP/RBF), turbomasinate alused, termohaldus, sardjuhtimine STM32/Arduino platvormil.",
-  "a.now":"<strong>Praegu:</strong> viimase aasta masinaehituse bakalaureuseõpe Eindhoveni Tehnikaülikoolis. Õppetöö ja projektid üle kogu eriala laiuse: vedelikud, struktuurid, dünaamika, juhtimine ja disain.",
-  "a.how":"<strong>Kuidas ma töötan:</strong> mulle meeldivad ülesanded, kus üks insener saab omada tervet tsüklit — modelleerida, verifitseerida, ehitada, itereerida. Minu propelleri optimeerimispipeline on täielikult omaalgatuslik ja just sealt tuleb enamik mu CFD-, FEA- ja optimeerimistööriistadest — kaugelt väljaspool õppekava.",
-  "a.head":"<strong>Kuhu ma liigun:</strong> Euroopa kaitse- ja kahesuguse kasutusega tööstusesse — see osa on otsustatud. Laius on teadlik: kaitsesüsteemid on integratsiooniprobleemid ja tahan olla insener, kes mõistab nii aerodünaamikat, struktuure kui ka juhtimisahelat. Eesti kodanik, jalg nii Brainporti (Eindhoven) kui ka Eesti kaitseinnovatsiooni kogukonnas.",
-  "a.look":"<strong>Otsin:</strong> praktikakohti ja tudengi-inseneri rolle kaitse- ja kahesuguse kasutusega ettevõtetes — simulatsioon, disain, mehhatroonika või testimine — kõikjal Euroopa ökosüsteemis.",
+  "s.g1":"Multidistsiplinaarne disainioptimeerimine","s.g1b":"Seotud mitmetasandilised tsüklid: BEMT-sõelumine, OpenFOAM RANS ja CalculiX FEA hinnatuna ühe eesmärgikogumi all. NSGA-II mitme-eesmärgiline otsing pymoo abil, Pareto kompromissid kasuteguri ja struktuurse varu vahel, GP/RBF surrogaadid, topoloogiaoptimeerimine (SIMP).",
+  "s.g2":"Lisandtootmine ja DfAM","s.g2b":"Lisandtootmisele suunatud disain: detailide jagamine ehitusmahu järgi, nihkele vastupidavad pressliited, printimissuund ja plaadipaigutus, printimisaja ja materjali eelarvestamine. Materjalid PLA, PLA-resin, TPU ja SLS-nailon. Generatiivne disain viiduna CAD-ist läbi printimise mõõdetud katseni.",
+  "s.g3":"Simulatsioon ja analüüs","s.g3b":"OpenFOAM (RANS), CalculiX, Marc Mentat, Fusion 360 simulatsioon. Nullist kirjutatud otsese jäikusmeetodi lahendajad, Euleri nõtke ja käsiarvutus iga lahendaja tulemuse kontrollina.",
+  "s.g4":"CAD ja prototüüpimine","s.g4b":"SolidWorks (Certified SolidWorks Associate, 2026), Siemens NX, Fusion 360 koos generatiivse disainiga, FreeCAD. FDM- ja SLS-printimine, terasest ja vineerist konstruktsioonide valmistamise planeerimine, füüsilised makettid liidete geomeetria lahendamiseks.",
+  "s.g5":"Süsteemid ja metoodika","s.g5b":"Nõuete määratlemine ja viimine alamsüsteemidesse, V-mudeli verifitseerimisplaan, FMEA, võrdlusuuringud ja kontseptsioonivalik, massi-, võimsus- ja energiaeelarvete sulgemine.",
+  "s.g6":"Eksperiment, tarkvara ja juhtimine","s.g6b":"Mootori katsestendi mõõteahelad, signaalitöötlus ja filtrite valik, määramatuse levik. Python lahendajate automatiseerimiseks ja andmetöötluseks, MATLAB/Simulink/Stateflow, LabVIEW, Git, sardjuhtimine Arduino ja Raspberry Pi platvormil.",
+  "a.now":"<strong>Praegu:</strong> viimase aasta masinaehituse bakalaureuseõpe Eindhoveni Tehnikaülikoolis, kaalutud keskmine <strong>8,3/10</strong> — kõrge tulemus rangelt hindavas õppekavas. Õppetöö ja projektid üle kogu eriala laiuse: vedelikud, struktuurid, dünaamika, juhtimine ja disain.",
+  "a.how":"<strong>Kuidas ma töötan:</strong> optimeerimine on väärt täpselt niipalju, kui väärt on selle all olev mudel, ja mudel on väärt niipalju, kui väärt on detail, mille see annab. Seega püüan hoida tervet ahelat — siduda füüsika, käivitada otsing ja seejärel kontrollida võidugeomeetriat selle vastu, mida printer või töökoda päriselt teha suudab. Minu propelleri optimeerimispipeline on täielikult omaalgatuslik ja just sealt tuleb enamik mu CFD-, FEA- ja optimeerimistööriistadest, kaugelt väljaspool õppekava.",
+  "a.lang":"<strong>Keeled:</strong> eesti (emakeel), inglise (C2).",
+  "a.head":"<strong>Kuhu ma liigun:</strong> multidistsiplinaarse disainioptimeerimise ja lisandtootmise poole ning just sinna, kus need kaks kohtuvad. Optimeerijad annavad täna geomeetriat, mida ükski tavapärane protsess välja ei lõikaks, ja printimine teeb need kujud reaalseks — mis tähendab ühtlasi, et tootmispiirangud kuuluvad optimeerimise sisse, mitte selle järele. Lennundus, robootika ja energeetika on kõik sellise kujuga ning olen avatud igaühele neist. Eesti kodanik, baasiga Eindhoveni Brainporti piirkonnas ja seotud Tallinna inseneride kogukonnaga.",
+  "a.look":"<strong>Otsin:</strong> praktikakohti ja tudengi-inseneri rolle — simulatsioon, disain, mehhatroonika või testimine — kõikjal Euroopas.",
   "d.head":"Enne seda: viisteist aastat võistlustantsu",
   "d.p1":"Võistlesin 10 tantsu alal ligi viisteist aastat — distsipliin, mis nõuab kõiki viit standardtantsu ja kõiki viit ladina-ameerika tantsu, kahte tehnikat, millel pole peaaegu midagi ühist, ning mida hinnatakse ühe tervikuna. Olin U21 Eesti meister ja saavutasin WDSF U21 maailmameistrivõistlustel 10 tantsus kaheteistkümnenda koha.",
   "d.p2":"Lõpetasin võistlemise 2026. aasta alguses. See oli otsus, mitte hääbumine: tunnid, mida sellel tasemel püsimine nõuab, on need tunnid, mida tahan nüüd panna inseneeriasse.",
   "d.p3":"Mida see tegelikult üles ehitas, on vähem romantiline, kui arvatakse — igapäevane korrigeerimine detailides, mida ükski publik ei märkaks, täie pühendumusega esinemine võistluspäeva neljandal tunnil ja töö partnerluses, mille ainus kanal on füüsiline ega andesta kõhklust. Osutaksin pigem nendele harjumustele, kui väidaksin, et sport õpetas mulle inseneeriat.",
   "c.cv":"Laadi alla CV (PDF)",
-  "c.head":"Avatud praktikatele ja tudengirollidele kaitse- ja kahesuguse kasutusega inseneerias.",
-  "c.body":"Baasiga Eindhovenis, seotud Tallinnaga. Kui ehitad Euroopa kaitse jaoks — riistvara, simulatsioon või midagi vahepealset — räägime.",
+  "c.head":"Avatud praktikatele ja tudengi-inseneri rollidele.",
+  "c.body":"Baasiga Eindhovenis, seotud Tallinnaga. Kui tegeled simulatsioonipõhise disaini, optimeerimise või lisandtootmisega — või millegagi, kus mudel ja riistvara peavad kokku langema — räägime.",
   "footer":"© 2026 Markus Andreas Otsmaa · odavad mudelid filtreerivad, kallid mudelid verifitseerivad"
 };
 
@@ -416,7 +509,8 @@ const ET = {
 const PROJECTS = [
   {
     id:"propeller",
-    tag:{en:"MULTI-FIDELITY OPTIMIZATION", et:"MITMETASANDILINE OPTIMEERIMINE"},
+    themes:["mdo"],
+    tag:{en:"MULTIDISCIPLINARY DESIGN OPTIMIZATION", et:"MULTIDISTSIPLINAARNE DISAINIOPTIMEERIMINE"},
     context:{en:"Self-initiated · individual project", et:"Omaalgatuslik · individuaalne projekt"},
     kind:{en:"Self-initiated", et:"Omaalgatuslik"},
     year:"Ongoing",
@@ -435,13 +529,17 @@ const PROJECTS = [
       ],
       sections:[
         {h:{en:"The problem", et:"Probleem"},
-         body:"Propeller design trades aerodynamic efficiency against structural margin. High-fidelity CFD is far too slow to search directly — a single RANS case is hours, and the design space is large."},
+         body:{en:"Propeller design trades aerodynamic efficiency against structural margin. High-fidelity CFD is far too slow to search directly — a single RANS case is hours, and the design space is large.",
+               et:"Propelleri disain vahetab aerodünaamilist kasutegurit struktuurse varu vastu. Kõrge täpsusega CFD on otseseks otsinguks liiga aeglane — üks RANS-arvutus võtab tunde ja disainiruum on suur."}},
         {h:{en:"Pipeline architecture", et:"Pipeline'i arhitektuur"},
-         body:"Blade-element momentum theory sweeps the design space in seconds to shortlist candidates. OpenFOAM RANS verifies aerodynamics on survivors. CalculiX FEA checks tip stress and deflection. NSGA-II uses these objectives to breed the next generation. Geometry → mesh → solve → post-process is fully automated so the loop runs unattended."},
+         body:{en:"Blade-element momentum theory sweeps the design space in seconds to shortlist candidates. OpenFOAM RANS verifies aerodynamics on survivors. CalculiX FEA checks tip stress and deflection. NSGA-II uses these objectives to breed the next generation. Geometry → mesh → solve → post-process is fully automated so the loop runs unattended.",
+               et:"Labaelemendi-impulsiteooria skaneerib disainiruumi sekunditega ja koostab kandidaatide lühinimekirja. OpenFOAM RANS verifitseerib ellujäänute aerodünaamika. CalculiX FEA kontrollib tipu pingeid ja läbipainet. NSGA-II kasutab neid eesmärke järgmise põlvkonna aretamiseks. Geomeetria → võrk → lahendus → järeltöötlus on täielikult automatiseeritud, nii et tsükkel töötab järelevalveta."}},
         {h:{en:"Surrogate acceleration", et:"Surrogaatkiirendus"},
-         body:"Gaussian-process / RBF surrogates trained on high-fidelity samples stand in for expensive CFD inside the inner loop, cutting the number of full solves needed to advance the Pareto front."},
+         body:{en:"Gaussian-process / RBF surrogates trained on high-fidelity samples stand in for expensive CFD inside the inner loop, cutting the number of full solves needed to advance the Pareto front.",
+               et:"Kõrge täpsusega näidistel treenitud Gaussi protsessi / RBF surrogaadid asendavad sisemises tsüklis kallist CFD-d, vähendades Pareto rinde edasiviimiseks vajalike täislahenduste arvu."}},
         {h:{en:"Where it's headed", et:"Kuhu see liigub"},
-         body:"Porting the same pipeline to small turbomachinery — compact gas-turbine stages for unmanned-systems propulsion, a documented European supply gap. [planned]"}
+         body:{en:"The planned next step is porting the same pipeline to small turbomachinery — compact gas-turbine stages for small unmanned aircraft, where the same efficiency-versus-stress trade-off applies with far less design margin.",
+               et:"Planeeritud järgmine samm on sama pipeline'i ülekandmine väikestele turbomasinatele — kompaktsetele gaasiturbiini astmetele väikeste mehitamata õhusõidukite jaoks, kus kehtib sama kasuteguri ja pingete kompromiss, kuid palju väiksema disainivaruga."}}
       ],
       status:{en:"Active — core loop working; turbomachinery port planned", et:"Aktiivne — põhitsükkel töötab; turbomasinate laiendus planeeritud"}
     }
@@ -469,7 +567,13 @@ const PROJECTS = [
       media:[
         {type:"image", src:"media/shuffleboard-architecture.png",
          caption:{en:"System architecture: robot boundary, external interfaces, functional modules and the safety chain.",
-                  et:"Süsteemi arhitektuur: roboti piir, välised liidesed, funktsionaalsed moodulid ja ohutusahel."}}
+                  et:"Süsteemi arhitektuur: roboti piir, välised liidesed, funktsionaalsed moodulid ja ohutusahel."}},
+        {type:"video", src:"media/shuffleboard-launch.mp4", poster:"media/shuffleboard-launch-poster.jpg",
+         caption:{en:"The tracked launcher principle: two driven belts accelerate the puck, and a speed difference between them imparts spin.",
+                  et:"Lintkiirendi põhimõte: kaks veetavat linti kiirendavad ketast ja nendevaheline kiiruste erinevus annab pöörlemise."}},
+        {type:"video", src:"media/shuffleboard-exploded.mp4", poster:"media/shuffleboard-exploded-poster.jpg",
+         caption:{en:"Exploded view of the robot assembly (CAD).",
+                  et:"Roboti koostu plahvatusvaade (CAD)."}}
       ],
       sections:[
         {h:{en:"My contribution", et:"Minu panus"},
@@ -499,7 +603,8 @@ const PROJECTS = [
   },
   {
     id:"generative-rims",
-    tag:{en:"GENERATIVE DESIGN · EXPERIMENTAL", et:"GENERATIIVNE DISAIN · EKSPERIMENTAALNE"},
+    themes:["mdo","am"],
+    tag:{en:"GENERATIVE DESIGN · ADDITIVE MANUFACTURING", et:"GENERATIIVNE DISAIN · LISANDTOOTMINE"},
     context:{en:"Research thesis · secondary school (Tallinna Reaalkool), 2023 · individual", et:"Uurimistöö · gümnaasium (Tallinna Reaalkool), 2023 · individuaalne"},
     kind:{en:"Research thesis", et:"Uurimistöö"},
     year:"2023",
@@ -660,7 +765,7 @@ const PROJECTS = [
         {value:"12 s", label:{en:"cycle time (target ≤5 s)", et:"tsükliaeg (siht ≤5 s)"}}
       ],
       media:[
-        {type:"video", src:"media/pickflip-cycle.mp4",
+        {type:"video", src:"media/pickflip-cycle.mp4", poster:"media/pickflip-cycle-poster.jpg",
          caption:{en:"One pick-flip-measure cycle.", et:"Üks haaramis-, pööramis- ja mõõtmistsükkel."}}
       ],
       sections:[
@@ -704,7 +809,7 @@ const PROJECTS = [
         {value:"96%", label:{en:"of corner profile allowance used", et:"nurgaprofiili normist kasutatud"}}
       ],
       media:[
-        {type:"video", src:"media/truss-crane.mp4",
+        {type:"video", src:"media/truss-crane.mp4", poster:"media/truss-crane-poster.jpg",
          caption:{en:"The scale truss structure under test.", et:"Mõõtkavas sõrestikkonstruktsioon katsetamisel."}}
       ],
       sections:[
@@ -729,6 +834,7 @@ const PROJECTS = [
   },
   {
     id:"launch-mechanism",
+    themes:["am"],
     tag:{en:"MECHANISM DESIGN · DfAM", et:"MEHHANISMIDISAIN · DfAM"},
     context:{en:"Course 4CBLA10 · TU Eindhoven · first year · group project · team of 7", et:"Kursus 4CBLA10 · TU Eindhoven · esimene aasta · rühmaprojekt · 7-liikmeline meeskond"},
     kind:{en:"Course project", et:"Kursuseprojekt"},
@@ -748,7 +854,7 @@ const PROJECTS = [
         {value:"gravity", label:{en:"only power source", et:"ainus jõuallikas"}}
       ],
       media:[
-        {type:"video", src:"media/launch-mechanism.mp4",
+        {type:"video", src:"media/launch-mechanism.mp4", poster:"media/launch-mechanism-poster.jpg",
          caption:{en:"The gravity-powered launcher firing.", et:"Gravitatsioonijõul töötav heitja laskmas."}}
       ],
       sections:[
@@ -773,7 +879,8 @@ const PROJECTS = [
   },
   {
     id:"multiped-robot",
-    tag:{en:"ROBOTICS · PROTOTYPING", et:"ROBOOTIKA · PROTOTÜÜPIMINE"},
+    themes:["am"],
+    tag:{en:"ROBOTICS · ADDITIVE MANUFACTURING", et:"ROBOOTIKA · LISANDTOOTMINE"},
     context:{en:"Course 4CBLA20 · TU Eindhoven · first year · group project · team of 7", et:"Kursus 4CBLA20 · TU Eindhoven · esimene aasta · rühmaprojekt · 7-liikmeline meeskond"},
     kind:{en:"Course project", et:"Kursuseprojekt"},
     year:"2025",
@@ -795,7 +902,7 @@ const PROJECTS = [
         {type:"image", src:"media/multiped-cad.jpeg",
          caption:{en:"CAD assembly: bevel-gear transmission and hinged front arm.",
                   et:"CAD-koost: koonushammasülekanne ja liigendatud esikäsi."}},
-        {type:"video", src:"media/multiped-course.mp4",
+        {type:"video", src:"media/multiped-course.mp4", poster:"media/multiped-course-poster.jpg",
          caption:{en:"Prototype on the parkour course.", et:"Prototüüp parkuurirajal."}}
       ],
       sections:[
@@ -842,11 +949,11 @@ const PROJECTS = [
         {type:"image", src:"media/compressed-air-rig.jpeg",
          caption:{en:"Lab validation rig: two air tanks, flow switch, pressure sensor and Arduino logging.",
                   et:"Labori valideerimisseade: kaks õhumahutit, vooluandur, rõhuandur ja Arduino andmelogi."}},
-        {type:"image", src:"media/compressed-air-poster-full.jpg",
+        {type:"image", src:"media/compressed-air-poster.jpg",
          caption:{en:"Project poster: system concept, model parameters, governing assumptions, and simulation results across a full year of supply and demand data.",
                   et:"Projekti poster: süsteemi kontseptsioon, mudeli parameetrid, alusteeldused ja simulatsioonitulemused terve aasta pakkumise ja nõudluse andmete peal."}}
       ],
-      links:[{label:{en:"Poster, full resolution", et:"Poster, täislahutus"}, url:"media/compressed-air-poster-full.jpg"}],
+      links:[{label:{en:"Poster (PDF)", et:"Poster (PDF)"}, url:"media/compressed-air-poster.pdf"}],
       sections:[
         {h:{en:"My contribution", et:"Minu panus"},
          body:{en:"I modelled the loss terms — thermal conduction, leakage, and the time-dependence algorithms tying them to the simulation's step size — managed the team's Git repository, and co-authored the modelling chapter of the report.",
@@ -922,7 +1029,9 @@ const kindCode = p => ({'Self-initiated':'self','Course project':'course','Resea
 /* ---------- render project cards ---------- */
 function renderProjects(lang){
   const grid = document.getElementById('projGrid');
-  grid.innerHTML = PROJECTS.filter(p => filter==='all' || kindCode(p)===filter).map(p=>`
+  grid.innerHTML = PROJECTS.filter(p =>
+      filter==='all' || kindCode(p)===filter || (p.themes||[]).includes(filter)
+    ).map(p=>`
     <article class="card" data-pid="${esc(p.id)}" tabindex="0" role="button"
              aria-label="${esc(t(p.title,lang))} — open details">
       ${p.kind?`<span class="kind" data-kind="${kindCode(p)}">${esc(t(p.kind,lang))}</span>`:''}
@@ -938,14 +1047,17 @@ function renderProjects(lang){
 
 /* ---------- project filter chips ---------- */
 const FILTERS = [
-  {code:'all',    label:{en:'All',             et:ET['f.all']}},
+  {code:'all',    label:{en:'All',                     et:ET['f.all']}},
+  {code:'mdo',    label:{en:'Optimization',            et:ET['f.mdo']}},
+  {code:'am',     label:{en:'Additive manufacturing',  et:ET['f.am']}},
+  {code:'sep'},
   {code:'self',   label:{en:'Self-initiated',  et:ET['f.self']}},
   {code:'thesis', label:{en:'Research thesis', et:ET['f.thesis']}},
   {code:'course', label:{en:'Course project',  et:ET['f.course']}}
 ];
 function renderFilters(lang){
   const box = document.getElementById('projFilters');
-  box.innerHTML = FILTERS.map(o=>
+  box.innerHTML = FILTERS.map(o=> o.code==='sep' ? '<span class="chipsep" aria-hidden="true"></span>' :
     `<button class="chip" type="button" data-filter="${o.code}" aria-pressed="${filter===o.code}">${esc(t(o.label,lang))}</button>`
   ).join('');
 }
@@ -1048,8 +1160,7 @@ function apply(lang){
   document.documentElement.lang = lang;
   const b = document.getElementById('langToggle');
   b.innerHTML = lang==='et' ? '<b>ET</b>&nbsp;·&nbsp;EN' : 'EN&nbsp;·&nbsp;<b>ET</b>';
-  const cv = document.getElementById('cvLink');
-  if(cv) cv.href = lang==='et' ? 'media/cv-otsmaa-et.pdf' : 'media/cv-otsmaa-en.pdf';
+  document.querySelectorAll('.cv-link').forEach(a=>{ a.href = lang==='et' ? 'media/cv-otsmaa-et.pdf' : 'media/cv-otsmaa-en.pdf'; });
   renderProjects(lang);
   renderFilters(lang);
   route(); // re-render an open detail in the new language
