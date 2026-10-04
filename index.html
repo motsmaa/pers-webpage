@@ -510,38 +510,36 @@ const PROJECTS = [
   {
     id:"propeller",
     themes:["mdo"],
-    tag:{en:"MULTIDISCIPLINARY DESIGN OPTIMIZATION", et:"MULTIDISTSIPLINAARNE DISAINIOPTIMEERIMINE"},
+    tag:{en:"MULTI-FIDELITY OPTIMIZATION", et:"MITMETASANDILINE OPTIMEERIMINE"},
     context:{en:"Self-initiated · individual project", et:"Omaalgatuslik · individuaalne projekt"},
     kind:{en:"Self-initiated", et:"Omaalgatuslik"},
     year:"Ongoing",
-    stack:"Python · OpenFOAM · CalculiX · pymoo",
+    stack:"Python · OpenFOAM · CalculiX · gmsh · pymoo",
     title:{en:"Propeller design & optimization pipeline", et:"Propelleri disaini- ja optimeerimispipeline"},
-    summary:{en:"End-to-end pipeline: fast physics models search the design space, CFD and FEA verify the survivors, NSGA-II closes the loop over efficiency vs. structural margin.",
-             et:"Otsast lõpuni pipeline: kiired füüsikamudelid uurivad disainiruumi, CFD ja FEA verifitseerivad, NSGA-II sulgeb tsükli kasuteguri ja struktuurse varu vahel."},
-    badges:["BEMT","RANS CFD","CalculiX FEA","NSGA-II","surrogate modeling","Python"],
+    summary:{en:"Motor specification in, Pareto front out. Fast physics models search the design space, NSGA-II drives the search, and high-fidelity FEA validates the models that do the searching.",
+             et:"Mootori spetsifikatsioon sisse, Pareto front välja. Kiired füüsikamudelid uurivad disainiruumi, NSGA-II juhib otsingut ja kõrge täpsusega FEA valideerib otsingut tegevad mudelid."},
+    badges:["BEMT","NSGA-II","CalculiX FEA","RANS CFD","validated against measured data","Python"],
     detail:{
-      overview:{en:"A self-built loop that makes multi-objective propeller design tractable: cheap models explore thousands of candidates, expensive solvers verify the survivors, and an evolutionary optimizer drives the next generation.",
-                et:"Omaalgatuslik tsükkel, mis muudab mitme-eesmärgilise propelleridisaini käsitletavaks: odavad mudelid uurivad tuhandeid kandidaate, kallid lahendajad verifitseerivad, evolutsiooniline optimeerija juhib järgmist põlvkonda."},
+      overview:{en:"A self-built optimizer that turns a motor datasheet into a set of best-compromise propeller designs. Cheap physics models evaluate thousands of candidates per run, an evolutionary optimizer breeds the survivors, and high-fidelity solvers are used to validate and correct the cheap models rather than to search with them.",
+                et:"Omaalgatuslik optimeerija, mis muudab mootori andmelehe parimate kompromissidega propellerikomplektiks. Odavad füüsikamudelid hindavad tuhandeid kandidaate, evolutsiooniline optimeerija aretab parimad ja kõrge täpsusega lahendajaid kasutatakse odavate mudelite valideerimiseks, mitte otsinguks."},
       metrics:[
-        {value:"3", label:{en:"fidelity levels", et:"täpsustaset"}},
-        {value:"η vs σ", label:{en:"competing objectives", et:"konkureerivat eesmärki"}},
+        {value:"4", label:{en:"competing objectives", et:"konkureerivat eesmärki"}},
+        {value:"2", label:{en:"fidelity tiers", et:"täpsustaset"}},
         {value:"NSGA-II", label:{en:"optimizer", et:"optimeerija"}}
       ],
       sections:[
         {h:{en:"The problem", et:"Probleem"},
-         body:{en:"Propeller design trades aerodynamic efficiency against structural margin. High-fidelity CFD is far too slow to search directly. A single RANS case is hours, and the design space is large.",
-               et:"Propelleri disain vahetab aerodünaamilist kasutegurit struktuurse varu vastu. Kõrge täpsusega CFD on otseseks otsinguks liiga aeglane. Üks RANS-arvutus võtab tunde ja disainiruum on suur."}},
+         body:"Propeller design trades thrust, hover efficiency, mass and structural margin against each other, with no single optimum. High-fidelity CFD cannot search that space directly: one RANS case takes hours, and a genetic algorithm needs tens of thousands of evaluations."},
         {h:{en:"Pipeline architecture", et:"Pipeline'i arhitektuur"},
-         body:{en:"Blade-element momentum theory sweeps the design space in seconds to shortlist candidates. OpenFOAM RANS verifies aerodynamics on survivors. CalculiX FEA checks tip stress and deflection. NSGA-II uses these objectives to breed the next generation. Geometry → mesh → solve → post-process is fully automated so the loop runs unattended.",
-               et:"Labaelemendi-impulsiteooria skaneerib disainiruumi sekunditega ja koostab kandidaatide lühinimekirja. OpenFOAM RANS verifitseerib ellujäänute aerodünaamika. CalculiX FEA kontrollib tipu pingeid ja läbipainet. NSGA-II kasutab neid eesmärke järgmise põlvkonna aretamiseks. Geomeetria → võrk → lahendus → järeltöötlus on täielikult automatiseeritud, nii et tsükkel töötab järelevalveta."}},
-        {h:{en:"Surrogate acceleration", et:"Surrogaatkiirendus"},
-         body:{en:"Gaussian-process / RBF surrogates trained on high-fidelity samples stand in for expensive CFD inside the inner loop, cutting the number of full solves needed to advance the Pareto front.",
-               et:"Kõrge täpsusega näidistel treenitud Gaussi protsessi / RBF surrogaadid asendavad sisemises tsüklis kallist CFD-d, vähendades Pareto rinde edasiviimiseks vajalike täislahenduste arvu."}},
+         body:"An inner loop evaluates candidates in seconds using blade-element momentum theory for aerodynamics and a 1D beam finite-element model for static stress and modal frequency. Operating speed is not a free variable: RPM is solved from motor and propeller torque equilibrium, so every design on the front is drivable by the specified motor. NSGA-II optimises thrust, figure of merit, mass and safety factor under four constraints, including blade-passing resonance margin and motor current limit. Geometry generation produces watertight solids directly, verified at 100 percent over 200 randomised designs and cross-checked against an independent mesh library."},
+        {h:{en:"Validation", et:"Valideerimine"},
+         body:"Every model is anchored to something outside the project. The aerodynamic solver is validated against UIUC wind-tunnel data for a reference propeller and lands within 17 percent on static thrust, with the residual traced to a proxy airfoil section. The structural model is validated against closed-form cantilever and rotating-bar solutions. High-fidelity FEA replaced a textbook stress-concentration guess with a measured one, anchored to the Kirsch analytical solution to within 0.2 percent, which lowered median safety factor across the front by 19 percent and changed which designs are feasible. A CFD campaign was closed as a documented negative result: steady frozen-rotor RANS has no valid solution in hover, and the finding is recorded with its evidence rather than worked around."},
+        {h:{en:"Engineering practice", et:"Inseneripraktika"},
+         body:"Roughly 120 automated tests, frozen interface contracts that have not changed since the first commit, reproducible config-driven runs with quantified convergence and seed spread, and a pre-flight harness that exercises every configuration option after three latent defects were found in options that had never been used."},
         {h:{en:"Where it's headed", et:"Kuhu see liigub"},
-         body:{en:"The planned next step is porting the same pipeline to small turbomachinery, meaning compact gas-turbine stages for small unmanned aircraft, where the same efficiency-versus-stress trade-off applies with far less design margin.",
-               et:"Planeeritud järgmine samm on sama pipeline'i ülekandmine väikestele turbomasinatele, täpsemalt kompaktsetele gaasiturbiini astmetele väikeste mehitamata õhusõidukite jaoks, kus kehtib sama kasuteguri ja pingete kompromiss, kuid palju väiksema disainivaruga."}}
+         body:"Free-form 3D blade centrelines, which unlock toroidal and other non-planar geometries that blade-element theory cannot represent, with a vortex-lattice solver replacing it. [in progress] Beyond that, porting the pipeline to small turbomachinery for unmanned-systems propulsion, a documented European supply gap. [planned]"}
       ],
-      status:{en:"Active. Core loop working, turbomachinery port planned", et:"Aktiivne. Põhitsükkel töötab, turbomasinate laiendus planeeritud"}
+      status:{en:"Active. Core optimizer validated, free-form loop geometry in progress", et:"Aktiivne. Põhioptimeerija valideeritud, vaba kujuga silmusgeomeetria töös"}
     }
   },
   {
